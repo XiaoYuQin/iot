@@ -11,92 +11,227 @@
 <head>
 
 
-<meta http-equiv="pragma" content="no-cache">
-<meta http-equiv="cache-control" content="no-cache">
-<meta http-equiv="expires" content="0">
-<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-<meta http-equiv="description" content="This is my page">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<title>登录界面</title>
-<link href="./Wopop_files/style_log.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="./Wopop_files/style.css">
-<link rel="stylesheet" type="text/css" href="./Wopop_files/userpanel.css">
-<link rel="stylesheet" type="text/css" href="./Wopop_files/jquery.ui.all.css">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<title>Cloud Admin | Login</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<!-- STYLESHEETS --><!--[if lt IE 9]><script src="js/flot/excanvas.min.js"></script><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script><![endif]-->
+	<link rel="stylesheet" type="text/css" href="css/cloud-admin.css" >
+	
+	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<!-- DATE RANGE PICKER -->
+	<!-- <link rel="stylesheet" type="text/css" href="js/bootstrap-daterangepicker/daterangepicker-bs3.css" /> -->
+	<!-- UNIFORM -->
+	<link rel="stylesheet" type="text/css" href="js/uniform/css/uniform.default.min.css" />
+	<!-- ANIMATE -->
+	<link rel="stylesheet" type="text/css" href="css/animatecss/animate.min.css" />
+	<!-- FONTS -->
+	<!--<link href='http://fonts.useso.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'> -->
 
 </head>
 
-
-
-<body class="login" mycollectionplug="bind">
-	<div class="login_m">
-		<div class="login_logo">
-			<img src="./Wopop_files/dlogo.png" width="250" height="100">
-		</div>
-		<div class="login_boder">
-			<form action="login/LoginAction.action">
-				<div class="login_padding" id="login_model">
-
-					<h2>用户名</h2>
-					<label> <input type="text" name="username" id="username" class="txt_input txt_input2" onfocus="if(value =='Your name'){value =''}" onblur="if (value ==''){value='Your name'}" value="Your name">
-					</label>
-					<h2>密码</h2>
-					<label> <input type="password" name="userpass" id="userpwd" class="txt_input" onfocus="if (value =='******'){value =''}" onblur="if (value ==''){value='******'}" value="******">
-					</label>
-
-					<p class="forgot">
-						<a id="iforget" href="javascript:void(0);">忘记密码？</a>
-					</p>
-					<div class="rem_sub">
-						<div class="rem_sub_l">
-							<input type="checkbox" name="checkbox" id="save_me"> <label for="checkbox">记住我</label>
+<body class="login">	
+	<!-- PAGE -->
+	<section id="page">
+			<!-- HEADER -->
+			<header>
+				<!-- NAV-BAR -->
+				<div class="container">
+					<div class="row">
+						<div class="col-md-4 col-md-offset-4">
+							<div id="logo">
+								<a href="index.html"><img src="img/logo/shuohelogo.png" height="120" alt="logo name" /></a>
+							</div>
 						</div>
-						<label> <input type="submit" class="sub_button" name="button" id="button" value="登录" style="opacity: 0.7;">
-						</label> 
-						<label> <input class="sub_button" name="button" id="button" value="注册" style="opacity: 0.7;text-align:center;" onClick="signIn()"></label>
 					</div>
 				</div>
-			</form>
-		</div>
-	</div>
-
-	<div id="forget_model" class="login_padding" style="display:none">
-		<br>
-
-		<h1>Forgot password</h1>
-		<br>
-		<div class="forget_model_h2">(Please enter your registered email below and the system will automatically reset users’ password and send it to user’s registered email address.)</div>
-		<label> <input type="text" id="usrmail" class="txt_input txt_input2"></label>
-
-
-		<div class="rem_sub">
-			<div class="rem_sub_l"></div>
-			<label> <input type="submit" class="sub_buttons" name="button" id="Retrievenow" value="Retrieve now" style="opacity: 0.7;"> <input type="submit" class="sub_button" name="button" id="denglou" value="Return" style="opacity: 0.7;">
-
-			</label>
-		</div>
-	</div>
-
-
-
-
+				<!--/NAV-BAR -->
+			</header>
+			<!--/HEADER -->
+			<!-- LOGIN -->
+			<section id="login" class="visible">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-4 col-md-offset-4">
+							<div class="login-box-plain">
+								<h2 class="bigintro">登录</h2>
+								<div class="divide-40"></div>
+								<form role="form" action="login/LoginAction.action">
+								  <div class="form-group">
+									<label for="exampleInputEmail1">登录名</label>
+									<i class="fa fa-envelope"></i>
+									<input class="form-control" id="exampleInputEmail1" name="username">
+								  </div>
+								  <div class="form-group"> 
+									<label for="exampleInputPassword1">密码</label>
+									<i class="fa fa-lock"></i>
+									<input type="password" class="form-control" id="exampleInputPassword1" name="userpass">
+								  </div>
+								  <div class="form-actions">
+									<label class="checkbox"> <input type="checkbox" class="uniform" value=""> 记住我</label>
+									<button type="submit" class="btn btn-danger">提交</button>
+								  </div>
+								</form>
+								<!-- SOCIAL LOGIN -->
+								<div class="divide-20"></div>
+								<!-- 
+								<div class="center">
+									<strong>Or login using your social account</strong>
+								</div>
+								<div class="divide-20"></div>
+								<div class="social-login center">
+									<a class="btn btn-primary btn-lg">
+										<i class="fa fa-facebook"></i>
+									</a>
+									<a class="btn btn-info btn-lg">
+										<i class="fa fa-twitter"></i>
+									</a>
+									<a class="btn btn-danger btn-lg">
+										<i class="fa fa-google-plus"></i>
+									</a>
+								</div>
+								 -->
+								<!-- /SOCIAL LOGIN -->
+								<div class="login-helpers">
+									<a href="#" onclick="swapScreen('forgot');return false;">忘记密码?</a> <br>
+									没有账户? <a href="#" onclick="swapScreen('register');return false;">现在注册!</a>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--/LOGIN -->
+			<!-- REGISTER -->
+			<section id="register">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-4 col-md-offset-4">
+							<div class="login-box-plain">
+								<h2 class="bigintro">注册</h2>
+								<div class="divide-40"></div>
+								<form role="form" action="signUp/SignUpAction.action">
+								  <!-- 
+								  <div class="form-group">
+									<label for="exampleInputName">全名</label>
+									<i class="fa fa-font"></i>
+									<input type="text" class="form-control" id="exampleInputName" >
+								  </div>
+								   -->
+								  <div class="form-group">
+									<label for="exampleInputUsername">用户名</label>
+									<i class="fa fa-user"></i>
+									<input type="text" class="form-control" id="exampleInputUsername" name="username">
+								  </div>
+								  <div class="form-group">
+									<label for="exampleInputEmail1">邮箱</label>
+									<i class="fa fa-envelope"></i>
+									<input type="email" class="form-control" id="exampleInputEmail1" name="userMail">
+								  </div>
+								  <div class="form-group"> 
+									<label for="exampleInputPassword1">密码</label>
+									<i class="fa fa-lock"></i>
+									<input type="password" class="form-control" id="exampleInputPassword1" name="userpass">
+								  </div>
+								  <div class="form-group"> 
+									<label for="exampleInputPassword2">重复密码</label>
+									<i class="fa fa-check-square-o"></i>
+									<input type="password" class="form-control" id="exampleInputPassword2" >
+								  </div>
+								  <div class="form-actions">
+									<label class="checkbox"> <input type="checkbox" class="uniform" value=""> 我同意 <a href="#">服务条款</a> 和 <a href="#">隐私政策</a></label>
+									<button type="submit" class="btn btn-success">Sign Up</button>
+								  </div>
+								</form>
+								<!-- SOCIAL REGISTER -->
+								<div class="divide-20"></div>
+								<!-- 
+								<div class="center">
+									<strong>Or register using your social account</strong>
+								</div>
+								 -->
+								<div class="divide-20"></div>
+								<!-- 
+								<div class="social-login center">
+									<a class="btn btn-primary btn-lg">
+										<i class="fa fa-facebook"></i>
+									</a>
+									<a class="btn btn-info btn-lg">
+										<i class="fa fa-twitter"></i>
+									</a>
+									<a class="btn btn-danger btn-lg">
+										<i class="fa fa-google-plus"></i>
+									</a>
+								</div>
+								 -->
+								<!-- /SOCIAL REGISTER -->
+								<div class="login-helpers">
+									<a href="#" onclick="swapScreen('login');return false;"> 返回登录</a> <br>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--/REGISTER -->
+			<!-- FORGOT PASSWORD -->
+			<section id="forgot">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-4 col-md-offset-4">
+							<div class="login-box-plain">
+								<h2 class="bigintro">重置密码</h2>
+								<div class="divide-40"></div>
+								<form role="form">
+								  <div class="form-group">
+									<label for="exampleInputEmail1">输入你的邮箱地址</label>
+									<i class="fa fa-envelope"></i>
+									<input type="email" class="form-control" id="exampleInputEmail1" >
+								  </div>
+								  <div class="form-actions">
+									<button type="submit" class="btn btn-info">发送重置指令</button>
+								  </div>
+								</form>
+								<div class="login-helpers">
+									<a href="#" onclick="swapScreen('login');return false;">返回登录</a> <br>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- FORGOT PASSWORD -->
+	</section>
+	<!--/PAGE -->
+	<!-- JAVASCRIPTS -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<!-- JQUERY -->
+	<script src="js/jquery/jquery-2.0.3.min.js"></script>
+	<!-- JQUERY UI-->
+	<script src="js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js"></script>
+	<!-- BOOTSTRAP -->
+	<script src="bootstrap-dist/js/bootstrap.min.js"></script>
+	
+	
+	<!-- UNIFORM -->
+	<script type="text/javascript" src="js/uniform/jquery.uniform.min.js"></script>
+	<!-- CUSTOM SCRIPT -->
+	<script src="js/script.js"></script>
+	<script>
+		jQuery(document).ready(function() {		
+			App.setPage("login");  //Set current page
+			App.init(); //Initialise plugins and elements
+		});
+	</script>
 	<script type="text/javascript">
-		function signIn() {
-			console.log("signIn");
-			window.self.location="signUp/signUp.jsp"; 
+		function swapScreen(id) {
+			jQuery('.visible').removeClass('visible animated fadeInUp');
+			jQuery('#'+id).addClass('visible animated fadeInUp');
 		}
 	</script>
-
-	<!--login_padding  Sign up end-->
-	</div>
-	<!--login_boder end-->
-	</div>
-	<!--login_m end-->
-	<br>
-	<br>
-	<!-- 
-<p align="center"> More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
- -->
-
+	<!-- /JAVASCRIPTS -->
 </body>
 </html>

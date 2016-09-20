@@ -13,11 +13,17 @@ public class LoginAction extends ActionSupport {
 	private String username;
 	private String userpass;
 
+
 	public String execute() throws Exception{
-		
-		System.out.println("LoginAction execute");
+		String saveName = null;		
 		HttpSession session = ServletActionContext.getRequest().getSession(); 
-		if(session.getAttribute("username") != null) 
+		
+		if(session.getAttribute("saveName")!=null)
+		{
+			saveName = session.getAttribute("saveName").toString();
+		}
+		System.out.println("LoginAction execute username = "+username+" userpassword = "+username+" saveName = "+saveName);
+		if(session.getAttribute("username") != null&&username.equals(saveName)) 
 		{			
 			return SUCCESS;
 		}
@@ -26,6 +32,9 @@ public class LoginAction extends ActionSupport {
 		{
 //			System.out.println("  SUCCESS");
 			session.setAttribute("username", username);
+			session.setAttribute("saveName", username);
+			System.out.println("session.setAttribute(username,"+username+");");
+			saveName = username;
 			LogRegist.loginRegist(username);
 			return SUCCESS;	
 		}

@@ -1,3 +1,4 @@
+<%@page import="com.sun.java.swing.plaf.windows.resources.windows"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page import="thing.*" %>
 <%
@@ -5,6 +6,7 @@
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
+	System.out.println("welcome page");	
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -28,8 +30,8 @@
 <body>
 	<%
 		out.println("session id:" + request.getSession().getId() + "<br>");
-		out.println("用户名：" + request.getSession().getAttribute("username")
-				+ "<br>");
+		out.println("用户名：" + request.getSession().getAttribute("username")+ "<br>");
+		
 	%>
 	<script type="text/javascript">
 		function logout() {
@@ -41,12 +43,19 @@
 	<HR style="FILTER: alpha(opacity=100,finishopacity=0,style=2)"
 		width="100%" color=#987cb9 SIZE=10>
 	<%
-		//session.setMaxInactiveInterval(1*10);//以秒为单位      	
+		//session.setMaxInactiveInterval(1*10);//以秒为单位      
+		System.out.println("check is onLine");	
 		if (session.getAttribute("username") == null) {
 			System.out.println("session fail to index");
 			response.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
-			String newLocn = "/index.jsp";
+			String newLocn = "/iot/index.jsp";
 			response.setHeader("Location", newLocn);
+		}
+		else
+		{
+			response.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
+			String newLocn = "/iot/business/main.jsp";
+			response.setHeader("Location", newLocn);			
 		}
 	%>
 	登录成功
@@ -64,6 +73,7 @@
 	</script>
  	-->
 	<%
+		System.out.println("list all things");
 		if (session.getAttribute("username") != null) {
 			String userName = request.getSession().getAttribute("username").toString();
 			ArrayList<Thing> things = new ArrayList<>();			
