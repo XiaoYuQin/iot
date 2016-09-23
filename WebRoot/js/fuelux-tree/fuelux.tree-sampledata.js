@@ -27,47 +27,30 @@ DataSourceTree.prototype.data = function(options, callback) {
 };
 
 var tree_data = {
-	'foodmart' : {name: 'Foodmart', type: 'folder'},
-	'seating' : {name: 'Seating', type: 'folder'},
-	'flowers' : {name: 'Flowers', type: 'folder'},
-	'locations' : {name: 'Locations', type: 'item'},
-	'discounts' : {name: 'Discounts', type: 'item'}
+	'foodmart' : {name: '温度传感器', type: 'folder'},
+	'seating' : {name: '压力传感器', type: 'folder'},
+	'flowers' : {name: '水位传感器', type: 'folder'}
 }
 tree_data['foodmart']['additionalParameters'] = {
 	'children' : {
-		'appetizer' : {name: 'Appetizer', type: 'item'},
-		'main-course' : {name: 'Main Course', type: 'item'},
-		'dessert' : {name: 'Dessert', type: 'item'},
-		'drinks' : {name: 'Drinks', type: 'folder'}
-	}
-}
-tree_data['foodmart']['additionalParameters']['children']['drinks']['additionalParameters'] = {
-	'children' : {
-		'hot' : {name: 'Hot Drinks', type: 'item'},
-		'cold' : {name: 'Cold Drinks', type: 'folder'}
-	}
-}
-tree_data['foodmart']['additionalParameters']['children']['drinks']['additionalParameters']['children']['cold']['additionalParameters'] = {
-	'children' : {
-		'iced-tea' : {name: 'Iced Tea', type: 'item'},
-		'cold-coffee' : {name: 'Cold Coffee', type: 'item'},
-		'milk' : {name: 'Milk', type: 'item'},
-		'mango-shake' : {name: 'Mango Shake', type: 'item'},
-		'orange-juice' : {name: 'Orange Juice', type: 'item'}
+		'40006' : {name: '40006', type: 'item'},
+		'40005' : {name: '40005', type: 'item'},
+		'40004' : {name: '40004', type: 'item'},
+		'40003' : {name: '40003', type: 'item'}
 	}
 }
 tree_data['seating']['additionalParameters'] = {
 	'children' : {
-		'two-seaters' : {name: 'Two Seaters', type: 'item'},
-		'four-seaters' : {name: 'Four Seaters', type: 'item'},
-		'eight-seaters' : {name: 'Eight Seaters', type: 'item'}
+		'60001' : {name: '60001', type: 'item'},
+		'60002' : {name: '60002', type: 'item'},
+		'60003' : {name: '60003', type: 'item'}
 	}
 }
 tree_data['flowers']['additionalParameters'] = {
 	'children' : {
-		'roses' : {name: 'Roses', type: 'item'},
-		'lilies' : {name: 'Lilies', type: 'item'},
-		'orchids' : {name: 'Orchids', type: 'item'}
+		'50001' : {name: '50001', type: 'item'},
+		'50002' : {name: '50002', type: 'item'},
+		'50003' : {name: '50003', type: 'item'}
 	}
 }
 
@@ -80,7 +63,7 @@ var tree_data_2 = {
 	'music' : {name: 'Music', type: 'folder', 'icon-class':'orange'}	,
 	'videos' : {name: 'Videos', type: 'folder', 'icon-class':'blue'}	,
 	'contacts' : {name: 'Contacts', type: 'folder'}	,
-	'sample-txt' : {name: '<i class="fa fa-file-text"></i> Sample.txt', type: 'item'},
+	'sample-txt' : {name: '<i class="fa fa-book"></i> Sample.txt', type: 'item'},
 	'sample-zip' : {name: '<i class="fa fa-archive"></i> Sample.zip', type: 'item'},
 	'sample-html' : {name: '<i class="fa fa-book"></i> Sample.html', type: 'item'}
 }
@@ -128,6 +111,7 @@ tree_data_2['music']['additionalParameters'] = {
 		{name: '<i class="fa fa-music"></i> song6.mp3', type: 'item'}
 	]
 }
+console.info("tree_data_2");
 tree_data_2['videos']['additionalParameters'] = {
 	'children' : [
 		{name: '<i class="fa fa-film"></i> movie1.wmv', type: 'item'},

@@ -2016,7 +2016,7 @@ var App = function () {
 			onStep: function(from, to, percent) {
 				$(this.el).find('.percent').text(Math.round(percent));
 			},
-			lineWidth: 3,
+			lineWidth: 9,
 			barColor: '#A8BC7B'
 		});
 		var chart1 = window.chart = $('#pie_1').data('easyPieChart');
@@ -2030,7 +2030,7 @@ var App = function () {
 			onStep: function(from, to, percent) {
 				$(this.el).find('.percent').text(Math.round(percent));
 			},
-			lineWidth: 6,
+			lineWidth: 9,
 			barColor: '#F0AD4E'
 		});
 		var chart2 = window.chart = $('#pie_2').data('easyPieChart');
@@ -2058,7 +2058,7 @@ var App = function () {
 			onStep: function(from, to, percent) {
 				$(this.el).find('.percent').text(Math.round(percent));
 			},
-			lineWidth: 12,
+			lineWidth: 9,
 			barColor: '#70AFC4',
 			lineCap: 'butt'
 		});

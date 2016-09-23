@@ -53,8 +53,9 @@
 		}
 		else
 		{
+			System.out.println("session ok to index");
 			response.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
-			String newLocn = "/iot/business/main.jsp";
+			String newLocn = "../business/index.jsp";
 			response.setHeader("Location", newLocn);			
 		}
 	%>
