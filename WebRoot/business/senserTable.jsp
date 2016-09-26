@@ -269,7 +269,11 @@
 										</div>
 									</div>
 									<div class="box-body big">
-										<form class="form-horizontal " action="#">                  
+										<form class="form-horizontal " action="#">     
+										<div class="form-group">										   
+										   <label class="col-md-4">设备ID:</label>										   
+											 <span style="font-weight:bold;">40003</span>										 
+										 </div>            
 										 <div class="form-group">										   
 										   <label class="col-md-4">设备名称:</label>										   
 											 <span style="font-weight:bold;">温度传感器</span>										 

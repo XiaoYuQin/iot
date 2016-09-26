@@ -10,18 +10,16 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<!-- STYLESHEETS --><!--[if lt IE 9]><script src="js/flot/excanvas.min.js"></script><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script><![endif]-->
+
 	<link rel="stylesheet" type="text/css" href="../css/cloud-admin.css" >
 	<link rel="stylesheet" type="text/css"  href="../css/themes/default.css" id="skin-switcher" >
 	<link rel="stylesheet" type="text/css"  href="../css/responsive.css" >
 	
 	<link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<!-- FUELUX TREE -->
+	<link rel="stylesheet" type="text/css" href="../js/fuelux-tree/fuelux.min.css" />
 	<!-- DATE RANGE PICKER -->
-	<link rel="stylesheet" type="text/css" href="../js/bootstrap-daterangepicker/daterangepicker-bs3.css" />
-	<!-- UNIFORM -->
-	<link rel="stylesheet" type="text/css" href="../js/uniform/css/uniform.default.min.css" />
-	<!-- INBOX CSS -->
-	<link rel="stylesheet" href="../css/inbox.css">
+	<link rel="stylesheet" type="text/css" href="../js/bootstrap-daterangepicker/daterangepicker-bs3.css" >
 	<!-- FONTS -->
 
 </head>
@@ -222,160 +220,63 @@
 						<!-- 页面主要内容 -->
 						<!-- class="row" 终端数量和登录人数 -->
 						<div class="row">
-							<!-- COLUMN 1 -->
-							<div class="col-md-6">
-								<div class="row">
-									<div class="col-lg-6">
-										<div class="dashbox panel panel-default">
-											<div class="panel-body">
-												<div class="panel-left red">
-													<i class="fa fa-instagram fa-3x"></i>
-												</div>
-												<div class="panel-right">
-													<div class="number">203</div>
-													<div class="title">终端总数</div>
-													<!-- 
-													<span class="label label-success">
-													26% <i class="fa fa-arrow-up"></i>
-													</span>
-													-->
-												</div>
-											</div>
+							<div class="col-md-10">
+								<!-- BOX -->
+								<div class="box border blue">
+									<div class="box-title">
+										<h4><i class="fa fa-signal"></i>CPU使用率</h4>
+										<div class="tools">
+											<a href="javascript:;" class="reload">
+												<i class="fa fa-refresh"></i>
+											</a>
 										</div>
 									</div>
-									<div class="col-lg-6">
-										<div class="dashbox panel panel-default">
-											<div class="panel-body">
-												<div class="panel-left blue">
-													<!-- <i class="fa fa-twitter fa-3x"></i> -->
-													<div align="center">
-													<img src="../img/icon/error.png" alt="Cloud Admin Logo" class="img-responsive" height="40" width="40"/>
-													</div>
-													</div>
-													<div class="panel-right">
-													<div class="number">3</div>
-													<div class="title">故障终端数量</div>
-													<!-- 
-													<span class="label label-warning">
-													5% <i class="fa fa-arrow-down"></i>
-													</span>
-													-->
-												</div>
-											</div>
-										</div>
+									<div class="box-body">
+										<div id="chartcpu" class="chart"></div>
 									</div>
-																
 								</div>
-							</div>								
+								<!-- /BOX -->
+							</div>					
 						</div>
-
 						<div class="row">
-							<!-- COLUMN 1 -->
-							<div class="col-md-6">
-								<div class="row">
-									<div class="col-lg-6">
-										<div class="dashbox panel panel-default">
-											<div class="panel-body">
-												<div class="panel-left blue">
-													<!-- <i class="fa fa-twitter fa-3x"></i> -->
-													<div align="center">
-													<img src="../img/icon/user.png" alt="user online" class="img-responsive" height="35" width="35"/>
-													</div>
-													</div>
-													<div class="panel-right">
-													<div class="number">5</div>
-													<div class="title">在线人数</div>
-													<!-- 
-													<span class="label label-warning">
-													5% <i class="fa fa-arrow-down"></i>
-													</span>
-													-->
-												</div>
-											</div>
+							<div class="col-md-10">
+								<!-- BOX -->
+								<div class="box border blue">
+									<div class="box-title">
+										<h4><i class="fa fa-signal"></i>平均负载</h4>
+										<div class="tools">
+											<a href="javascript:;" class="reload">
+												<i class="fa fa-refresh"></i>
+											</a>
 										</div>
 									</div>
-									<div class="col-lg-6">
-										<div class="dashbox panel panel-default">
-											<div class="panel-body">
-												<div class="panel-left blue">
-													<!-- <i class="fa fa-twitter fa-3x"></i> -->
-													<div align="center">
-													<img src="../img/icon/clock.jpg" alt="Cloud Admin Logo" class="img-responsive" height="40" width="40"/>
-													</div>
-													</div>
-													<div class="panel-right">
-													<div class="number">105天6小时</div>
-													<div class="title">运行时长</div>
-													<!-- 
-													<span class="label label-warning">
-													5% <i class="fa fa-arrow-down"></i>
-													</span>
-													-->
-												</div>
-											</div>
-										</div>
-									</div>															
+									<div class="box-body">
+										<div id="chart_2" class="chart"></div>
+									</div>
 								</div>
-							</div>								
-						</div>
-
-						<!-- class="row" 终端数量和登录人数 -->
-						<!-- 服务器负载-->
+								<!-- /BOX -->
+							</div>					
+						</div>					
 						<div class="row">
-							<div class="col-md-6">
-								<div class="quick-pie panel panel-default">
-									<div class="panel-body">
-										<!-- <div class="row"> -->
-											<div class="col-md-6 text-center">
-												<div id="pie_1" class="piechart padding-bottom-20" data-percent="51">
-													<span class="percent"></span>
-												</div>
-												<a href="#" class="title"><font size="2">CPU 占用率</font></a>
-												<!-- <div id="js_update_1" class="btn btn-default">Update chart</div> -->
-												<!-- <div class="divide-12"></div> -->
-											</div>
-											<div class="col-md-6 text-center">
-												<div id="pie_2" class="piechart padding-bottom-20" data-percent="32">
-													<span class="percent"></span>
-												</div>
-												<a href="#" class="title"><font size="2">内存使用率</font></a>
-												<!-- <div id="js_update_2" class="btn btn-default">Update chart</div> -->
-												<!-- <div class="divide-12"></div> -->
-											</div>
-											<div class="col-md-6 text-center">
-												<div id="pie_3" class="piechart padding-bottom-20" data-percent="15">
-													<span class="percent"></span>
-												</div>
-												<a href="#" class="title"><font size="2">硬盘使用率</font></a>
-												<!-- <div id="js_update_3" class="btn btn-default">Update chart</div> -->
-												<!-- <div class="divide-12"></div> -->
-											</div>
-											<div class="col-md-6 text-center">
-												<div id="pie_4" class="piechart padding-bottom-20" data-percent="17">
-													<span class="percent"></span>
-												</div>
-												<a href="#" class="title"><font size="2">带宽使用率</font></a>
-												<!-- <div id="js_update_4" class="btn btn-default">Update chart</div> -->
-												<!-- <div class="divide-12"></div> -->
-											</div>
-										<!-- </div> -->
+							<div class="col-md-10">
+								<!-- BOX -->
+								<div class="box border blue">
+									<div class="box-title">
+										<h4><i class="fa fa-signal"></i>平均负载</h4>
+										<div class="tools">
+											<a href="javascript:;" class="reload">
+												<i class="fa fa-refresh"></i>
+											</a>
+										</div>
+									</div>
+									<div class="box-body">
+										<div id="chartloadavragex" class="chart"></div>
 									</div>
 								</div>
-							</div>
-						</div>
-
-						<script type="text/javascript">
-							function refreshServerHardwareParam()
-							{
-								console.info("refreshServerHardwareParam");
-								document.getElementById('pie_4');									
-								$('#pie_1').data('easyPieChart').update(Math.random()*11+50);
-								$('#pie_2').data('easyPieChart').update(Math.random()*9+42);
-								$('#pie_3').data('easyPieChart').update(Math.random()*6+8);
-								$('#pie_4').data('easyPieChart').update(Math.random()*8+1);
-							}
-							var t2 = window.setInterval("refreshServerHardwareParam()", 3000);
-						</script>
+								<!-- /BOX -->
+							</div>					
+						</div>					
+			
 						<!-- 服务器负载-->
 						<div class="footer-tools">
 							<span class="go-top">
@@ -391,11 +292,12 @@
 	<!-- JAVASCRIPTS -->
 	<!-- Placed at the end of the document so the pages load faster -->
 	<!-- JQUERY -->
-	<script src="../js/jquery/jquery-2.0.3.min.js"></script>
+	<script src="../js/flot/jquery.min.js"></script>
 	<!-- JQUERY UI-->
 	<script src="../js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js"></script>
 	<!-- BOOTSTRAP -->
 	<script src="../bootstrap-dist/js/bootstrap.min.js"></script>
+	
 		
 	<!-- DATE RANGE PICKER -->
 	<script src="../js/bootstrap-daterangepicker/moment.min.js"></script>
@@ -405,7 +307,7 @@
 	<script type="text/javascript" src="../js/jQuery-slimScroll-1.3.0/jquery.slimscroll.min.js"></script>
 	<script type="text/javascript" src="../js/jQuery-slimScroll-1.3.0/slimScrollHorizontal.min.js"></script>
 	<!-- BLOCK UI -->
-	<script type="text/javascript" src=../"js/jQuery-BlockUI/jquery.blockUI.min.js"></script>
+	<script type="text/javascript" src="../js/jQuery-BlockUI/jquery.blockUI.min.js"></script>
 	<!-- FLOT CHARTS -->
 	<script src="../js/flot/jquery.flot.min.js"></script>
 	<script src="../js/flot/jquery.flot.time.min.js"></script>
@@ -414,26 +316,30 @@
     <script src="../js/flot/jquery.flot.pie.min.js"></script>
     <script src="../js/flot/jquery.flot.stack.min.js"></script>
     <script src="../js/flot/jquery.flot.crosshair.min.js"></script>
-	<!-- FLOT GROWRAF -->
-	<script src="../js/flot-growraf/jquery.flot.growraf.min.js"></script>
-	<!-- GAGE -->
-	<script src="../js/justgage/js/raphael.2.1.0.min.js"></script>
-    <!-- <script src="../js/justgage/js/justgage.1.0.1.min.js"></script> -->
-	<!-- EASY PIE CHART -->
-	<script src="../js/jquery-easing/jquery.easing.min.js"></script>
-	<script type="text/javascript" src="../js/easypiechart/jquery.easypiechart.min.js"></script>
-	<!-- SPARKLINES -->
-	<script type="text/javascript" src="../js/sparklines/jquery.sparkline.min.js"></script>
 	<!-- COOKIE -->
 	<script type="text/javascript" src="../js/jQuery-Cookie/jquery.cookie.min.js"></script>
+	<!-- UNIFORM -->
+	<script type="text/javascript" src="../js/uniform/jquery.uniform.min.js"></script>
+	<!-- BOOTSTRAP WYSIWYG -->
+	<script type="text/javascript" src="../js/bootstrap-wysiwyg/jquery.hotkeys.min.js"></script>
+	<script type="text/javascript" src="../js/bootstrap-wysiwyg/bootstrap-wysiwyg.min.js"></script>
+	<!-- FUELUX TREE -->
+	<script type="text/javascript" src="../js/fuelux-tree/fuelux.tree-sampledata.js?ver=2"></script>
+	<script type="text/javascript" src="../js/fuelux-tree/fuelux.tree.min.js?ver=1"></script>
 	<!-- CUSTOM SCRIPT -->
 	<script src="../js/script.js?ver=1"></script>
-	<script src="../js/charts.js"></script>
+	<script src="../js/charts.js?ver=1"></script>
 	<script>
 		jQuery(document).ready(function() {		
-			App.setPage("others");  //Set current page
+			App.setPage("treeview");  //Set current page
 			App.init(); //Initialise plugins and elements
-			Charts.initOtherCharts(); //Init other charts
+
+			App.setPage("flot_charts");  //Set current page
+			App.init(); //Initialise plugins and elements
+			Charts.initCharts();
+			Charts.initPieCharts();
+
+
 		});
 	</script>
 	<!-- /JAVASCRIPTS -->

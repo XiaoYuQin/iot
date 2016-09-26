@@ -228,6 +228,278 @@ var Charts = function () {
                 });
             }
 
+
+            /* Interactive Chart */
+            function chartcpux() {
+                var cpuTemp = [
+                    [1, 55],
+                    [2, 67],
+                    [3, 64],
+                    [4, 61],
+                    [5, 58],
+                    [6, 70],
+                    [7, 73],
+                    [8, 75],
+                    [9, 60],
+                    [10, 63],
+                    [11, 77],
+                    [12, 51],
+                    [13, 54],
+                    [14, 55],
+                    [15, 65],
+                    [16, 63],
+                    [17, 68],
+                    [18, 66],
+                    [19, 61],
+                    [20, 62.1],
+                    [21, 67.5],
+                    [22, 67],
+                    [23, 54.3],
+                    [24, 67.8],
+                    [25, 66.3],
+                    [26, 71.2],
+                    [27, 63.3],
+                    [28, 65.9],
+                    [29, 66],
+                    [30, 55]
+                ];
+                var cpuio = [
+                    [1, 55],
+                    [2, 67],
+                    [3, 64],
+                    [4, 61],
+                    [5, 58],
+                    [6, 70],
+                    [7, 73],
+                    [8, 75],
+                    [9, 60],
+                    [10, 63],
+                    [11, 77],
+                    [12, 51],
+                    [13, 54],
+                    [14, 55],
+                    [15, 65],
+                    [16, 63],
+                    [17, 68],
+                    [18, 66],
+                    [19, 61],
+                    [20, 62.1],
+                    [21, 67.5],
+                    [22, 67],
+                    [23, 54.3],
+                    [24, 67.8],
+                    [25, 66.3],
+                    [26, 71.2],
+                    [27, 63.3],
+                    [28, 65.9],
+                    [29, 66],
+                    [30, 55]
+                ];
+                console.info("var plot = $.plot($(#chartcpu),");
+                var plot = $.plot($("#chartcpu"), [{
+                            data: cpuTemp,
+                            label: "cpu温度"
+                        }
+                        , {
+                            data: cpuio,
+                            label: "I/O"
+                        }
+                    ], {
+                        series: {
+                            lines: {
+                                show: true,
+                                lineWidth: 2,
+                                fill: true,
+                                fillColor: {
+                                    colors: [{
+                                            opacity: 0.05
+                                        }, {
+                                            opacity: 0.01
+                                        }
+                                    ]
+                                }
+                            },
+                            points: {
+                                show: true
+                            },
+                            shadowSize: 2
+                        },
+                        grid: {
+                            hoverable: true,
+                            clickable: true,
+                            tickColor: "#eee",
+                            borderWidth: 0
+                        },
+                        colors: ["#DB5E8C", "#F0AD4E", "#5E87B0"],
+                        xaxis: {
+                            ticks: 11,
+                            tickDecimals: 0
+                        },
+                        yaxis: {
+                            ticks: 11,
+                            tickDecimals: 0
+                        }
+                    });
+
+
+                function showTooltip(x, y, contents) {
+                    $('<div id="tooltip">' + contents + '</div>').css({
+                            position: 'absolute',
+                            display: 'none',
+                            top: y + 5,
+                            left: x + 15,
+                            border: '1px solid #333',
+                            padding: '4px',
+                            color: '#fff',
+                            'border-radius': '3px',
+                            'background-color': '#333',
+                            opacity: 0.80
+                        }).appendTo("body").fadeIn(200);
+                }
+
+                var previousPoint = null;
+                $("#chartcpu").bind("plothover", function (event, pos, item) {
+                    $("#x").text(pos.x.toFixed(2));
+                    $("#y").text(pos.y.toFixed(2));
+
+                    if (item) {
+                        if (previousPoint != item.dataIndex) {
+                            previousPoint = item.dataIndex;
+
+                            $("#tooltip").remove();
+                            var x = item.datapoint[0].toFixed(2),
+                                y = item.datapoint[1].toFixed(2);
+
+                            showTooltip(item.pageX, item.pageY, "8月"+ x + "日温度为"+y+"&#8451;");
+                        }
+                    } else {
+                        $("#tooltip").remove();
+                        previousPoint = null;
+                    }
+                });
+            }
+
+            /* Interactive Chart */
+            function chartloadavrage() {
+                var cpuTemp = [
+                    [1, 55],
+                    [2, 67],
+                    [3, 64],
+                    [4, 61],
+                    [5, 58],
+                    [6, 70],
+                    [7, 73],
+                    [8, 75],
+                    [9, 60],
+                    [10, 63],
+                    [11, 77],
+                    [12, 51],
+                    [13, 54],
+                    [14, 55],
+                    [15, 65],
+                    [16, 63],
+                    [17, 68],
+                    [18, 66],
+                    [19, 61],
+                    [20, 62.1],
+                    [21, 67.5],
+                    [22, 67],
+                    [23, 54.3],
+                    [24, 67.8],
+                    [25, 66.3],
+                    [26, 71.2],
+                    [27, 63.3],
+                    [28, 65.9],
+                    [29, 66],
+                    [30, 55]
+                ];        
+                console.info("var plot = $.plot($(#chartloadavragex),");
+                var plot = $.plot($("#chartloadavragex"), [{
+                            data: cpuTemp,
+                            label: "平均值"
+                        }
+                    ], {
+                        series: {
+                            lines: {
+                                show: true,
+                                lineWidth: 2,
+                                fill: true,
+                                fillColor: {
+                                    colors: [{
+                                            opacity: 0.05
+                                        }, {
+                                            opacity: 0.01
+                                        }
+                                    ]
+                                }
+                            },
+                            points: {
+                                show: true
+                            },
+                            shadowSize: 2
+                        },
+                        grid: {
+                            hoverable: true,
+                            clickable: true,
+                            tickColor: "#eee",
+                            borderWidth: 0
+                        },
+                        colors: ["#DB5E8C", "#F0AD4E", "#5E87B0"],
+                        xaxis: {
+                            ticks: 11,
+                            tickDecimals: 0
+                        },
+                        yaxis: {
+                            ticks: 11,
+                            tickDecimals: 0
+                        }
+                    });
+
+
+                function showTooltip(x, y, contents) {
+                    $('<div id="tooltip">' + contents + '</div>').css({
+                            position: 'absolute',
+                            display: 'none',
+                            top: y + 5,
+                            left: x + 15,
+                            border: '1px solid #333',
+                            padding: '4px',
+                            color: '#fff',
+                            'border-radius': '3px',
+                            'background-color': '#333',
+                            opacity: 0.80
+                        }).appendTo("body").fadeIn(200);
+                }
+
+                var previousPoint = null;
+                $("#chartloadavragex").bind("plothover", function (event, pos, item) {
+                    $("#x").text(pos.x.toFixed(2));
+                    $("#y").text(pos.y.toFixed(2));
+
+                    if (item) {
+                        if (previousPoint != item.dataIndex) {
+                            previousPoint = item.dataIndex;
+
+                            $("#tooltip").remove();
+                            var x = item.datapoint[0].toFixed(2),
+                                y = item.datapoint[1].toFixed(2);
+
+                            showTooltip(item.pageX, item.pageY, "8月"+ x + "日温度为"+y+"&#8451;");
+                        }
+                    } else {
+                        $("#tooltip").remove();
+                        previousPoint = null;
+                    }
+                });
+            }
+
+
+
+
+
+
+
+
             /* Tracking Curves */
             function chart3() {
                 var sin = [],
@@ -553,6 +825,8 @@ var Charts = function () {
             //graph
             // chart1();
             chart2();
+            chartcpux();
+            chartloadavrage();
 			// chart7();
    //          chart3();
    //          chart4();
