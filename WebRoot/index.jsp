@@ -143,7 +143,7 @@
 								  </div>
 								  <div class="form-actions">
 									<label class="checkbox"> <input type="checkbox" class="uniform" value=""> 我同意 <a href="#">服务条款</a> 和 <a href="#">隐私政策</a></label>
-									<button type="submit" class="btn btn-success">Sign Up</button>
+									<button type="submit" class="btn btn-success">登录</button>
 								  </div>
 								</form>
 								<!-- SOCIAL REGISTER -->

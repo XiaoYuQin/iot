@@ -250,7 +250,7 @@
 												<div class="form-group">
 													<label class="col-sm-3 control-label">设备名</label>
 													<div class="col-sm-9">
-														<div class="input-group">
+														<div class="input-group" style="width: 60%;">
 															<span class="input-group-addon"><i class="fa fa-puzzle-piece"></i></span>
 															<input type="text" class="form-control" placeholder="设备的名称，限30个字符">
 														</div>
@@ -259,7 +259,7 @@
 												<div class="form-group">
 													<label class="col-sm-3 control-label">标签（tags）</label>
 													<div class="col-sm-9">
-														<div class="input-group">
+														<div class="input-group" style="width: 60%;">
 															<span class="input-group-addon"><i class="fa fa-tag"></i></span>
 															<input type="text" class="form-control" placeholder="">
 														</div>
@@ -268,7 +268,7 @@
 												<div class="form-group">
 													<label class="col-sm-3 control-label">地理位置</label>
 													<div class="col-sm-9">
-														<div class="input-group">
+														<div class="input-group" style="width: 60%;">
 															<span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
 															<input type="text" class="form-control">
 														</div>
@@ -277,7 +277,7 @@
 												<div class="form-group">
 													<label class="col-sm-3 control-label">设备类型</label>
 													<div class="col-sm-9">
-														<select class="form-control">
+														<select class="form-control" style="width: 60%;">
 															<option>模拟设备</option>
 															<option>数字设备</option>
 														</select>
@@ -286,23 +286,25 @@
 												<div class="form-group">
 													<label class="col-sm-3 control-label">单位</label>
 													<div class="col-sm-9">
-														<input type="text" name="autocomplete" class="form-control" id="autocomplete-example" placeholder="安、伏特、PPM、米、升等"> 
+														<input type="text" name="autocomplete" class="form-control" id="autocomplete-example" placeholder="安、伏特、PPM、米、升等" style="width: 60%;" 
 														<span class="help-block"></span> 
 													</div>
 												</div>
 												<div class="form-group">
 													<label class="col-sm-3 control-label">描述</label>
 													<div class="col-sm-9">
-														<textarea class="form-control" rows="5"></textarea>
+														<textarea class="form-control" style="width: 60%;"></textarea>
 														<span class="help-block">描述下你的设备</span> 
 													</div>
 												</div>
-												<div class="form-group">
-													<div class="col-sm-offset-10 col-sm-10">
-														<button type="submit" class="btn btn-success">&nbsp;&nbsp;保存&nbsp;&nbsp;</button>
-														<button type="submit" class="btn btn-light-grey">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
-													</div>
-												</div>										 									   								
+												<ul class="list-unstyled center">
+													<span class="composeBtn " >
+														 <a href="javascript:;" data-title="Compose" class="btn btn-success"> 确定修改</a>
+													 </span>
+													<span class="composeBtn " >
+														 <a href="javascript:;" data-title="Compose" class="btn btn-light-grey"> 取消</a>
+													 </span>													 
+												</ul>								   							
 											 </form>
 										<!-- </div> -->
 									</div>

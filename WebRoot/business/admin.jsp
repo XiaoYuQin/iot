@@ -24,14 +24,8 @@
 	<!-- FONTS -->
 
 	
-<link rel="stylesheet" href="http://openlayers.org/en/v3.18.2/css/ol.css" type="text/css">
     <!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
     <script src="http://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
-    <script src="http://openlayers.org/en/v3.18.2/build/ol.js"></script>
-
-	<link type="text/css" rel="stylesheet" href="../js/openlayer3/circleArrow.css" />
-	<script type="text/javascript" src="../js/openlayer3/Popups.js?ver=1"></script>
-	<script type="text/javascript" src="../js/openlayer3/Popup.js?ver=1"></script>
 
 	<!-- <link rel="stylesheet" href="../js/openlayer3/ol.css"> -->
 
@@ -162,70 +156,70 @@
 	
 	<!-- PAGE -->
 	<section id="page">
-				<!-- SIDEBAR -->
-				<div id="sidebar" class="sidebar">
-					<div class="sidebar-menu nav-collapse">
-						<div class="divide-20"></div>
-						<!-- SEARCH BAR -->
-						<div id="search-bar">
-							<input class="search" type="text" placeholder="Search"><i class="fa fa-search search-icon"></i>
-						</div>
-						<!-- /SEARCH BAR -->
-						
-						<!-- SIDEBAR QUICK-LAUNCH -->
-						<!-- <div id="quicklaunch">
-						<!-- /SIDEBAR QUICK-LAUNCH -->
-						
-						<!-- SIDEBAR MENU -->
-						<ul>		
-							<li>
-								<a class="" href="../business/index.jsp">
-									<i class="fa fa-home fa-fw"></i>									
-									<span class="menu-text">主页</span>
-								</a>
-							</li>		
-							<li>
-								<a class="" href="../business/thingList.jsp">
-									<i class="fa fa-desktop fa-fw"></i>									
-									<span class="menu-text">设备列表</span>
-								</a>
-							</li>			
-							<li>
-								<a class="" >
-									<i class="fa fa-map-marker fa-fw"></i> 
-									<span class="menu-text">设备地图</span>
-								</a>
-							</li>
-							<li>
-								<a class="" href="../business/thingDevelopment.jsp">
-									<!--<i class="fa fa-envelope-o fa-fw"></i>
-									<img class="fa fa-desktop fa-fw" src="../img/icon/gater.png" height="15" width="15"/>
-									<i></i>-->
-									<i class="fa fa-th-large fa-fw"></i>
-									<span class="menu-text">设备开发</span>
-								</a>
-							</li>
-							<li class="has-sub">
-								<a href="javascript:;" class="">
-								<i class="fa fa-table fa-fw"></i> <span class="menu-text">报表</span>
-								<span class="arrow"></span>
-								</a>
-								<ul class="sub">
-									<li><a class="" href="../business/senserTable.jsp"><span class="sub-menu-text">传感器数据</span></a></li>
-								</ul>
-							</li>
-							<li class="active">
-								<a class="" >
-									<i class="fa fa-user fa-fw"></i> 
-									<span class="menu-text">账户设置</span>
-									<span class="selected"></span>
-								</a>
-							</li>
-						</ul>
-						<!-- /SIDEBAR MENU -->
-					</div>
+		<!-- SIDEBAR -->
+		<div id="sidebar" class="sidebar">
+			<div class="sidebar-menu nav-collapse">
+				<div class="divide-20"></div>
+				<!-- SEARCH BAR -->
+				<div id="search-bar">
+					<input class="search" type="text" placeholder="Search"><i class="fa fa-search search-icon"></i>
 				</div>
-				<!-- /SIDEBAR -->
+				<!-- /SEARCH BAR -->
+				
+				<!-- SIDEBAR QUICK-LAUNCH -->
+				<!-- <div id="quicklaunch">
+				<!-- /SIDEBAR QUICK-LAUNCH -->
+				
+				<!-- SIDEBAR MENU -->
+				<ul>		
+					<li>
+						<a class="" href="../business/index.jsp">
+							<i class="fa fa-home fa-fw"></i>									
+							<span class="menu-text">主页</span>
+						</a>
+					</li>		
+					<li>
+						<a class="" href="../business/thingList.jsp">
+							<i class="fa fa-desktop fa-fw"></i>									
+							<span class="menu-text">设备列表</span>
+						</a>
+					</li>			
+					<li>
+							<a class="" href="../business/thingMap.jsp">
+							<i class="fa fa-map-marker fa-fw"></i> 
+							<span class="menu-text">设备地图</span>
+						</a>
+					</li>
+					<li>
+						<a class="" href="../business/thingDevelopment.jsp">
+							<!--<i class="fa fa-envelope-o fa-fw"></i>
+							<img class="fa fa-desktop fa-fw" src="../img/icon/gater.png" height="15" width="15"/>
+							<i></i>-->
+							<i class="fa fa-th-large fa-fw"></i>
+							<span class="menu-text">设备开发</span>
+						</a>
+					</li>
+					<li class="has-sub">
+						<a href="javascript:;" class="">
+						<i class="fa fa-table fa-fw"></i> <span class="menu-text">报表</span>
+						<span class="arrow"></span>
+						</a>
+						<ul class="sub">
+							<li><a class="" href="../business/senserTable.jsp"><span class="sub-menu-text">传感器数据</span></a></li>
+						</ul>
+					</li>
+					<li class="active">
+						<a class="" >
+							<i class="fa fa-user fa-fw"></i> 
+							<span class="menu-text">用户设置</span>
+							<span class="selected"></span>
+						</a>
+					</li>
+				</ul>
+				<!-- /SIDEBAR MENU -->
+			</div>
+		</div>
+		<!-- /SIDEBAR -->
 		<div id="main-content">
 			<div class="container">
 				<div class="row">
@@ -244,93 +238,123 @@
 											<a href="../business/index.jsp">主页</a>
 										</li>		
 										<li>
-											<a href="#">用户资料</a>
+											<a >用户设置</a>
 										</li>										
 									</ul>
 									<!-- /BREADCRUMBS -->
 									<div class="clearfix">
-										<h3 class="content-title pull-left">用户资料</h3>
+										<h3 class="content-title pull-left">用户设置</h3>
 									</div>
-									<div class="description">宁的资料</div>
+									<div class="description">查看及修改您的资料</div>
 								</div>
 							</div>
 						</div>
 						<!-- /PAGE HEADER -->
-						<div id="location"></div>
-						<div id="map" class="map" tabindex="0"></div>
-						<script type="text/javascript">
-							var overviewMapControl = new ol.control.OverviewMap({
-								// see in overviewmap-custom.html to see the custom CSS used
-								className: 'ol-overviewmap ol-custom-overviewmap',
-								layers: [],
-							});
-							// var projection = new ol.proj.Projection(
-							// {
-							// 	code : 'EPSG:54012',
-							// 	units : 'm',
-							// 	axisOrientation : 'neu'
-							// });
-
-							var tiled = new ol.layer.Tile(
-							{
-								source: new ol.source.OSM()
-							});
-
-							var map = new ol.Map({
-								layers: [tiled],
-								target: 'map',
-								controls : ol.control.defaults(
-								{
-									attribution : false
-								}),
-								view: new ol.View({
-									// projection : projection,
-									zoom: 4,
-									center : [-28500000, 4000000]
-								})
-							});
-							console.info("mousePositionControl");
-
-							var popups = Popups.new(map);			
-							for(var i = 0;i<11;i++)
-							{
-								console.info("111 popups.add(i,0,0)");
-								popups.add(i,0,0);
-								console.info("222 popups.add(i,0,0)");
-							}
-		
-							
-
-							console.info("postcompose");
-							map.on('postcompose', function(event)
-							{
-								// console.info("map.on");
-								var vectorContext = event.vectorContext;
-								var frameState = event.frameState;
-			
-								map.render();
-							});
-							map.render();
-							function hello(){ 
-								// alert("hello"); 
-								console.info("hello");
-								popups.popupArray[0].setPosition(-30500000+30000*1.28,4000000+500000*1.54);
-								document.getElementById('popup-content-0').innerHTML="ID：60001";								
-								popups.popupArray[1].setPosition(-28500000+500000*2.48,4000000+500000*1.74);
-								document.getElementById('popup-content-1').innerHTML="ID：50001";
-								popups.popupArray[2].setPosition(-28500000+500000*0.25,1800000+500000*3.54);
-								document.getElementById('popup-content-2').innerHTML="ID：40001";
-								popups.popupArray[3].setPosition(-28500000+500000*1.28,2100000+500000*1.54);
-								document.getElementById('popup-content-3').innerHTML="ID：30001";
-								popups.popupArray[4].setPosition(-28500000+200000*0.78,4000000+500000*0.64);
-								document.getElementById('popup-content-4').innerHTML="ID：20001";	
-								window.clearTimeout(t2);//去掉定时器 
-							} 
-							var t2 = window.setInterval("hello()", 1000);
-						</script>
-
-
-
+						<!-- 用户资料 -->
+						<div class="row">
+							<div class="col-md-2">
+								<div class="list-group">
+								  <li class="list-group-item zero-padding">
+									<img alt="" class="img-responsive" src="../img/profile/default.jpg" height="180" width="270">
+								  </li>
+								  <div class="list-group-item profile-details">
+										<h2>小明</h2>						
+								 </div>
+								  <a href="../business/accountSettings.jsp" class="list-group-item">
+								  <i class="fa fa-user fa-fw"></i> 用户资料</a>
+								  <a class="list-group-item"><i class="fa fa-cog fa-fw"></i> 设置</a>
+								</div>														
+							</div>
+							<div class="col-md-10">
+								<div class="col-md-8">
+									<div class="box border">
+										<div class="box-title">
+											<h4><!-- <i class="fa fa-gear"></i> --><span class="hidden-inline-mobile">公众信息</span></h4>
+										</div>
+										<div class="box-body">
+											<div class="form-group">
+												<label>头像</label>
+												<br>
+												<!-- <div class="row"> -->
+												<!-- <i class="fa fa-user"></i> -->
+													<img src="../img/profile/default.jpg" height="70" width="70">
+													<div href="javascript:;" data-title="Compose" class="btn btn-light-grey"> 更换头像</div>
+												<!-- </div> -->
+											</div>
+											<div class="form-group">
+												<label for="newPassword">姓名</label>
+												<!-- <i class="fa fa-user"></i> -->
+												<input type="password" style="width: 60%;" class="form-control" id="newPassword" name="newPassword">
+											</div>
+											<div class="form-group">
+												<label for="confirmNewPassword">邮箱</label>
+												<!-- <i class="fa fa-user"></i> -->
+												<input type="mail" style="width: 60%;" class="form-control" id="confirmNewPassword" name="confirmNewPassword">
+											</div>
+											<div class="form-group">
+												<label for="confirmNewPassword">地理位置</label>
+												<!-- <i class="fa fa-user"></i> -->
+												<input type="mail" style="width: 60%;" class="form-control" id="confirmNewPassword" name="confirmNewPassword">
+											</div>
+											<ul class="list-unstyled">
+												<li class="composeBtn">
+													 <a href="javascript:;" data-title="Compose" class="btn btn-success">更新您的信息</a>
+												 </li>
+											</ul>
+										</div>
+									</div>
+								</div>							
+								<div class="col-md-8">
+									<div class="box border">
+										<div class="box-title">
+											<h4><!-- <i class="fa fa-gear"></i> --><span class="hidden-inline-mobile">修改密码</span></h4>
+										</div>
+										<div class="box-body">
+											<div class="form-group">
+												<label for="oldPassword">旧密码</label>
+	<!-- 											<i class="fa fa-user"></i> -->
+												<input type="password"  style="width: 60%;" class="form-control" id="oldPassword" name="oldPassword">
+											</div>
+											<div class="form-group">
+												<label for="newPassword">新密码</label>
+												<!-- <i class="fa fa-user"></i> -->
+												<input type="password" style="width: 60%;" class="form-control" id="newPassword" name="newPassword">
+											</div>
+											<div class="form-group">
+												<label for="confirmNewPassword">确认新密码</label>
+												<!-- <i class="fa fa-user"></i> -->
+												<input type="password" style="width: 60%;" class="form-control" id="confirmNewPassword" name="confirmNewPassword">
+											</div>
+											<ul class="list-unstyled">
+												<li class="composeBtn">
+													 <a href="javascript:;" data-title="Compose" class="btn btn-success"> 修改密码</a>
+												 </li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-8">
+									<div class="box border">
+										<div class="box-title">
+											<h4><!-- <i class="fa fa-gear"></i> --><span class="hidden-inline-mobile">修改用户名</span></h4>
+										</div>
+										<div class="box-body">
+											<div class="form-group">
+												<label for="newPassword">新用户名</label>
+												<!-- <i class="fa fa-user"></i> -->
+												<input type="password" style="width: 60%;" class="form-control" id="newPassword" name="newPassword">
+											</div>		
+											<ul class="list-unstyled">
+												<li class="composeBtn">
+													 <a href="javascript:;" data-title="Compose" class="btn btn-success"> 确定修改</a>
+												 </li>
+											</ul>																	
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- 用户资料 -->
+						</div>
 						<div class="footer-tools">
 							<span class="go-top">
 								<i class="fa fa-chevron-up"></i> Top

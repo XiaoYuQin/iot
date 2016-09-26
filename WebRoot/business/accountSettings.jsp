@@ -156,70 +156,70 @@
 	
 	<!-- PAGE -->
 	<section id="page">
-				<!-- SIDEBAR -->
-				<div id="sidebar" class="sidebar">
-					<div class="sidebar-menu nav-collapse">
-						<div class="divide-20"></div>
-						<!-- SEARCH BAR -->
-						<div id="search-bar">
-							<input class="search" type="text" placeholder="Search"><i class="fa fa-search search-icon"></i>
-						</div>
-						<!-- /SEARCH BAR -->
-						
-						<!-- SIDEBAR QUICK-LAUNCH -->
-						<!-- <div id="quicklaunch">
-						<!-- /SIDEBAR QUICK-LAUNCH -->
-						
-						<!-- SIDEBAR MENU -->
-						<ul>		
-							<li>
-								<a class="" href="../business/index.jsp">
-									<i class="fa fa-home fa-fw"></i>									
-									<span class="menu-text">主页</span>
-								</a>
-							</li>		
-							<li>
-								<a class="" href="../business/thingList.jsp">
-									<i class="fa fa-desktop fa-fw"></i>									
-									<span class="menu-text">设备列表</span>
-								</a>
-							</li>			
-							<li>
-								<a class="" >
-									<i class="fa fa-map-marker fa-fw"></i> 
-									<span class="menu-text">设备地图</span>
-								</a>
-							</li>
-							<li>
-								<a class="" href="../business/thingDevelopment.jsp">
-									<!--<i class="fa fa-envelope-o fa-fw"></i>
-									<img class="fa fa-desktop fa-fw" src="../img/icon/gater.png" height="15" width="15"/>
-									<i></i>-->
-									<i class="fa fa-th-large fa-fw"></i>
-									<span class="menu-text">设备开发</span>
-								</a>
-							</li>
-							<li class="has-sub">
-								<a href="javascript:;" class="">
-								<i class="fa fa-table fa-fw"></i> <span class="menu-text">报表</span>
-								<span class="arrow"></span>
-								</a>
-								<ul class="sub">
-									<li><a class="" href="../business/senserTable.jsp"><span class="sub-menu-text">传感器数据</span></a></li>
-								</ul>
-							</li>
-							<li class="active">
-								<a class="" >
-									<i class="fa fa-user fa-fw"></i> 
-									<span class="menu-text">账户设置</span>
-									<span class="selected"></span>
-								</a>
-							</li>
-						</ul>
-						<!-- /SIDEBAR MENU -->
-					</div>
+		<!-- SIDEBAR -->
+		<div id="sidebar" class="sidebar">
+			<div class="sidebar-menu nav-collapse">
+				<div class="divide-20"></div>
+				<!-- SEARCH BAR -->
+				<div id="search-bar">
+					<input class="search" type="text" placeholder="Search"><i class="fa fa-search search-icon"></i>
 				</div>
-				<!-- /SIDEBAR -->
+				<!-- /SEARCH BAR -->
+				
+				<!-- SIDEBAR QUICK-LAUNCH -->
+				<!-- <div id="quicklaunch">
+				<!-- /SIDEBAR QUICK-LAUNCH -->
+				
+				<!-- SIDEBAR MENU -->
+				<ul>		
+					<li>
+						<a class="" href="../business/index.jsp">
+							<i class="fa fa-home fa-fw"></i>									
+							<span class="menu-text">主页</span>
+						</a>
+					</li>		
+					<li>
+						<a class="" href="../business/thingList.jsp">
+							<i class="fa fa-desktop fa-fw"></i>									
+							<span class="menu-text">设备列表</span>
+						</a>
+					</li>			
+					<li>
+						<a class="" href="../business/thingMap.jsp">							
+							<i class="fa fa-map-marker fa-fw"></i> 
+							<span class="menu-text">设备地图</span>
+						</a>
+					</li>
+					<li>
+						<a class="" href="../business/thingDevelopment.jsp">
+							<!--<i class="fa fa-envelope-o fa-fw"></i>
+							<img class="fa fa-desktop fa-fw" src="../img/icon/gater.png" height="15" width="15"/>
+							<i></i>-->
+							<i class="fa fa-th-large fa-fw"></i>
+							<span class="menu-text">设备开发</span>
+						</a>
+					</li>
+					<li class="has-sub">
+						<a href="javascript:;" class="">
+						<i class="fa fa-table fa-fw"></i> <span class="menu-text">报表</span>
+						<span class="arrow"></span>
+						</a>
+						<ul class="sub">
+							<li><a class="" href="../business/senserTable.jsp"><span class="sub-menu-text">传感器数据</span></a></li>
+						</ul>
+					</li>
+					<li class="active">
+						<a class="" >
+							<i class="fa fa-user fa-fw"></i> 
+							<span class="menu-text">用户设置</span>
+							<span class="selected"></span>
+						</a>
+					</li>
+				</ul>
+				<!-- /SIDEBAR MENU -->
+			</div>
+		</div>
+		<!-- /SIDEBAR -->
 		<div id="main-content">
 			<div class="container">
 				<div class="row">
@@ -238,21 +238,57 @@
 											<a href="../business/index.jsp">主页</a>
 										</li>		
 										<li>
-											<a href="#">用户资料</a>
+											<a>用户设置</a>
 										</li>										
 									</ul>
 									<!-- /BREADCRUMBS -->
 									<div class="clearfix">
-										<h3 class="content-title pull-left">用户资料</h3>
+										<h3 class="content-title pull-left">用户设置</h3>
 									</div>
-									<div class="description">修改您的资料</div>
+									<div class="description">查看及修改您的资料</div>
 								</div>
 							</div>
 						</div>
 						<!-- /PAGE HEADER -->
-						
-
-
+						<!-- 用户资料 -->
+						<div class="row">
+							<div class="col-md-2">
+								<div class="list-group">
+								  <li class="list-group-item zero-padding">
+									<img alt="" class="img-responsive" src="../img/profile/default.jpg" height="180" width="270">
+								  </li>
+								  <div class="list-group-item profile-details">
+										<h2>小明</h2>						
+								 </div>
+								  <a class="list-group-item"><i class="fa fa-user fa-fw"></i> 用户资料</a>
+								  <a href="../business/admin.jsp" class="list-group-item"><i class="fa fa-cog fa-fw"></i> 设置</a>
+								</div>														
+							</div>
+							<div class="col-md-8">
+								<div class="box border">
+									<div class="box-title">
+										<h4><i class="fa fa-gear"></i><span class="hidden-inline-mobile">简介</span></h4>
+									</div>
+									<div class="box-body">
+										<!-- <div class="list-group"> -->
+											<!-- <div class="list-group-item profile-details"> -->
+												<i class="fa fa-suitcase"></i> <font size="3">职务： </font><font size="2">技术职员</font>	
+												<div class="divide-20"></div>
+												<i class="fa fa-users"></i> <font size="3">部门： </font><font size="2">北京海淀售后部</font>	
+												<div class="divide-20"></div>
+												<i class="fa fa-phone"></i> <font size="3">电话： </font><font size="2">12345678901</font>	
+												<div class="divide-20"></div>
+												<i class="fa fa-envelope"></i> <font size="3">邮箱： </font><font size="2">xiaoming@qq.com</font>	
+												<div class="divide-20"></div>
+												<i class="fa fa-map-marker"></i> <font size="3">地点： </font><font size="2">北京海淀</font>	
+												<div class="divide-20"></div>				
+											<!-- </div> -->
+										<!-- </div>		 -->
+									</div>
+								</div>												
+							</div>
+							<!-- 用户资料 -->
+						</div>
 						<div class="footer-tools">
 							<span class="go-top">
 								<i class="fa fa-chevron-up"></i> Top

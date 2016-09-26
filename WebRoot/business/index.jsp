@@ -253,7 +253,7 @@
 													</div>
 													</div>
 													<div class="panel-right">
-													<div class="number">5</div>
+													<div class="number">3</div>
 													<div class="title">故障终端数量</div>
 													<!-- 
 													<span class="label label-warning">
@@ -264,9 +264,61 @@
 											</div>
 										</div>
 									</div>
+																
 								</div>
 							</div>								
 						</div>
+
+						<div class="row">
+							<!-- COLUMN 1 -->
+							<div class="col-md-6">
+								<div class="row">
+									<div class="col-lg-6">
+										<div class="dashbox panel panel-default">
+											<div class="panel-body">
+												<div class="panel-left blue">
+													<!-- <i class="fa fa-twitter fa-3x"></i> -->
+													<div align="center">
+													<img src="../img/icon/user.png" alt="user online" class="img-responsive" height="35" width="35"/>
+													</div>
+													</div>
+													<div class="panel-right">
+													<div class="number">5</div>
+													<div class="title">在线人数</div>
+													<!-- 
+													<span class="label label-warning">
+													5% <i class="fa fa-arrow-down"></i>
+													</span>
+													-->
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<div class="dashbox panel panel-default">
+											<div class="panel-body">
+												<div class="panel-left blue">
+													<!-- <i class="fa fa-twitter fa-3x"></i> -->
+													<div align="center">
+													<img src="../img/icon/clock.jpg" alt="Cloud Admin Logo" class="img-responsive" height="40" width="40"/>
+													</div>
+													</div>
+													<div class="panel-right">
+													<div class="number">105天6小时</div>
+													<div class="title">运行时长</div>
+													<!-- 
+													<span class="label label-warning">
+													5% <i class="fa fa-arrow-down"></i>
+													</span>
+													-->
+												</div>
+											</div>
+										</div>
+									</div>															
+								</div>
+							</div>								
+						</div>
+
 						<!-- class="row" 终端数量和登录人数 -->
 						<!-- 服务器负载-->
 						<div class="row">
@@ -274,7 +326,7 @@
 								<div class="quick-pie panel panel-default">
 									<div class="panel-body">
 										<!-- <div class="row"> -->
-											<div class="col-md-3 text-center">
+											<div class="col-md-6 text-center">
 												<div id="pie_1" class="piechart padding-bottom-20" data-percent="51">
 													<span class="percent"></span>
 												</div>
@@ -282,7 +334,7 @@
 												<!-- <div id="js_update_1" class="btn btn-default">Update chart</div> -->
 												<!-- <div class="divide-12"></div> -->
 											</div>
-											<div class="col-md-3 text-center">
+											<div class="col-md-6 text-center">
 												<div id="pie_2" class="piechart padding-bottom-20" data-percent="32">
 													<span class="percent"></span>
 												</div>
@@ -290,7 +342,7 @@
 												<!-- <div id="js_update_2" class="btn btn-default">Update chart</div> -->
 												<!-- <div class="divide-12"></div> -->
 											</div>
-											<div class="col-md-3 text-center">
+											<div class="col-md-6 text-center">
 												<div id="pie_3" class="piechart padding-bottom-20" data-percent="15">
 													<span class="percent"></span>
 												</div>
@@ -298,7 +350,7 @@
 												<!-- <div id="js_update_3" class="btn btn-default">Update chart</div> -->
 												<!-- <div class="divide-12"></div> -->
 											</div>
-											<div class="col-md-3 text-center">
+											<div class="col-md-6 text-center">
 												<div id="pie_4" class="piechart padding-bottom-20" data-percent="17">
 													<span class="percent"></span>
 												</div>
@@ -311,27 +363,12 @@
 								</div>
 							</div>
 						</div>
+
 						<script type="text/javascript">
 							function refreshServerHardwareParam()
 							{
 								console.info("refreshServerHardwareParam");
-								document.getElementById('pie_4');	
-								<%
-									IMonitorService service = new MonitorServiceImpl();
-									MonitorInfoBean monitorInfo = service.getMonitorInfoBean();
-									System.out.println("cpu占有率=" + monitorInfo.getCpuRatio());
-									
-									System.out.println("可使用内存=" + monitorInfo.getTotalMemory());
-									System.out.println("剩余内存=" + monitorInfo.getFreeMemory());
-									System.out.println("最大可使用内存=" + monitorInfo.getMaxMemory());
-									
-									System.out.println("操作系统=" + monitorInfo.getOsName());
-									System.out.println("总的物理内存=" + monitorInfo.getTotalMemorySize() + "kb");
-									System.out.println("剩余的物理内存=" + monitorInfo.getFreeMemory() + "kb");
-									System.out.println("已使用的物理内存=" + monitorInfo.getUsedMemory() + "kb");
-									System.out.println("线程总数=" + monitorInfo.getTotalThread() + "kb");
-								%>
-
+								document.getElementById('pie_4');									
 								$('#pie_1').data('easyPieChart').update(Math.random()*11+50);
 								$('#pie_2').data('easyPieChart').update(Math.random()*9+42);
 								$('#pie_3').data('easyPieChart').update(Math.random()*6+8);
