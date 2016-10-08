@@ -17,7 +17,7 @@
 	
 	<link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet">
 	<!-- FUELUX TREE -->
-	<link rel="stylesheet" type="text/css" href="../js/fuelux-tree/fuelux.min.css" />
+	<link rel="stylesheet" type="text/css" href="../js/fuelux-tree/fuelux.min.css" >
 	<!-- DATE RANGE PICKER -->
 	<link rel="stylesheet" type="text/css" href="../js/bootstrap-daterangepicker/daterangepicker-bs3.css" >
 	<!-- FONTS -->
@@ -219,8 +219,9 @@
 						</div>
 						<!-- 页面主要内容 -->
 						<!-- class="row" 终端数量和登录人数 -->
+						<!-- <div class="row"> -->
 						<div class="row">
-							<div class="col-md-10">
+							<div class="col-md-8">
 								<!-- BOX -->
 								<div class="box border blue">
 									<div class="box-title">
@@ -237,13 +238,38 @@
 								</div>
 								<!-- /BOX -->
 							</div>					
-						</div>
-						<div class="row">
-							<div class="col-md-10">
+						<!-- </div> -->
+						<!-- <div class="row"> -->
+							<div class="col-md-4">
+								<!-- BOX -->
+								<div class="box border pink">
+									<div class="box-title">
+										<h4><i class="fa fa-bars"></i>服务器信息</h4>
+									</div>
+									<div class="box-body big">
+										<h4>硬件信息</h4>
+											<dl>
+												<dd>CPU数量:2</dd>		
+												<dd>CPU品牌:Inter(R) Core(TM)i5-5200 CPU @ 2.20GHz</dd>											
+												<dd>内存大小:8099</dd>																							
+											</dl>
+										<h4>软件信息</h4>
+										<dl">
+											<dd>操作系统及版本号：2.6.32-431.11.7.el6.ucloud.x86_64</dd>	
+											<dd>操作系统内核版本号：x86_64</dd>											
+										</dl>
+									</div>
+								</div>
+								<!-- /BOX -->
+							</div>			
+						<!-- </div> -->
+
+						<!-- <div class="row"> -->
+							<div class="col-md-8">
 								<!-- BOX -->
 								<div class="box border blue">
 									<div class="box-title">
-										<h4><i class="fa fa-signal"></i>平均负载</h4>
+										<h4><i class="fa fa-signal"></i>内存使用量</h4>
 										<div class="tools">
 											<a href="javascript:;" class="reload">
 												<i class="fa fa-refresh"></i>
@@ -256,13 +282,13 @@
 								</div>
 								<!-- /BOX -->
 							</div>					
-						</div>					
-						<div class="row">
-							<div class="col-md-10">
+						<!-- </div>					 -->
+						<!-- <div class="row"> -->
+							<div class="col-md-8">
 								<!-- BOX -->
 								<div class="box border blue">
 									<div class="box-title">
-										<h4><i class="fa fa-signal"></i>平均负载</h4>
+										<h4><i class="fa fa-signal"></i>磁盘空间使用率</h4>
 										<div class="tools">
 											<a href="javascript:;" class="reload">
 												<i class="fa fa-refresh"></i>
@@ -275,16 +301,19 @@
 								</div>
 								<!-- /BOX -->
 							</div>					
-						</div>					
-			
-						<!-- 服务器负载-->
-						<div class="footer-tools">
-							<span class="go-top">
-								<i class="fa fa-chevron-up"></i> Top
-							</span>
+						<!-- </div>					 -->
+
+							<!-- 服务器负载-->
+
 						</div>
+							<div class="footer-tools">
+								<span class="go-top"><i class="fa fa-chevron-up"></i> Top</span>
+							</div>
 					</div><!-- /CONTENT-->
+
 				</div>
+
+
 			</div>
 		</div>
 	</section>
@@ -331,8 +360,8 @@
 	<script src="../js/charts.js?ver=1"></script>
 	<script>
 		jQuery(document).ready(function() {		
-			App.setPage("treeview");  //Set current page
-			App.init(); //Initialise plugins and elements
+			// App.setPage("treeview");  //Set current page
+			// App.init(); //Initialise plugins and elements
 
 			App.setPage("flot_charts");  //Set current page
 			App.init(); //Initialise plugins and elements

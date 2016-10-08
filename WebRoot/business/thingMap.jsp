@@ -32,7 +32,7 @@
 	<link type="text/css" rel="stylesheet" href="../js/openlayer3/circleArrow.css" />
 	<script type="text/javascript" src="../js/openlayer3/Popups.js?ver=1"></script>
 	<script type="text/javascript" src="../js/openlayer3/Popup.js?ver=1"></script>
-
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=SP7yzbUEjZyftws3bxA2eBuhlT03b0cn"></script>
 	<!-- <link rel="stylesheet" href="../js/openlayer3/ol.css"> -->
 
 	<style>
@@ -257,7 +257,22 @@
 						</div>
 						<!-- /PAGE HEADER -->
 						<div id="location"></div>
-						<div id="map" class="map" tabindex="0"></div>
+
+						<div class="box border blue">
+							<div class="box-title">
+								<h4><i class="fa fa-signal"></i>位置</h4>
+								<div class="tools">
+									<a href="javascript:;" class="reload">
+										<i class="fa fa-refresh"></i>
+									</a>
+								</div>
+							</div>
+							<div class="box-body">
+								<div id="map" class="map" tabindex="0"></div>
+							</div>
+						</div>
+
+
 						<script type="text/javascript">
 							var overviewMapControl = new ol.control.OverviewMap({
 								// see in overviewmap-custom.html to see the custom CSS used
@@ -315,7 +330,7 @@
 								// alert("hello"); 
 								console.info("hello");
 								popups.popupArray[0].setPosition(-30500000+30000*1.28,4000000+500000*1.54);
-								document.getElementById('popup-content-0').innerHTML="ID：60001";								
+								document.getElementById('popup-content-0').innerHTML="ID：60001"+"<br>"+"压力传感器";															
 								popups.popupArray[1].setPosition(-28500000+500000*2.48,4000000+500000*1.74);
 								document.getElementById('popup-content-1').innerHTML="ID：50001";
 								popups.popupArray[2].setPosition(-28500000+500000*0.25,1800000+500000*3.54);

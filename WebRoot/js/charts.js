@@ -298,11 +298,11 @@ var Charts = function () {
                 console.info("var plot = $.plot($(#chartcpu),");
                 var plot = $.plot($("#chartcpu"), [{
                             data: cpuTemp,
-                            label: "cpu温度"
+                            label: "cpu使用率：%"
                         }
                         , {
                             data: cpuio,
-                            label: "I/O"
+                            label: "I/O：%"
                         }
                     ], {
                         series: {
@@ -416,7 +416,7 @@ var Charts = function () {
                 console.info("var plot = $.plot($(#chartloadavragex),");
                 var plot = $.plot($("#chartloadavragex"), [{
                             data: cpuTemp,
-                            label: "平均值"
+                            label: "内存：M"
                         }
                     ], {
                         series: {

@@ -378,12 +378,10 @@
 			App.setPage("treeview");  //Set current page
 			App.init(); //Initialise plugins and elements
 
-			App.setPage("flot_charts");  //Set current page
-			App.init(); //Initialise plugins and elements
+			// App.setPage("flot_charts");  //Set current page
+			// App.init(); //Initialise plugins and elements
 			Charts.initCharts();
 			Charts.initPieCharts();
-
-
 		});
 	</script>
 	<!-- /JAVASCRIPTS -->

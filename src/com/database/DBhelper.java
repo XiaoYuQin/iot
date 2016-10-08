@@ -9,7 +9,7 @@ public class DBhelper {
     public static final String url = "jdbc:mysql://127.0.0.1:3306/ape?useUnicode=true&characterEncoding=utf-8&useSSL=false";  
     public static final String name = "com.mysql.jdbc.Driver";  
     public static final String user = "root";  
-    public static final String password = "";  
+    public static final String password = "123456";  
   
     public Connection conn = null;  
     public PreparedStatement pst = null;  
