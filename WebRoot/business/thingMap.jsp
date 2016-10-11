@@ -9,6 +9,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
 	<meta name="description" content="">
 	<meta name="author" content="">
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 	<!-- STYLESHEETS --><!--[if lt IE 9]><script src="js/flot/excanvas.min.js"></script><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script><![endif]-->
 	<link rel="stylesheet" type="text/css" href="../css/cloud-admin.css" >
 	<link rel="stylesheet" type="text/css"  href="../css/themes/default.css" id="skin-switcher" >
@@ -32,9 +33,7 @@
 	<link type="text/css" rel="stylesheet" href="../js/openlayer3/circleArrow.css" />
 	<script type="text/javascript" src="../js/openlayer3/Popups.js?ver=1"></script>
 	<script type="text/javascript" src="../js/openlayer3/Popup.js?ver=1"></script>
-	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=SP7yzbUEjZyftws3bxA2eBuhlT03b0cn"></script>
-	<!-- <link rel="stylesheet" href="../js/openlayer3/ol.css"> -->
-
+	
 	<style>
       a.skiplink {
         position: absolute;
@@ -57,9 +56,11 @@
       }
     </style>
 
+
 </head>
 <body>
-	<!-- HEADER -->
+	<!-- HEADER -->	
+
 	<header class="navbar clearfix" id="header">
 		<div class="container">
 				
@@ -267,11 +268,10 @@
 									</a>
 								</div>
 							</div>
-							<div class="box-body">
+							<div class="box-body" >
 								<div id="map" class="map" tabindex="0"></div>
-							</div>
+							</div>							
 						</div>
-
 
 						<script type="text/javascript">
 							var overviewMapControl = new ol.control.OverviewMap({
@@ -330,22 +330,39 @@
 								// alert("hello"); 
 								console.info("hello");
 								popups.popupArray[0].setPosition(-30500000+30000*1.28,4000000+500000*1.54);
-								document.getElementById('popup-content-0').innerHTML="ID：60001"+"<br>"+"压力传感器";															
+								
 								popups.popupArray[1].setPosition(-28500000+500000*2.48,4000000+500000*1.74);
-								document.getElementById('popup-content-1').innerHTML="ID：50001";
+								
 								popups.popupArray[2].setPosition(-28500000+500000*0.25,1800000+500000*3.54);
-								document.getElementById('popup-content-2').innerHTML="ID：40001";
+								
 								popups.popupArray[3].setPosition(-28500000+500000*1.28,2100000+500000*1.54);
-								document.getElementById('popup-content-3').innerHTML="ID：30001";
+								
 								popups.popupArray[4].setPosition(-28500000+200000*0.78,4000000+500000*0.64);
-								document.getElementById('popup-content-4').innerHTML="ID：20001";	
+								
+								document.getElementById('popup-content-0').innerHTML='<p>ID：60001</p>'+'<code>压力:'+Math.random().toFixed(2)+'MPa</code>';														
+								document.getElementById('popup-content-1').innerHTML='<p>ID：50002</p>'+'<code>水位:'+Math.random().toFixed(2)+'米</code>';
+								document.getElementById('popup-content-2').innerHTML='<p>ID：40001</p>'+'<code>温度:'+(Math.random().toFixed(2)*1+25)+'摄氏度</code>';
+								document.getElementById('popup-content-3').innerHTML='<p>ID：30003</p>'+'<code>电压:'+(Math.random().toFixed(2)*10+220)+'伏特</code>';
+								// document.getElementById('popup-content-4').innerHTML='<p>ID：20001</p>'+'<p>甲醛:'+Math.random().toFixed(2)+'PPm</p>';
+								document.getElementById('popup-content-4').innerHTML='<p>ID：20001</p>'+'<code>甲醛:'+Math.random().toFixed(2)+'PPm</code>';
 								window.clearTimeout(t2);//去掉定时器 
 							} 
 							var t2 = window.setInterval("hello()", 1000);
+							function hello1(){ 
+								// alert("hello"); 
+								console.info("hello");
+								document.getElementById('popup-content-0').innerHTML='<p>ID：60001</p>'+'<code>压力:'+Math.random().toFixed(2)+'MPa</code>';														
+								document.getElementById('popup-content-1').innerHTML='<p>ID：50002</p>'+'<code>水位:'+Math.random().toFixed(2)+'米</code>';
+								document.getElementById('popup-content-2').innerHTML='<p>ID：40001</p>'+'<code>温度:'+(Math.random().toFixed(2)*1+25)+'摄氏度</code>';
+								document.getElementById('popup-content-3').innerHTML='<p>ID：30003</p>'+'<code>电压:'+(Math.random().toFixed(2)*10+220)+'伏特</code>';
+								// document.getElementById('popup-content-4').innerHTML='<p>ID：20001</p>'+'<p>甲醛:'+Math.random().toFixed(2)+'PPm</p>';
+								document.getElementById('popup-content-4').innerHTML='<p>ID：20001</p>'+'<code>甲醛:'+Math.random().toFixed(2)+'PPm</code>';
+							} 
+							var t3 = window.setInterval("hello1()", 8000);							
 						</script>
-
-
-
+			
+											
+						
 						<div class="footer-tools">
 							<span class="go-top">
 								<i class="fa fa-chevron-up"></i> Top

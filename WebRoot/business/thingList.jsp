@@ -257,379 +257,113 @@
 										<table id="datatable1" cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered table-hover">
 											<thead>
 												<tr>
-													<th>设备名称</th>
-													<th>设备类型</th>
-													<th class="hidden-xs">设备ID</th>
+													<th>车型</th>
+													<th>使用单位</th>
+													<th>牌照号</th>
+													<th class="hidden-xs">VIN</th>
 													<th>设备状态</th>
 													<!-- <th class="hidden-xs">CSS grade</th> -->
 												</tr>
 											</thead>
 											<tbody>
-												<tr class="gradeX">
-													<td>烟雾传感器</td>
-													<td>
-														模拟量
-														</td>
-													<td class="hidden-xs">10001</td>
-													<td class="center"><font color="green">正常</font></td>
-						
-												</tr>
-												<tr class="gradeC">
-													<td>烟雾传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">10002</td>
+												<tr  class="gradeX" href="#table-modal" style="cursor:pointer;">
+													<td>少林纯电动客车</td>
+													<td>林州市天安公共交通有限责任公司</td>
+													<td class="hidden-xs">豫EGJ983</td>
+													<td class="hidden-xs">LS8GDEB44F1003261</td>
 													<td class="center"><font color="green">正常</font></td>
 												</tr>
-												<tr class="gradeA">
-													<td>甲醛传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">20003</td>
+												<tr  class="gradeX" href="#table-modal" style="cursor:pointer;">
+													<td>少林纯电动客车</td>
+													<td>林州市天安公共交通有限责任公司</td>
+													<td class="hidden-xs">豫EGJ971</td>
+													<td class="hidden-xs">LS8GDEB49F1003238</td>
 													<td class="center"><font color="green">正常</font></td>
 												</tr>
-												<tr class="gradeA">
-													<td>烟雾传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">10003</td>
+												<tr  class="gradeX" onclick="b1();" style="cursor:pointer;">
+													<td>少林纯电动客车</td>
+													<td>林州市天安公共交通有限责任公司</td>
+													<td class="hidden-xs">豫EGJ976</td>
+													<td class="hidden-xs">LS8GDEB41F1003251</td>
 													<td class="center"><font color="green">正常</font></td>
 												</tr>
-												<tr class="gradeA">
-													<td>甲醛传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">20004</td>
+												<tr  class="gradeX" onclick="b1();" style="cursor:pointer;">
+													<td>少林纯电动客车</td>
+													<td>林州市天安公共交通有限责任公司</td>
+													<td class="hidden-xs">豫EGJ978</td>
+													<td class="hidden-xs">LS8GDEB47F1003223</td>
 													<td class="center"><font color="green">正常</font></td>
 												</tr>
-												<tr class="gradeA">
-													<td>烟雾传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">10004</td>
+												<tr  class="gradeX" onclick="b1();" style="cursor:pointer;">
+													<td>少林纯电动客车</td>
+													<td>林州市天安公共交通有限责任公司</td>
+													<td class="hidden-xs">豫EGJ957</td>
+													<td class="hidden-xs">LS8GDEB47F1003237</td>
 													<td class="center"><font color="green">正常</font></td>
 												</tr>
-												<tr class="gradeA">
-													<td>电压传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">30001</td>
+												<tr  class="gradeX" value="LS8GDEB47F1003240" onclick="b1(this.value);" style="cursor:pointer;">
+													<td>少林纯电动客车</td>
+													<td>林州市天安公共交通有限责任公司</td>
+													<td class="hidden-xs">豫EGJ993</td>
+													<td class="hidden-xs">LS8GDEB47F1003240</td>
 													<td class="center"><font color="green">正常</font></td>
 												</tr>
-												<tr class="gradeA">
-													<td>电压传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">30002</td>
-													<td class="center"><font color="red">异常</font></td>
-													
-												</tr>
-												<tr class="gradeA">
-													<td>甲醛传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">20005</td>
+												<tr class="gradeX" value="LS8GDEB44F1003230" onclick="b1(this.value);" style="cursor:pointer;">
+													<td>少林纯电动客车</td>
+													<td>林州市天安公共交通有限责任公司</td>
+													<td class="hidden-xs">豫EGJ980</td>
+													<td class="hidden-xs">LS8GDEB44F1003230</td>
 													<td class="center"><font color="green">正常</font></td>
 													
 												</tr>
-												<tr class="gradeA">
-													<td>烟雾传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">10005</td>
+												<tr  class="gradeX" onclick="b1();" style="cursor:pointer;">
+													<td>少林纯电动客车</td>
+													<td>林州市天安公共交通有限责任公司</td>
+													<td class="hidden-xs">豫EGJ997</td>
+													<td class="hidden-xs">LS8GDEB43F1003218</td>
+													<td class="center"><font color="green">正常</font></td>
+													
+												</tr>
+												<tr  class="gradeX" onclick="b1();" style="cursor:pointer;">
+													<td>少林纯电动客车</td>
+													<td>林州市天安公共交通有限责任公司</td>
+													<td class="hidden-xs">豫EGJ990</td>
+													<td class="hidden-xs">LS8GDEB45F1003236</td>
 													<td class="center"><font color="green">正常</font></td>
 												</tr>
-												<tr class="gradeA">
-													<td>温度传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">40007</td>
+												<tr  class="gradeX" onclick="b1();" style="cursor:pointer;">
+													<td>少林纯电动客车</td>
+													<td>林州市天安公共交通有限责任公司</td>
+													<td class="hidden-xs">豫EGJ992</td>
+													<td class="hidden-xs">LS8GDEB47F1003299</td>
 													<td class="center"><font color="green">正常</font></td>
 												</tr>
-												<tr class="gradeA">
-													<td>温度传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">40001</td>
+												<tr  class="gradeX" onclick="b1();" style="cursor:pointer;">
+													<td>少林纯电动客车</td>
+													<td>林州市天安公共交通有限责任公司</td>
+													<td class="hidden-xs">豫EGJ917</td>
+													<td class="hidden-xs">LS8GDEB45F1003298</td>
 													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeA">
-													<td>烟雾传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">10006</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeA">
-													<td>水位传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">50001</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeA">
-													<td>压力传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">60001</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeA">
-													<td>甲醛传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">20006</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeA">
-													<td>烟雾传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">10007</td>
-													<td class="center"><font color="red">异常</font></td>
-												</tr>
-												<tr class="gradeA">
-													<td>温度传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">40002</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeA">
-													<td>烟雾传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">10008</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeA">
-													<td>电流传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">70001</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeA">
-													<td>温度传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">40003</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeA">
-													<td>烟雾传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">10009</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeA">
-													<td>甲醛传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">20007</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeA">
-													<td>温度传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">40004</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeA">
-													<td>烟雾传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">10010</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeA">
-													<td>压力传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">60002</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeA">
-													<td>甲醛传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">20008</td>
-													<td class="center"><font color="red">异常</font></td>
-												</tr>
-												<tr class="gradeA">
-													<td>水位传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">50002</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeA">
-													<td>压力传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">60003</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeA">
-													<td>压力传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">60004</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeA">
-													<td>甲醛传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">20009</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeA">
-													<td>水位传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">50003</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeA">
-													<td>烟雾传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">10011</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeA">
-													<td>烟雾传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">10012</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeA">
-													<td>电流传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">70009</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeA">
-													<td>水位传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">50004</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeA">
-													<td>水位传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">50005</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeA">
-													<td>电流传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">70001</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeA">
-													<td>烟雾传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">10013</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeA">
-													<td>水位传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">50006</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeA">
-													<td>甲醛传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">20010</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeA">
-													<td>电流传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">70003</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeA">
-													<td>烟雾传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">10014</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeC">
-													<td>电流传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">70004</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeA">
-													<td>压力传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">60005</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeA">
-													<td>压力传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">60006</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeX">
-													<td>甲醛传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">20011</td>
-													<td class="center"><font color="red">异常</font></td>
-												</tr>
-												<tr class="gradeC">
-													<td>水位传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">50006</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeC">
-													<td>烟雾传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">10015</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeA">
-													<td>压力传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">60007</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeA">
-													<td>电压传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">30003</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeX">
-													<td>烟雾传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">10016</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeX">
-													<td>甲醛传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">20012</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeX">
-													<td>温度传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">40005</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeC">
-													<td>温度传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">40006</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeC">
-													<td>烟雾传感器</td>
-													<td>模拟量</td>
-													<td class="hidden-xs">10017</td>
-													<td class="center"><font color="green">正常</font></td>
-												</tr>
-												<tr class="gradeU">
-													<td>烟雾传感器</td>
-													<td class="hidden-xs">模拟量</td>
-													<td>10018</td>
-													<td class="center"><font color="red">异常</font></td>
 												</tr>
 											</tbody>
 											<tfoot>
 												<tr>
-													<th>设备名称</th>
-													<th>设备类型</th>
-													<th class="hidden-xs">设备ID</th>
+													<th>车型</th>
+													<th>使用单位</th>
+													<th>牌照号</th>
+													<th class="hidden-xs">VIN</th>
 													<th>设备状态</th>
 													<!-- <th class="hidden-xs">CSS grade</th> -->
 												</tr>
-											</tfoot>
+											</tfoot>									
 										</table>
 									</div>
 								</div>
-								<!-- /BOX -->
+								<!-- /BOX -->								
 							</div>
 						</div>
 						<!-- /DATA TABLES -->
-								
+						
 						
 						<div class="footer-tools">
 							<span class="go-top">
@@ -679,6 +413,12 @@
 			App.setPage("dynamic_table");  //Set current page
 			App.init(); //Initialise plugins and elements
 		});
+
+		function b1()
+		{
+		  
+		}
+
 	</script>
 	<!-- /JAVASCRIPTS -->
 </body>
