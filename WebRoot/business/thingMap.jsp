@@ -25,7 +25,7 @@
 	<!-- FONTS -->
 
 	
-<link rel="stylesheet" href="http://openlayers.org/en/v3.18.2/css/ol.css" type="text/css">
+	<link rel="stylesheet" href="http://openlayers.org/en/v3.18.2/css/ol.css" type="text/css">
     <!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
     <script src="http://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
     <script src="http://openlayers.org/en/v3.18.2/build/ol.js"></script>
@@ -33,6 +33,45 @@
 	<link type="text/css" rel="stylesheet" href="../js/openlayer3/circleArrow.css" />
 	<script type="text/javascript" src="../js/openlayer3/Popups.js?ver=1"></script>
 	<script type="text/javascript" src="../js/openlayer3/Popup.js?ver=1"></script>
+
+	<!-- JAVASCRIPTS -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<!-- JQUERY -->
+	<script src="../js/jquery/jquery-2.0.3.min.js"></script>
+	<script src="../js/jquery/jquery-2.2.3.min.js"></script>
+	<!-- JQUERY UI-->
+	<script src="../js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js"></script>
+	<!-- BOOTSTRAP -->
+	<script src="../bootstrap-dist/js/bootstrap.min.js"></script>
+	<!-- LESS CSS -->
+	<script src="../js/lesscss/less-1.4.1.min.js" type="text/javascript"></script>	
+	<!-- DATE RANGE PICKER -->
+	<script src="../js/bootstrap-daterangepicker/moment.min.js"></script>
+	<script src="../js/bootstrap-daterangepicker/daterangepicker.min.js"></script>
+	<!-- SLIMSCROLL -->
+	<script type="text/javascript" src="../js/jQuery-slimScroll-1.3.0/jquery.slimscroll.min.js"></script><script type="text/javascript" src="../js/jQuery-slimScroll-1.3.0/slimScrollHorizontal.min.js"></script>
+	<!-- BLOCK UI -->
+	<script type="text/javascript" src="../js/jQuery-BlockUI/jquery.blockUI.min.js"></script>
+	<!-- UNIFORM -->
+	<script type="text/javascript" src="../js/uniform/jquery.uniform.min.js"></script>
+	<!-- BOOTSTRAP WYSIWYG -->
+	<script type="text/javascript" src="../js/bootstrap-wysiwyg/jquery.hotkeys.min.js"></script>
+	<script type="text/javascript" src="../js/bootstrap-wysiwyg/bootstrap-wysiwyg.min.js"></script>
+	<!-- COOKIE -->
+	<script type="text/javascript" src="../js/jQuery-Cookie/jquery.cookie.min.js"></script>
+
+
+	<!-- CUSTOM SCRIPT -->
+	<script src="../js/script.js"></script>
+	<script src="../js/inbox.js"></script>
+	<script>
+		jQuery(document).ready(function() {		
+			App.setPage("inbox");  //Set current page
+			App.init(); //Initialise plugins and elements
+			Inbox.init();
+		});
+	</script>
+	<!-- /JAVASCRIPTS -->
 	
 	<style>
       a.skiplink {
@@ -274,6 +313,9 @@
 						</div>
 
 						<script type="text/javascript">
+							var carArry = new Array();
+
+
 							var overviewMapControl = new ol.control.OverviewMap({
 								// see in overviewmap-custom.html to see the custom CSS used
 								className: 'ol-overviewmap ol-custom-overviewmap',
@@ -298,6 +340,8 @@
 								{
 									attribution : false
 								}),
+								projection: new OpenLayers.Projection("EPSG:900913"),
+  								displayProjection: new OpenLayers.Projection("EPSG:4326"),
 								view: new ol.View({
 									// projection : projection,
 									zoom: 4,
@@ -358,6 +402,80 @@
 								// document.getElementById('popup-content-4').innerHTML='<p>ID：20001</p>'+'<p>甲醛:'+Math.random().toFixed(2)+'PPm</p>';
 								document.getElementById('popup-content-4').innerHTML='<p>ID：20001</p>'+'<code>甲醛:'+Math.random().toFixed(2)+'PPm</code>';
 							} 
+							var ajax =
+							{
+								abort : function()
+								{
+								} //定义一个空的方法, 是为了下面ajax.abort()不报错
+							};
+							function get()
+							{
+								// $('body').append('<scr'+'ipt
+								// src="http://192.168.1.33:5000/id_2_position?id=9"></sc'+'ript>');
+								ajax.abort();
+								//每次提交前, 先放弃上一次ajax的提交, 这样就不会同时有多个ajax正在请求, 卡死浏览器
+								ajax = $.ajax(
+								{
+									url : "http://localhost:8080/iot/business/getShaolinBuses.jsp"//请求的url
+									,
+									async : false,
+									dataType : "jsonp"
+									//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
+									,
+									jsonp : "callback"
+									//自定义的jsonp回调函数名称"jsonpCallback"，返回的json也必须有这个函数名称
+									,
+									jsonpCallback : "jsonpCallback"
+									// , complete:function( data, textStatus, jqXHR )
+									// {
+									// console.info(textStatus);
+									// if(textStatus == "success")
+									// {
+									// 	console.info(data);
+									// }
+									// }
+								});
+								// carIndex++;
+								// if(carIndex>9) carIndex=1;
+							}
+							function jsonpCallback(data)//回调函数
+							{
+								// console.log(carIndex); //
+								var cars = jQuery.parseJSON(JSON.stringify(data));
+								// console.info("cars="+JSON.stringify(data));
+								// console.info(cars.length);
+								carArry.splice(0,carArry.length);//清空数组
+								for (var i = 0; i < cars.length; i++)
+								{		
+
+									car = new Object();
+									car.carid = cars[i].carid;
+									car.gpsSignal = cars[i].gpsSignal;
+									car.soc = cars[i].soc;
+									car.batteryVoltage = cars[i].batteryVoltage;
+									car.batteryCurrent = cars[i].batteryCurrent;
+									car.gpsLongitude = cars[i].gpsLongitude;
+									car.gpsLatitude = cars[i].gpsLatitude;
+
+									// console.info(i+"   carid="+car.carid+"  gpsSignal="+car.gpsSignal+" soc="+car.soc+" batteryVoltage="+car.batteryVoltage+" batteryCurrent="+car.batteryCurrent+" gpsLongitude="+car.gpsLongitude+" gpsLatitude="+car.gpsLatitude);	
+
+									carArry.push(car);
+								}
+								for (var i = 0; i < carArry.length; i++)
+								{		
+									console.info(i);
+									console.info("carid"+carArry[i].carid);
+									console.info("gpsSignal"+carArry[i].gpsSignal);
+									console.info("soc"+carArry[i].soc);
+									console.info("batteryVoltage"+carArry[i].batteryVoltage);
+									console.info("batteryCurrent"+carArry[i].batteryCurrent);
+									console.info("batteryCurrent"+carArry[i].gpsLongitude);
+									console.info("batteryCurrent"+carArry[i].gpsLatitude);
+								}
+
+							}
+							get();
+							var t1 = window.setInterval("get()", 10000);
 							var t3 = window.setInterval("hello1()", 8000);							
 						</script>
 			
@@ -374,43 +492,5 @@
 		</div>
 	</section>
 	<!--/PAGE -->
-	<!-- JAVASCRIPTS -->
-	<!-- Placed at the end of the document so the pages load faster -->
-	<!-- JQUERY -->
-	<script src="../js/jquery/jquery-2.0.3.min.js"></script>
-	<script src="../js/jquery/jquery-2.2.3.min.js"></script>
-	<!-- JQUERY UI-->
-	<script src="../js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js"></script>
-	<!-- BOOTSTRAP -->
-	<script src="../bootstrap-dist/js/bootstrap.min.js"></script>
-	<!-- LESS CSS -->
-	<script src="../js/lesscss/less-1.4.1.min.js" type="text/javascript"></script>	
-	<!-- DATE RANGE PICKER -->
-	<script src="../js/bootstrap-daterangepicker/moment.min.js"></script>
-	<script src="../js/bootstrap-daterangepicker/daterangepicker.min.js"></script>
-	<!-- SLIMSCROLL -->
-	<script type="text/javascript" src="../js/jQuery-slimScroll-1.3.0/jquery.slimscroll.min.js"></script><script type="text/javascript" src="../js/jQuery-slimScroll-1.3.0/slimScrollHorizontal.min.js"></script>
-	<!-- BLOCK UI -->
-	<script type="text/javascript" src="../js/jQuery-BlockUI/jquery.blockUI.min.js"></script>
-	<!-- UNIFORM -->
-	<script type="text/javascript" src="../js/uniform/jquery.uniform.min.js"></script>
-	<!-- BOOTSTRAP WYSIWYG -->
-	<script type="text/javascript" src="../js/bootstrap-wysiwyg/jquery.hotkeys.min.js"></script>
-	<script type="text/javascript" src="../js/bootstrap-wysiwyg/bootstrap-wysiwyg.min.js"></script>
-	<!-- COOKIE -->
-	<script type="text/javascript" src="../js/jQuery-Cookie/jquery.cookie.min.js"></script>
-
-
-	<!-- CUSTOM SCRIPT -->
-	<script src="../js/script.js"></script>
-	<script src="../js/inbox.js"></script>
-	<script>
-		jQuery(document).ready(function() {		
-			App.setPage("inbox");  //Set current page
-			App.init(); //Initialise plugins and elements
-			Inbox.init();
-		});
-	</script>
-	<!-- /JAVASCRIPTS -->
 </body>
 </html>
