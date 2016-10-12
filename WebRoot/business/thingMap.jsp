@@ -8,7 +8,8 @@
 	<title>朔和云 | 设备地图</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+	<!-- <meta name="viewport" content="initial-scale=1.0, user-scalable=no" /> -->
 	<!-- STYLESHEETS --><!--[if lt IE 9]><script src="js/flot/excanvas.min.js"></script><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script><![endif]-->
 	<link rel="stylesheet" type="text/css" href="../css/cloud-admin.css" >
 	<link rel="stylesheet" type="text/css"  href="../css/themes/default.css" id="skin-switcher" >
@@ -23,6 +24,15 @@
 	<link rel="stylesheet" type="text/css" href="../js/uniform/css/uniform.default.min.css" >
 	<!-- INBOX CSS -->
 	<link rel="stylesheet" href="../css/inbox.css">	
+
+	<!-- FUELUX TREE -->
+	<link rel="stylesheet" type="text/css" href="../js/fuelux-tree/fuelux.min.css" />
+	
+	<!-- 奥森图标 http://www.thinkcmf.com/font/icons/icons/icons/bus-->
+	<link rel="stylesheet" type="text/css" href="../css/fontawesome/font-awesome.css" />
+	
+	<!-- SLIDENAV -->
+	<link rel="stylesheet" type="text/css" href="../js/slidernav/slidernav.css" />
 
 	<!-- JAVASCRIPTS -->
 	<!-- Placed at the end of the document so the pages load faster -->
@@ -39,7 +49,8 @@
 	<script src="../js/bootstrap-daterangepicker/moment.min.js"></script>
 	<script src="../js/bootstrap-daterangepicker/daterangepicker.min.js"></script>
 	<!-- SLIMSCROLL -->
-	<script type="text/javascript" src="../js/jQuery-slimScroll-1.3.0/jquery.slimscroll.min.js"></script><script type="text/javascript" src="../js/jQuery-slimScroll-1.3.0/slimScrollHorizontal.min.js"></script>
+	<script type="text/javascript" src="../js/jQuery-slimScroll-1.3.0/jquery.slimscroll.min.js"></script>
+	<script type="text/javascript" src="../js/jQuery-slimScroll-1.3.0/slimScrollHorizontal.min.js"></script>
 	<!-- BLOCK UI -->
 	<script type="text/javascript" src="../js/jQuery-BlockUI/jquery.blockUI.min.js"></script>
 	<!-- UNIFORM -->
@@ -50,6 +61,12 @@
 	<!-- COOKIE -->
 	<script type="text/javascript" src="../js/jQuery-Cookie/jquery.cookie.min.js"></script>
 
+	<!-- FUELUX TREE -->
+	<script type="text/javascript" src="../js/fuelux-tree/fuelux.tree-sampledata.js?ver=2"></script>
+	<script type="text/javascript" src="../js/fuelux-tree/fuelux.tree.min.js?ver=1"></script>
+
+	<!-- SLIDENAV -->
+	<script type="text/javascript" src="../js/slidernav/slidernav.js"></script>
 
 	<!-- CUSTOM SCRIPT -->
 	<script src="../js/script.js"></script>
@@ -59,9 +76,8 @@
 
 	<script>
 		jQuery(document).ready(function() {		
-			App.setPage("inbox");  //Set current page
+			App.setPage("address_book");  //Set current page
 			App.init(); //Initialise plugins and elements
-			Inbox.init();
 		});
 	</script>
 	<!-- /JAVASCRIPTS -->
@@ -90,7 +106,7 @@
 
 
     <style type="text/css">
-		body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+		#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
 	</style>
 
 
@@ -306,13 +322,106 @@
 								</div>
 							</div>
 							<div class="box-body" >
-								<div class="divide-20"></div>
-								<!-- <div id="map" class="map" tabindex="0"></div> -->
+								<!-- extra -->
 								<div class="row">
-									<div class="col-md-8" id="allmap"></div>
+									<div class="col-md-2" >
+										<div class="box border orange" style="height:540px">	
+											<div class="box-title">
+												<h4><i class="fa fa-bars"></i>选择车辆</h4>													
+											</div>
+											<div class="box-body">
+												<!-- <a class="fa-info-circle"></a> -->
+												<i class="fa fa-info-circle"></i> <font size="3">通过车牌号选择车辆</font>
+										<!-- 		<br>
+												<br>
+												<div class="form-group">
+													<font size="3">设备</font>
+													<select class="form-control" style="width: 60%;">
+														<option>模拟设备</option>
+														<option>数字设备</option>
+													</select>
+													<div class="divide-20"></div>
+												</div> -->
+												<!-- <div id="tree1" class="tree"></div> -->
+												<!-- <div class="divide-20"></div> -->
+												<!-- <div id="carsTree" class="tree"></div> -->
+												<div class="row">
+													<div class="col-md-4">
+														<div id="address-book">
+															<div class="slider-content">
+																<ul>
+																	<li id="a"><a name="a" class="title">A</a>
+																		<ul>
+																			<li><a href="/">Adam</a></li>
+																			<li><a href="/">Alex</a></li>
+																			<li><a href="/">Ali</a></li>
+																			<li><a href="/">Apple</a></li>
+																			<li><a href="/">Arthur</a></li>
+																			<li><a href="/">Ashley</a></li>
+																		</ul>
+																	</li>															
+																</ul>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>							
+										</div>
+									</div>
+								<!-- </div> -->
+								<!-- <div class="row"> -->
+									<div class="col-md-10">
+										<div class="box border orange">
+											<div class="box-title">
+												<h4><i class="fa fa-bars"></i>地图</h4>													
+											</div>
+											<div class="box-body" id="allmap" style="width: 100%;height:500px">
+											<!-- /extra -->
+												<!-- <div id="allmap" style="width: 500px;height:500px"></div> -->
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>							
 						</div>
+						<!-- 填充车辆列表 -->
+						<script type="text/javascript">
+							// var car_tree_data = {
+							// 	'50007445' : {name: '豫EGJ983', type: 'item'},
+							// 	'50007556' : {name: '豫EGJ971', type: 'item'},
+							// 	'50007555' : {name: '豫EGJ976', type: 'item'},
+							// 	'50007550' : {name: '豫EGJ978', type: 'item'},
+							// 	'50007450' : {name: '豫EGJ957', type: 'item'},
+							// 	'50007444' : {name: '豫EGJ993', type: 'item'},
+							// 	'50007449' : {name: '豫EGJ980', type: 'item'},
+							// 	'50007447' : {name: '豫EGJ997', type: 'item'},
+							// 	'50007446' : {name: '豫EGJ990', type: 'item'},
+							// 	'50007443' : {name: '豫EGJ992', type: 'item'},
+							// 	'50007438' : {name: '豫EGJ917', type: 'item'}
+							// }
+							// var carsTreeDataSource = new DataSourceTree({data: car_tree_data});
+							// $('#carsTree').admin_tree({
+							// 	// dataSource: treeDataSource2 ,
+							// 	dataSource: carsTreeDataSource ,
+							// 	loadingHTML:'<div class="tree-loading"><i class="fa fa-spinner fa-2x fa-spin"></i></div>',
+							// 	'open-icon' : 'fa-folder-open',
+							// 	'close-icon' : 'fa-folder',
+							// 	'selectable' : false,
+							// 	'selected-icon' : null,
+							// 	'unselected-icon' : null
+							// });
+							// document.onclick = function(e) {
+							//     var e = e || window.event;
+							//     // var target = e.target || e.srcElement;
+							//     console.info("e = "+e);
+							//     console.info("e.selectable = "+e.selectable);
+
+							//     // if(target.tagName.toLowerCase() === "td") {
+							//     //     var rowIdx = target.parentNode.rowIndex + 1;
+							//     //     alert("第 " + rowIdx + " 行");
+							//     // }
+							// };
+						</script>
 						<script type="text/javascript">
 							var carArry = new Array();
 							var ajax =
