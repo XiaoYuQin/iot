@@ -6,7 +6,6 @@
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta charset="utf-8">
 	<title>朔和云 | 设备地图</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
@@ -16,23 +15,14 @@
 	<link rel="stylesheet" type="text/css"  href="../css/responsive.css" >
 	
 	<link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<!-- JQUERY UI-->
+	<link rel="stylesheet" type="text/css" href="js/jquery-ui-1.10.3.custom/css/custom-theme/jquery-ui-1.10.3.custom.min.css" >
 	<!-- DATE RANGE PICKER -->
-	<link rel="stylesheet" type="text/css" href="../js/bootstrap-daterangepicker/daterangepicker-bs3.css" />
+	<link rel="stylesheet" type="text/css" href="../js/bootstrap-daterangepicker/daterangepicker-bs3.css" >
 	<!-- UNIFORM -->
-	<link rel="stylesheet" type="text/css" href="../js/uniform/css/uniform.default.min.css" />
+	<link rel="stylesheet" type="text/css" href="../js/uniform/css/uniform.default.min.css" >
 	<!-- INBOX CSS -->
-	<link rel="stylesheet" href="../css/inbox.css">
-	<!-- FONTS -->
-
-	
-	<link rel="stylesheet" href="http://openlayers.org/en/v3.18.2/css/ol.css" type="text/css">
-    <!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
-    <script src="http://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
-    <script src="http://openlayers.org/en/v3.18.2/build/ol.js"></script>
-
-	<link type="text/css" rel="stylesheet" href="../js/openlayer3/circleArrow.css" />
-	<script type="text/javascript" src="../js/openlayer3/Popups.js?ver=1"></script>
-	<script type="text/javascript" src="../js/openlayer3/Popup.js?ver=1"></script>
+	<link rel="stylesheet" href="../css/inbox.css">	
 
 	<!-- JAVASCRIPTS -->
 	<!-- Placed at the end of the document so the pages load faster -->
@@ -64,6 +54,9 @@
 	<!-- CUSTOM SCRIPT -->
 	<script src="../js/script.js"></script>
 	<script src="../js/inbox.js"></script>
+
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=SP7yzbUEjZyftws3bxA2eBuhlT03b0cn"></script>
+
 	<script>
 		jQuery(document).ready(function() {		
 			App.setPage("inbox");  //Set current page
@@ -94,6 +87,11 @@
         outline: #4A74A8 solid 0.15em;
       }
     </style>
+
+
+    <style type="text/css">
+		body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+	</style>
 
 
 </head>
@@ -308,100 +306,15 @@
 								</div>
 							</div>
 							<div class="box-body" >
-								<div id="map" class="map" tabindex="0"></div>
+								<div class="divide-20"></div>
+								<!-- <div id="map" class="map" tabindex="0"></div> -->
+								<div class="row">
+									<div class="col-md-8" id="allmap"></div>
+								</div>
 							</div>							
 						</div>
-
 						<script type="text/javascript">
 							var carArry = new Array();
-
-
-							var overviewMapControl = new ol.control.OverviewMap({
-								// see in overviewmap-custom.html to see the custom CSS used
-								className: 'ol-overviewmap ol-custom-overviewmap',
-								layers: [],
-							});
-							// var projection = new ol.proj.Projection(
-							// {
-							// 	code : 'EPSG:54012',
-							// 	units : 'm',
-							// 	axisOrientation : 'neu'
-							// });
-
-							var tiled = new ol.layer.Tile(
-							{
-								source: new ol.source.OSM()
-							});
-
-							var map = new ol.Map({
-								layers: [tiled],
-								target: 'map',
-								controls : ol.control.defaults(
-								{
-									attribution : false
-								}),
-								projection: new OpenLayers.Projection("EPSG:900913"),
-  								displayProjection: new OpenLayers.Projection("EPSG:4326"),
-								view: new ol.View({
-									// projection : projection,
-									zoom: 4,
-									center : [-28500000, 4000000]
-								})
-							});
-							console.info("mousePositionControl");
-
-							var popups = Popups.new(map);			
-							for(var i = 0;i<11;i++)
-							{
-								console.info("111 popups.add(i,0,0)");
-								popups.add(i,0,0);
-								console.info("222 popups.add(i,0,0)");
-							}
-		
-							
-
-							console.info("postcompose");
-							map.on('postcompose', function(event)
-							{
-								// console.info("map.on");
-								var vectorContext = event.vectorContext;
-								var frameState = event.frameState;
-			
-								map.render();
-							});
-							map.render();
-							function hello(){ 
-								// alert("hello"); 
-								console.info("hello");
-								popups.popupArray[0].setPosition(-30500000+30000*1.28,4000000+500000*1.54);
-								
-								popups.popupArray[1].setPosition(-28500000+500000*2.48,4000000+500000*1.74);
-								
-								popups.popupArray[2].setPosition(-28500000+500000*0.25,1800000+500000*3.54);
-								
-								popups.popupArray[3].setPosition(-28500000+500000*1.28,2100000+500000*1.54);
-								
-								popups.popupArray[4].setPosition(-28500000+200000*0.78,4000000+500000*0.64);
-								
-								document.getElementById('popup-content-0').innerHTML='<p>ID：60001</p>'+'<code>压力:'+Math.random().toFixed(2)+'MPa</code>';														
-								document.getElementById('popup-content-1').innerHTML='<p>ID：50002</p>'+'<code>水位:'+Math.random().toFixed(2)+'米</code>';
-								document.getElementById('popup-content-2').innerHTML='<p>ID：40001</p>'+'<code>温度:'+(Math.random().toFixed(2)*1+25)+'摄氏度</code>';
-								document.getElementById('popup-content-3').innerHTML='<p>ID：30003</p>'+'<code>电压:'+(Math.random().toFixed(2)*10+220)+'伏特</code>';
-								// document.getElementById('popup-content-4').innerHTML='<p>ID：20001</p>'+'<p>甲醛:'+Math.random().toFixed(2)+'PPm</p>';
-								document.getElementById('popup-content-4').innerHTML='<p>ID：20001</p>'+'<code>甲醛:'+Math.random().toFixed(2)+'PPm</code>';
-								window.clearTimeout(t2);//去掉定时器 
-							} 
-							var t2 = window.setInterval("hello()", 1000);
-							function hello1(){ 
-								// alert("hello"); 
-								console.info("hello");
-								document.getElementById('popup-content-0').innerHTML='<p>ID：60001</p>'+'<code>压力:'+Math.random().toFixed(2)+'MPa</code>';														
-								document.getElementById('popup-content-1').innerHTML='<p>ID：50002</p>'+'<code>水位:'+Math.random().toFixed(2)+'米</code>';
-								document.getElementById('popup-content-2').innerHTML='<p>ID：40001</p>'+'<code>温度:'+(Math.random().toFixed(2)*1+25)+'摄氏度</code>';
-								document.getElementById('popup-content-3').innerHTML='<p>ID：30003</p>'+'<code>电压:'+(Math.random().toFixed(2)*10+220)+'伏特</code>';
-								// document.getElementById('popup-content-4').innerHTML='<p>ID：20001</p>'+'<p>甲醛:'+Math.random().toFixed(2)+'PPm</p>';
-								document.getElementById('popup-content-4').innerHTML='<p>ID：20001</p>'+'<code>甲醛:'+Math.random().toFixed(2)+'PPm</code>';
-							} 
 							var ajax =
 							{
 								abort : function()
@@ -410,8 +323,6 @@
 							};
 							function get()
 							{
-								// $('body').append('<scr'+'ipt
-								// src="http://192.168.1.33:5000/id_2_position?id=9"></sc'+'ript>');
 								ajax.abort();
 								//每次提交前, 先放弃上一次ajax的提交, 这样就不会同时有多个ajax正在请求, 卡死浏览器
 								ajax = $.ajax(
@@ -426,17 +337,8 @@
 									//自定义的jsonp回调函数名称"jsonpCallback"，返回的json也必须有这个函数名称
 									,
 									jsonpCallback : "jsonpCallback"
-									// , complete:function( data, textStatus, jqXHR )
-									// {
-									// console.info(textStatus);
-									// if(textStatus == "success")
-									// {
-									// 	console.info(data);
-									// }
-									// }
+
 								});
-								// carIndex++;
-								// if(carIndex>9) carIndex=1;
 							}
 							function jsonpCallback(data)//回调函数
 							{
@@ -447,7 +349,6 @@
 								carArry.splice(0,carArry.length);//清空数组
 								for (var i = 0; i < cars.length; i++)
 								{		
-
 									car = new Object();
 									car.carid = cars[i].carid;
 									car.gpsSignal = cars[i].gpsSignal;
@@ -456,28 +357,95 @@
 									car.batteryCurrent = cars[i].batteryCurrent;
 									car.gpsLongitude = cars[i].gpsLongitude;
 									car.gpsLatitude = cars[i].gpsLatitude;
-
-									// console.info(i+"   carid="+car.carid+"  gpsSignal="+car.gpsSignal+" soc="+car.soc+" batteryVoltage="+car.batteryVoltage+" batteryCurrent="+car.batteryCurrent+" gpsLongitude="+car.gpsLongitude+" gpsLatitude="+car.gpsLatitude);	
-
 									carArry.push(car);
 								}
-								for (var i = 0; i < carArry.length; i++)
-								{		
-									console.info(i);
-									console.info("carid"+carArry[i].carid);
-									console.info("gpsSignal"+carArry[i].gpsSignal);
-									console.info("soc"+carArry[i].soc);
-									console.info("batteryVoltage"+carArry[i].batteryVoltage);
-									console.info("batteryCurrent"+carArry[i].batteryCurrent);
-									console.info("batteryCurrent"+carArry[i].gpsLongitude);
-									console.info("batteryCurrent"+carArry[i].gpsLatitude);
-								}
-
+								// for (var i = 0; i < carArry.length; i++)
+								// {		
+								// 	console.info(i);
+								// 	console.info("carid"+carArry[i].carid);
+								// 	console.info("gpsSignal"+carArry[i].gpsSignal);
+								// 	console.info("soc"+carArry[i].soc);
+								// 	console.info("batteryVoltage"+carArry[i].batteryVoltage);
+								// 	console.info("batteryCurrent"+carArry[i].batteryCurrent);
+								// 	console.info("batteryCurrent"+carArry[i].gpsLongitude);
+								// 	console.info("batteryCurrent"+carArry[i].gpsLatitude);
+								// }
 							}
 							get();
-							var t1 = window.setInterval("get()", 10000);
-							var t3 = window.setInterval("hello1()", 8000);							
+							function getx()
+							{
+								get();
+								setMarkers();
+							}
+							var t1 = window.setInterval("getx()", 10000);
+
+							// 百度地图API功能
+							var map = new BMap.Map("allmap");
+							var point = new BMap.Point(113.820265,36.0604873333333);
+							map.centerAndZoom(point, 12);
+							map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+
+							var opts = {
+								width : 80,     // 信息窗口宽度
+								height: 100,     // 信息窗口高度
+								// title : "信息窗口" , // 信息窗口标题
+								enableMessage:true//设置允许信息窗发送短息
+							};
+
+							// 将获取到的点赋予地图的marker
+							for (var i = 0; i < carArry.length; i++)
+							{
+								var pointTmp = new BMap.Point(carArry[i].gpsLongitude,carArry[i].gpsLatitude);
+								var marker = new BMap.Marker(pointTmp);  // 创建标注
+								marker.setTitle("车辆编号: "+carArry[i].carid);
+								var content = "车辆编号: "+carArry[i].carid + "<br>"
+											+ "GPS信号强度: " + carArry[i].gpsSignal + "<br>"
+											+ "SOC: " + carArry[i].soc + "<br>"
+											+ "电池电压: " + carArry[i].batteryVoltage + "<br>"
+											+ "电池电流: " + carArry[i].batteryCurrent + "<br>";
+
+								map.addOverlay(marker);              // 将标注添加到地图中
+								addClickHandler(content,marker);	
+							}
+							function addClickHandler(content,marker){
+								marker.addEventListener("click",function(e){
+									openInfo(content,e)}
+								);
+							}
+							var markerInfoWindow;
+							function openInfo(content,e){
+								p = e.target;
+								markerInfoWindow = e.target;
+								console.info("title = "+p.getTitle());
+								var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+								var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象 
+								map.openInfoWindow(infoWindow,point); //开启信息窗口
+							}
+
+
+							function setMarkers()
+							{
+								var makers = map.getOverlays();
+								console.info("makers length = "+makers.length);
+								for (var i = 0; i < makers.length; i++)
+								{
+									var id = makers[i].getTitle();
+									console.info("makers id = "+id);
+									for (var x = 0; x < carArry.length; x++)
+									{		
+										if(("车辆编号: "+carArry[x].carid) == id)
+										{
+											makers[i].setPosition(new BMap.Point(carArry[i].gpsLongitude,carArry[i].gpsLatitude));
+											console.info("makers "+i+" setPosition("+carArry[i].gpsLongitude+","+carArry[i].gpsLongitude+");");	
+
+											break;			
+										}
+									}
+								}
+							}
+
 						</script>
+						
 			
 											
 						
