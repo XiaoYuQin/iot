@@ -343,28 +343,9 @@
 													<div class="divide-20"></div>
 												</div> -->
 												<!-- <div id="tree1" class="tree"></div> -->
-												<!-- <div class="divide-20"></div> -->
-												<!-- <div id="carsTree" class="tree"></div> -->
-												<div class="row">
-													<div class="col-md-4">
-														<div id="address-book">
-															<div class="slider-content">
-																<ul>
-																	<li id="a"><a name="a" class="title">A</a>
-																		<ul>
-																			<li><a href="/">Adam</a></li>
-																			<li><a href="/">Alex</a></li>
-																			<li><a href="/">Ali</a></li>
-																			<li><a href="/">Apple</a></li>
-																			<li><a href="/">Arthur</a></li>
-																			<li><a href="/">Ashley</a></li>
-																		</ul>
-																	</li>															
-																</ul>
-															</div>
-														</div>
-													</div>
-												</div>
+												<div class="divide-20"></div>
+												<div id="carsTree" class="tree"></div>
+												
 											</div>							
 										</div>
 									</div>
@@ -386,30 +367,32 @@
 						</div>
 						<!-- 填充车辆列表 -->
 						<script type="text/javascript">
-							// var car_tree_data = {
-							// 	'50007445' : {name: '豫EGJ983', type: 'item'},
-							// 	'50007556' : {name: '豫EGJ971', type: 'item'},
-							// 	'50007555' : {name: '豫EGJ976', type: 'item'},
-							// 	'50007550' : {name: '豫EGJ978', type: 'item'},
-							// 	'50007450' : {name: '豫EGJ957', type: 'item'},
-							// 	'50007444' : {name: '豫EGJ993', type: 'item'},
-							// 	'50007449' : {name: '豫EGJ980', type: 'item'},
-							// 	'50007447' : {name: '豫EGJ997', type: 'item'},
-							// 	'50007446' : {name: '豫EGJ990', type: 'item'},
-							// 	'50007443' : {name: '豫EGJ992', type: 'item'},
-							// 	'50007438' : {name: '豫EGJ917', type: 'item'}
-							// }
-							// var carsTreeDataSource = new DataSourceTree({data: car_tree_data});
-							// $('#carsTree').admin_tree({
-							// 	// dataSource: treeDataSource2 ,
-							// 	dataSource: carsTreeDataSource ,
-							// 	loadingHTML:'<div class="tree-loading"><i class="fa fa-spinner fa-2x fa-spin"></i></div>',
-							// 	'open-icon' : 'fa-folder-open',
-							// 	'close-icon' : 'fa-folder',
-							// 	'selectable' : false,
-							// 	'selected-icon' : null,
-							// 	'unselected-icon' : null
-							// });
+
+							var car_tree_data = {
+								'50007445' : {name: '<font size="3">豫EGJ983</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007445);"></i> ', type: 'item'},
+								'50007556' : {name: '<font size="3">豫EGJ971</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007556);"></i> ', type: 'item'},
+								'50007555' : {name: '<font size="3">豫EGJ976</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007555);"></i> ', type: 'item'},
+								'50007550' : {name: '<font size="3">豫EGJ978</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007550);"></i> ', type: 'item'},
+								'50007450' : {name: '<font size="3">豫EGJ957</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007450);"></i> ', type: 'item'},
+								'50007444' : {name: '<font size="3">豫EGJ993</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007444);"></i> ', type: 'item'},
+								'50007449' : {name: '<font size="3">豫EGJ980</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007449);"></i> ', type: 'item'},
+								'50007447' : {name: '<font size="3">豫EGJ997</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007447);"></i> ', type: 'item'},
+								'50007446' : {name: '<font size="3">豫EGJ990</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007446);"></i> ', type: 'item'},
+								'50007443' : {name: '<font size="3">豫EGJ992</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007443);"></i> ', type: 'item'},
+								'50007438' : {name: '<font size="3">豫EGJ917</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007438);"></i> ', type: 'item'}
+							}
+							var carsTreeDataSource = new DataSourceTree({data: car_tree_data});
+							$('#carsTree').admin_tree({
+								// dataSource: treeDataSource2 ,
+								dataSource: carsTreeDataSource ,
+								loadingHTML:'<div class="tree-loading"><i class="fa fa-spinner fa-2x fa-spin"></i></div>',
+								'open-icon' : 'fa-folder-open',
+								'close-icon' : 'fa-folder',
+								'selectable' : false,
+								'selected-icon' : null,
+								'unselected-icon' : null
+							});
+
 							// document.onclick = function(e) {
 							//     var e = e || window.event;
 							//     // var target = e.target || e.srcElement;
@@ -421,9 +404,18 @@
 							//     //     alert("第 " + rowIdx + " 行");
 							//     // }
 							// };
+							// $(".carsTree").each(function(){
+							//     $(this).click(function(){
+							//          var imgid = $(this).attr("id");
+							//          alert(imgid );
+							//     })
+							// });
 						</script>
 						<script type="text/javascript">
 							var carArry = new Array();
+							//选中气泡指示的值
+							var selectCar;
+
 							var ajax =
 							{
 								abort : function()
@@ -432,11 +424,12 @@
 							};
 							function get()
 							{
+								console.info("get()");
 								ajax.abort();
 								//每次提交前, 先放弃上一次ajax的提交, 这样就不会同时有多个ajax正在请求, 卡死浏览器
 								ajax = $.ajax(
 								{
-									url : "http://localhost:8080/iot/business/getShaolinBuses.jsp"//请求的url
+									url : "http://shuohe-tech.imwork.net/iot/business/getShaolinBuses.jsp"//请求的url
 									,
 									async : false,
 									dataType : "jsonp"
@@ -449,6 +442,7 @@
 
 								});
 							}
+							var isInit = false;
 							function jsonpCallback(data)//回调函数
 							{
 								// console.log(carIndex); //
@@ -479,12 +473,19 @@
 								// 	console.info("batteryCurrent"+carArry[i].gpsLongitude);
 								// 	console.info("batteryCurrent"+carArry[i].gpsLatitude);
 								// }
+								// if(isInit == false)
+								// {
+								// 	isInit = true;
+								// 	initMarkers();
+								// 	setMarkers();									
+								// }
 							}
 							get();
 							function getx()
 							{
 								get();
 								setMarkers();
+								changeInfowindowsContent();
 							}
 							var t1 = window.setInterval("getx()", 10000);
 
@@ -494,43 +495,78 @@
 							map.centerAndZoom(point, 12);
 							map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
 
-							var opts = {
-								width : 80,     // 信息窗口宽度
-								height: 100,     // 信息窗口高度
-								// title : "信息窗口" , // 信息窗口标题
-								enableMessage:true//设置允许信息窗发送短息
-							};
 
-							// 将获取到的点赋予地图的marker
-							for (var i = 0; i < carArry.length; i++)
-							{
-								var pointTmp = new BMap.Point(carArry[i].gpsLongitude,carArry[i].gpsLatitude);
-								var marker = new BMap.Marker(pointTmp);  // 创建标注
-								marker.setTitle("车辆编号: "+carArry[i].carid);
-								var content = "车辆编号: "+carArry[i].carid + "<br>"
-											+ "GPS信号强度: " + carArry[i].gpsSignal + "<br>"
-											+ "SOC: " + carArry[i].soc + "<br>"
-											+ "电池电压: " + carArry[i].batteryVoltage + "<br>"
-											+ "电池电流: " + carArry[i].batteryCurrent + "<br>";
-
-								map.addOverlay(marker);              // 将标注添加到地图中
-								addClickHandler(content,marker);	
-							}
-							function addClickHandler(content,marker){
-								marker.addEventListener("click",function(e){
-									openInfo(content,e)}
-								);
-							}
 							var markerInfoWindow;
+							initMarkers();
+							var opts = {
+									width : 80,     // 信息窗口宽度
+									height: 100,     // 信息窗口高度
+									// title : "信息窗口" , // 信息窗口标题
+									enableMessage:true//设置允许信息窗发送短息
+								};
+							function initMarkers()
+							{
+								console.info("initMarkers()");
+
+								// 将获取到的点赋予地图的marker
+								for (var i = 0; i < carArry.length; i++)
+								{
+									var pointTmp = new BMap.Point(carArry[i].gpsLongitude,carArry[i].gpsLatitude);
+									var marker = new BMap.Marker(pointTmp);  // 创建标注
+
+									marker.setTitle("车辆编号: "+getCarPaizhaoById(carArry[i].carid));
+									var content = "车辆编号: "+getCarPaizhaoById(carArry[i].carid) + "<br>"
+												+ "GPS信号强度: " + carArry[i].gpsSignal + "<br>"
+												+ "SOC: " + carArry[i].soc + "<br>"
+												+ "电池电压: " + carArry[i].batteryVoltage + "<br>"
+												+ "电池电流: " + carArry[i].batteryCurrent + "<br>";
+
+									map.addOverlay(marker);              // 将标注添加到地图中
+									addClickHandler(content,marker);	
+								}
+								function addClickHandler(content,marker){
+									marker.addEventListener("click",function(e){
+										openInfo(content,e)}
+									);
+								}								
+							}
 							function openInfo(content,e){
 								p = e.target;
 								markerInfoWindow = e.target;
+								// selectCar = p.getTitle()；
 								console.info("title = "+p.getTitle());
 								var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
 								var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象 
 								map.openInfoWindow(infoWindow,point); //开启信息窗口
 							}
-
+							function getCarPaizhaoById(id)
+							{
+								if(id == "50007445")		return "豫EGJ983";
+								else if(id == "50007556")	return "豫EGJ971";
+								else if(id == "50007555")	return "豫EGJ976";
+								else if(id == "50007550")	return "豫EGJ978";
+								else if(id == "50007450")	return "豫EGJ957";
+								else if(id == "50007444")	return "豫EGJ993";
+								else if(id == "50007449")	return "豫EGJ980";
+								else if(id == "50007447")	return "豫EGJ997";
+								else if(id == "50007446")	return "豫EGJ990";
+								else if(id == "50007443")	return "豫EGJ992";
+								else if(id == "50007438")	return "豫EGJ917";
+							}
+							function getPaizhaoByid(id)
+							{
+								if(id == "车辆编号: 豫EGJ983")		return "50007445";
+								else if(id == "车辆编号: 豫EGJ971")	return "50007556";
+								else if(id == "车辆编号: 豫EGJ976")	return "50007555";
+								else if(id == "车辆编号: 豫EGJ978")	return "50007550";
+								else if(id == "车辆编号: 豫EGJ957")	return "50007450";
+								else if(id == "车辆编号: 豫EGJ993")	return "50007444";
+								else if(id == "车辆编号: 豫EGJ980")	return "50007449";
+								else if(id == "车辆编号: 豫EGJ997")	return "50007447";
+								else if(id == "车辆编号: 豫EGJ990")	return "50007446";
+								else if(id == "车辆编号: 豫EGJ992")	return "50007443";
+								else if(id == "车辆编号: 豫EGJ917")	return "50007438";								
+							}
 
 							function setMarkers()
 							{
@@ -538,11 +574,11 @@
 								console.info("makers length = "+makers.length);
 								for (var i = 0; i < makers.length; i++)
 								{
-									var id = makers[i].getTitle();
+									var id = getPaizhaoByid(makers[i].getTitle());
 									console.info("makers id = "+id);
 									for (var x = 0; x < carArry.length; x++)
 									{		
-										if(("车辆编号: "+carArry[x].carid) == id)
+										if((carArry[x].carid) == id)
 										{
 											makers[i].setPosition(new BMap.Point(carArry[i].gpsLongitude,carArry[i].gpsLatitude));
 											console.info("makers "+i+" setPosition("+carArry[i].gpsLongitude+","+carArry[i].gpsLongitude+");");	
@@ -552,7 +588,52 @@
 									}
 								}
 							}
+							
+							function changeInfowindowsContent()
+							{
+								console.info("changeInfowindowsContent");
+								console.info("markerInfoWindow = "+markerInfoWindow.getTitle());
+								// console.info("selectCar = "+selectCar.getTitle());
+								
+								for (var x = 0; x < carArry.length; x++)
+								{		
+									console.info("selectCar = "+selectCar);
+									console.info("carArry[x].carid = "+carArry[x].carid);
+									if((carArry[x].carid) == getPaizhaoByid(markerInfoWindow.getTitle()))
+									{										
+							
+										var content = "车辆编号: "+getCarPaizhaoById(carArry[x].carid) + "<br>"
+												+ "GPS信号强度: " + carArry[x].gpsSignal + "<br>"
+												+ "SOC: " + carArry[x].soc + "<br>"
+												+ "电池电压: " + carArry[x].batteryVoltage + "<br>"
+												+ "电池电流: " + carArry[x].batteryCurrent + "<br>";
+										console.info(content);
+										map.getInfoWindow().setContent(content);
+										break;			
+									}
+								}
+							}
+							function itemClicked(e){
+								console.info("itemClicked = "+e);
 
+								for (var i = 0; i < carArry.length; i++)
+								{		
+									if((carArry[i].carid) == e)
+									{
+										var point = new BMap.Point(carArry[i].gpsLongitude,carArry[i].gpsLatitude);
+										var content = "车辆编号: "+getCarPaizhaoById(carArry[i].carid) + "<br>"
+												+ "GPS信号强度: " + carArry[i].gpsSignal + "<br>"
+												+ "SOC: " + carArry[i].soc + "<br>"
+												+ "电池电压: " + carArry[i].batteryVoltage + "<br>"
+												+ "电池电流: " + carArry[i].batteryCurrent + "<br>";
+
+										var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象 
+										map.openInfoWindow(infoWindow,point); //开启信息窗口
+										break;			
+									}
+								}
+
+							}
 						</script>
 						
 			

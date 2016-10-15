@@ -20,6 +20,67 @@
 	<!-- DATE RANGE PICKER -->
 	<link rel="stylesheet" type="text/css" href="../js/bootstrap-daterangepicker/daterangepicker-bs3.css" >
 	<!-- FONTS -->
+<!-- JAVASCRIPTS -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<!-- JQUERY -->
+	<script src="../js/flot/jquery.min.js"></script>
+	<!-- JQUERY UI-->
+	<script src="../js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js"></script>
+	<!-- BOOTSTRAP -->
+	<script src="../bootstrap-dist/js/bootstrap.min.js"></script>
+
+	<!-- LESS CSS -->
+	<script src="../js/lesscss/less-1.4.1.min.js" type="text/javascript"></script>		
+
+	<!-- DATE RANGE PICKER -->
+	<script src="../js/bootstrap-daterangepicker/moment.min.js"></script>
+	
+	<script src="../js/bootstrap-daterangepicker/daterangepicker.min.js"></script>
+	<!-- SLIMSCROLL -->
+	<script type="text/javascript" src="../js/jQuery-slimScroll-1.3.0/jquery.slimscroll.min.js"></script>
+	<script type="text/javascript" src="../js/jQuery-slimScroll-1.3.0/slimScrollHorizontal.min.js"></script>
+	<!-- BLOCK UI -->
+	<script type="text/javascript" src="../js/jQuery-BlockUI/jquery.blockUI.min.js"></script>
+	<!-- FLOT CHARTS -->
+	<script src="../js/flot/jquery.flot.min.js"></script>
+	<script src="../js/flot/jquery.flot.time.min.js"></script>
+    <script src="../js/flot/jquery.flot.selection.min.js"></script>
+	<script src="../js/flot/jquery.flot.resize.min.js"></script>
+    <script src="../js/flot/jquery.flot.pie.min.js"></script>
+    <script src="../js/flot/jquery.flot.stack.min.js"></script>
+    <script src="../js/flot/jquery.flot.crosshair.min.js"></script>
+	<!-- COOKIE -->
+	<script type="text/javascript" src="../js/jQuery-Cookie/jquery.cookie.min.js"></script>
+	<!-- UNIFORM -->
+	<script type="text/javascript" src="../js/uniform/jquery.uniform.min.js"></script>
+	<!-- BOOTSTRAP WYSIWYG -->
+	<script type="text/javascript" src="../js/bootstrap-wysiwyg/jquery.hotkeys.min.js"></script>
+	<script type="text/javascript" src="../js/bootstrap-wysiwyg/bootstrap-wysiwyg.min.js"></script>
+	<!-- FUELUX TREE -->
+	<script type="text/javascript" src="../js/fuelux-tree/fuelux.tree-sampledata.js?ver=2"></script>
+	<script type="text/javascript" src="../js/fuelux-tree/fuelux.tree.min.js?ver=1"></script>
+	<script type="text/javascript" src="../js/fuelux-tree/tree.min.js?ver=1"></script>
+	
+	<!-- SLIDENAV -->
+	<script type="text/javascript" src="../js/slidernav/slidernav.js"></script>
+
+	<!-- CUSTOM SCRIPT -->
+	<script src="../js/script.js?ver=1"></script>
+	<script src="../js/charts.js?ver=1"></script>
+	<script>
+		jQuery(document).ready(function() {		
+			App.setPage("treeview");  //Set current page
+			App.init(); //Initialise plugins and elements
+
+			// App.setPage("flot_charts");  //Set current page
+			// App.init(); //Initialise plugins and elements
+			Charts.initCharts();
+			Charts.initPieCharts();
+		});
+	</script>
+	<!-- /JAVASCRIPTS -->
+
+
 </head>
 <body>
 		<!-- HEADER -->
@@ -237,6 +298,8 @@
 							</div>
 						</div>
 						<!-- /PAGE HEADER -->
+
+
 						<!-- INTERACTIVE CHART -->
 						<div class="row">
 							<div class="col-md-2">
@@ -250,7 +313,32 @@
 										</div>
 									</div>
 									<div class="box-body">
-										<div id="tree1" class="tree"></div>
+										<script type="text/javascript">
+											var car_tree_data = {
+												'50007445' : {name: '<font size="3">豫EGJ983</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007445);"></i> ', type: 'item'},
+												'50007556' : {name: '<font size="3">豫EGJ971</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007556);"></i> ', type: 'item'},
+												'50007555' : {name: '<font size="3">豫EGJ976</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007555);"></i> ', type: 'item'},
+												'50007550' : {name: '<font size="3">豫EGJ978</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007550);"></i> ', type: 'item'},
+												'50007450' : {name: '<font size="3">豫EGJ957</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007450);"></i> ', type: 'item'},
+												'50007444' : {name: '<font size="3">豫EGJ993</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007444);"></i> ', type: 'item'},
+												'50007449' : {name: '<font size="3">豫EGJ980</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007449);"></i> ', type: 'item'},
+												'50007447' : {name: '<font size="3">豫EGJ997</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007447);"></i> ', type: 'item'},
+												'50007446' : {name: '<font size="3">豫EGJ990</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007446);"></i> ', type: 'item'},
+												'50007443' : {name: '<font size="3">豫EGJ992</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007443);"></i> ', type: 'item'},
+												'50007438' : {name: '<font size="3">豫EGJ917</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007438);"></i> ', type: 'item'}
+											}
+											var carsTreeDataSource = new DataSourceTree({data: car_tree_data});
+											$('#carsTree').admin_tree({
+												dataSource: carsTreeDataSource ,
+												loadingHTML:'<div class="tree-loading"><i class="fa fa-spinner fa-2x fa-spin"></i></div>',
+												'open-icon' : 'fa-folder-open',
+												'close-icon' : 'fa-folder',
+												'selectable' : false,
+												'selected-icon' : null,
+												'unselected-icon' : null
+											});
+										</script>
+										<div id="carsTree" class="tree"></div>
 									</div>
 								</div>
 							</div>
@@ -269,36 +357,7 @@
 										</div>
 									</div>
 									<div class="box-body big">
-										<form class="form-horizontal " action="#">     
-										<div class="form-group">										   
-										   <label class="col-md-4">设备ID:</label>										   
-											 <span style="font-weight:bold;">40003</span>										 
-										 </div>            
-										 <div class="form-group">										   
-										   <label class="col-md-4">设备名称:</label>										   
-											 <span style="font-weight:bold;">温度传感器</span>										 
-										 </div>
-										<div class="form-group">										   
-											<label class="col-md-4">设备类型:</label>										   
-											<span style="font-weight:bold;">模拟量</span>										 
-										</div>
-										<div class="form-group">										   
-											<label class="col-md-4">地理位置:</label>										   
-											<span style="font-weight:bold;">湖北省</span>									 									 								 
-										</div>
-										<div class="form-group">										   
-											<label class="col-md-4">单位:</label>										   
-											<span style="font-weight:bold;">摄氏度</span>
-										</div>
-										<div class="form-group">										   
-											<label class="col-md-4">标签:</label>										   
-											<span style="font-weight:bold;">温度 电机 湖北</span>
-										</div>
-										<div class="form-group">										   
-											<label class="col-md-4">描述:</label>										   
-											<span style="font-weight:bold;">15号电机的温度传感器</span>
-										</div>										 										
-										</form>
+
 									</div>
 								</div>
 								<!-- /RATINGS -->
@@ -321,6 +380,7 @@
 								<!-- /BOX -->
 							</div>
 						</div>
+
 						<!-- /INTERACTIVE CHART -->									
 						<div class="footer-tools">
 							<span class="go-top">
@@ -332,58 +392,9 @@
 			</div>
 		</div>
 	</section>
-	<!--/PAGE -->
-	<!-- JAVASCRIPTS -->
-	<!-- Placed at the end of the document so the pages load faster -->
-	<!-- JQUERY -->
-	<script src="../js/flot/jquery.min.js"></script>
-	<!-- JQUERY UI-->
-	<script src="../js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js"></script>
-	<!-- BOOTSTRAP -->
-	<script src="../bootstrap-dist/js/bootstrap.min.js"></script>
-	
-		
-	<!-- DATE RANGE PICKER -->
-	<script src="../js/bootstrap-daterangepicker/moment.min.js"></script>
-	
-	<script src="../js/bootstrap-daterangepicker/daterangepicker.min.js"></script>
-	<!-- SLIMSCROLL -->
-	<script type="text/javascript" src="../js/jQuery-slimScroll-1.3.0/jquery.slimscroll.min.js"></script>
-	<script type="text/javascript" src="../js/jQuery-slimScroll-1.3.0/slimScrollHorizontal.min.js"></script>
-	<!-- BLOCK UI -->
-	<script type="text/javascript" src="../js/jQuery-BlockUI/jquery.blockUI.min.js"></script>
-	<!-- FLOT CHARTS -->
-	<script src="../js/flot/jquery.flot.min.js"></script>
-	<script src="../js/flot/jquery.flot.time.min.js"></script>
-    <script src="../js/flot/jquery.flot.selection.min.js"></script>
-	<script src="../js/flot/jquery.flot.resize.min.js"></script>
-    <script src="../js/flot/jquery.flot.pie.min.js"></script>
-    <script src="../js/flot/jquery.flot.stack.min.js"></script>
-    <script src="../js/flot/jquery.flot.crosshair.min.js"></script>
-	<!-- COOKIE -->
-	<script type="text/javascript" src="../js/jQuery-Cookie/jquery.cookie.min.js"></script>
-	<!-- UNIFORM -->
-	<script type="text/javascript" src="../js/uniform/jquery.uniform.min.js"></script>
-	<!-- BOOTSTRAP WYSIWYG -->
-	<script type="text/javascript" src="../js/bootstrap-wysiwyg/jquery.hotkeys.min.js"></script>
-	<script type="text/javascript" src="../js/bootstrap-wysiwyg/bootstrap-wysiwyg.min.js"></script>
-	<!-- FUELUX TREE -->
-	<script type="text/javascript" src="../js/fuelux-tree/fuelux.tree-sampledata.js?ver=2"></script>
-	<script type="text/javascript" src="../js/fuelux-tree/fuelux.tree.min.js?ver=1"></script>
-	<!-- CUSTOM SCRIPT -->
-	<script src="../js/script.js?ver=1"></script>
-	<script src="../js/charts.js?ver=1"></script>
-	<script>
-		jQuery(document).ready(function() {		
-			App.setPage("treeview");  //Set current page
-			App.init(); //Initialise plugins and elements
 
-			// App.setPage("flot_charts");  //Set current page
-			// App.init(); //Initialise plugins and elements
-			Charts.initCharts();
-			Charts.initPieCharts();
-		});
-	</script>
-	<!-- /JAVASCRIPTS -->
+
+	<!--/PAGE -->
+	
 </body>
 </html>
