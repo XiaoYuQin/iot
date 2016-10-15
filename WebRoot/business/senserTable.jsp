@@ -17,6 +17,9 @@
 	<link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet">
 	<!-- FUELUX TREE -->
 	<link rel="stylesheet" type="text/css" href="../js/fuelux-tree/fuelux.min.css" />
+
+	<!-- UNIFORM -->
+	<link rel="stylesheet" type="text/css" href="../js/uniform/css/uniform.default.min.css" >
 	<!-- DATE RANGE PICKER -->
 	<link rel="stylesheet" type="text/css" href="../js/bootstrap-daterangepicker/daterangepicker-bs3.css" >
 	<!-- FONTS -->
@@ -24,6 +27,10 @@
 	<!-- Placed at the end of the document so the pages load faster -->
 	<!-- JQUERY -->
 	<script src="../js/flot/jquery.min.js"></script>
+	<!-- JQUERY -->
+	<!-- <script src="../js/jquery/jquery-2.0.3.min.js"></script>
+	<script src="../js/jquery/jquery-2.2.3.min.js"></script> -->
+
 	<!-- JQUERY UI-->
 	<script src="../js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js"></script>
 	<!-- BOOTSTRAP -->
@@ -57,7 +64,7 @@
 	<script type="text/javascript" src="../js/bootstrap-wysiwyg/jquery.hotkeys.min.js"></script>
 	<script type="text/javascript" src="../js/bootstrap-wysiwyg/bootstrap-wysiwyg.min.js"></script>
 	<!-- FUELUX TREE -->
-	<script type="text/javascript" src="../js/fuelux-tree/fuelux.tree-sampledata.js?ver=2"></script>
+	<script type="text/javascript" src="../js/fuelux-tree/fuelux.tree-sampledata.js?ver=1"></script>
 	<script type="text/javascript" src="../js/fuelux-tree/fuelux.tree.min.js?ver=1"></script>
 	<script type="text/javascript" src="../js/fuelux-tree/tree.min.js?ver=1"></script>
 	
@@ -314,29 +321,7 @@
 									</div>
 									<div class="box-body">
 										<script type="text/javascript">
-											var car_tree_data = {
-												'50007445' : {name: '<font size="3">豫EGJ983</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007445);"></i> ', type: 'item'},
-												'50007556' : {name: '<font size="3">豫EGJ971</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007556);"></i> ', type: 'item'},
-												'50007555' : {name: '<font size="3">豫EGJ976</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007555);"></i> ', type: 'item'},
-												'50007550' : {name: '<font size="3">豫EGJ978</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007550);"></i> ', type: 'item'},
-												'50007450' : {name: '<font size="3">豫EGJ957</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007450);"></i> ', type: 'item'},
-												'50007444' : {name: '<font size="3">豫EGJ993</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007444);"></i> ', type: 'item'},
-												'50007449' : {name: '<font size="3">豫EGJ980</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007449);"></i> ', type: 'item'},
-												'50007447' : {name: '<font size="3">豫EGJ997</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007447);"></i> ', type: 'item'},
-												'50007446' : {name: '<font size="3">豫EGJ990</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007446);"></i> ', type: 'item'},
-												'50007443' : {name: '<font size="3">豫EGJ992</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007443);"></i> ', type: 'item'},
-												'50007438' : {name: '<font size="3">豫EGJ917</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007438);"></i> ', type: 'item'}
-											}
-											var carsTreeDataSource = new DataSourceTree({data: car_tree_data});
-											$('#carsTree').admin_tree({
-												dataSource: carsTreeDataSource ,
-												loadingHTML:'<div class="tree-loading"><i class="fa fa-spinner fa-2x fa-spin"></i></div>',
-												'open-icon' : 'fa-folder-open',
-												'close-icon' : 'fa-folder',
-												'selectable' : false,
-												'selected-icon' : null,
-												'unselected-icon' : null
-											});
+
 										</script>
 										<div id="carsTree" class="tree"></div>
 									</div>
@@ -357,7 +342,36 @@
 										</div>
 									</div>
 									<div class="box-body big">
-
+										<form class="form-horizontal " action="#">     
+											<div class="form-group">										   
+											   <label class="col-md-4">车牌号</label>										   
+												 <span id="LicensePlate" style="font-weight:bold;"></span>										 
+											 </div>            
+											 <div class="form-group">										   
+											   <label class="col-md-4">VIN码:</label>										   
+												 <span id="VinNo" style="font-weight:bold;"></span>										 
+											 </div>
+											<div class="form-group">										   
+												<label class="col-md-4">车辆编码:</label>										   
+												<span id="CarId" style="font-weight:bold;"></span>										 
+											</div>
+											<div class="form-group">										   
+												<label class="col-md-4">主机厂家:</label>										   
+												<span id="CarTypeName" style="font-weight:bold;"></span>									 									 								 
+											</div>
+											<div class="form-group">										   
+												<label class="col-md-4">出场批次:</label>										   
+												<span id="CarBatchName"  style="font-weight:bold;"></span>
+											</div>
+											<div class="form-group">										   
+												<label class="col-md-4">所属公司:</label>										   
+												<span id="CompanyName" style="font-weight:bold;"></span>
+											</div>
+											<div class="form-group">										   
+												<label class="col-md-4">运营地点:</label>										   
+												<span id="UserRegionName" style="font-weight:bold;"></span>
+											</div>										 										
+										</form>
 									</div>
 								</div>
 								<!-- /RATINGS -->
@@ -366,7 +380,7 @@
 								<!-- BOX -->
 								<div class="box border blue">
 									<div class="box-title">
-										<h4><i class="fa fa-signal"></i>当月数据</h4>
+										<h4><i class="fa fa-signal"></i>实时数据</h4>
 										<div class="tools">
 											<a href="javascript:;" class="reload">
 												<i class="fa fa-refresh"></i>
@@ -374,7 +388,7 @@
 										</div>
 									</div>
 									<div class="box-body">
-										<div id="chart_2" class="chart"></div>
+										<div id="carBattery" class="chart"></div>
 									</div>
 								</div>
 								<!-- /BOX -->
@@ -398,3 +412,247 @@
 	
 </body>
 </html>
+<script type="text/javascript">
+	//获取车辆信息
+	var carInfoArry = new Array();
+	//选中气泡指示的值
+	var selectCar;
+
+	var ajax =
+	{
+		abort : function()
+		{
+		} //定义一个空的方法, 是为了下面ajax.abort()不报错
+	};
+	function get()
+	{
+		console.info("get()");
+		ajax.abort();
+		//每次提交前, 先放弃上一次ajax的提交, 这样就不会同时有多个ajax正在请求, 卡死浏览器
+		ajax = $.ajax(
+		{
+			url : "http://shuohe-tech.imwork.net/iot/business/getShaolinBusCarInfoById.jsp"//请求的url
+			,async : false
+			,dataType : "jsonp"
+			//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
+			,jsonp : "callback"
+			//自定义的jsonp回调函数名称"jsonpCallback"，返回的json也必须有这个函数名称
+			,jsonpCallback : "jsonpCallback"
+
+		});
+	}
+	function jsonpCallback(data)//回调函数
+	{
+		// console.log(carIndex); //
+		var cars = jQuery.parseJSON(JSON.stringify(data));
+		// console.info("cars="+JSON.stringify(data));
+		// console.info(cars.length);
+		carInfoArry.splice(0,carInfoArry.length);//清空数组
+		for (var i = 0; i < cars.length; i++)
+		{		
+			carInfo = new Object();
+			carInfo.LicensePlate = cars[i].LicensePlate;
+			carInfo.VinNo = cars[i].VinNo;
+			carInfo.CarId = cars[i].CarId;
+			carInfo.CarTypeName = cars[i].CarTypeName;
+			carInfo.CarBatchName = cars[i].CarBatchName;
+			carInfo.CompanyName = cars[i].CompanyName;
+			carInfo.UserRegionName = cars[i].UserRegionName;
+			carInfo.TerminalCode = cars[i].TerminalCode;
+			carInfoArry.push(carInfo);
+		}
+	}
+	get();
+
+
+	//获取某辆车的100条最新参数
+	var carBatterParams = new Array();
+	function getCarBatteryParam(carId)
+	{
+		console.info("get()");
+		ajax.abort();
+		//每次提交前, 先放弃上一次ajax的提交, 这样就不会同时有多个ajax正在请求, 卡死浏览器
+		ajax = $.ajax(
+		{
+			url : "http://shuohe-tech.imwork.net/iot/business/getShaolinBusBatteryParamById.jsp"//请求的url
+			,async : false
+			,dataType : "jsonp"			
+			,jsonp : "callback"//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
+			,jsonpCallback : "CarBatteryParamJsonpCallback"
+			,data:  { "carId": carId}
+		});
+	}
+	function CarBatteryParamJsonpCallback(data)//回调函数
+	{
+		console.info("CarBatteryParamJsonpCallback");
+		var cars = jQuery.parseJSON(JSON.stringify(data));
+		carBatterParams.splice(0,carBatterParams.length);//清空数组
+		for (var i = 0; i < cars.length; i++)
+		{		
+			carInfo = new Object();
+			carInfo.gpsSignal = cars[i].gpsSignal;
+			carInfo.soc = cars[i].soc;
+			carInfo.batteryVoltage = cars[i].batteryVoltage;
+			carInfo.batteryCurrent = cars[i].batteryCurrent;
+			carInfo.date = cars[i].date;
+			carBatterParams.push(carInfo);
+		}
+		// itemClicked(initCarId);
+		refshCarInfoWindw(initCarId);
+		carBatteryDataChart();
+
+		console.info("x = "+carBatterParams[10].date);
+	}
+	
+
+	var initCarId = "50007446";
+	itemClicked(initCarId);
+	var t1 = window.setInterval("getCarBatteryParam(initCarId)", 10000);
+	//点击摘取车辆信息，并且刷新显示详情
+	function itemClicked(e){
+		initCarId = e;
+		console.info("itemClicked = "+e);
+		refshCarInfoWindw(e);
+		getCarBatteryParam(e);
+		carBatteryDataChart();
+	}
+	function refshCarInfoWindw(e)
+	{
+		for (var i = 0; i < carInfoArry.length; i ++)
+		{		
+			if((carInfoArry[i].TerminalCode) == e)
+			{
+				console.info("change car information");
+				document.getElementById("LicensePlate").innerHTML = carInfoArry[i].LicensePlate;
+				document.getElementById("VinNo").innerHTML = carInfoArry[i].VinNo;
+				document.getElementById("CarId").innerHTML = carInfoArry[i].CarId;
+				document.getElementById("CarTypeName").innerHTML = carInfoArry[i].CarTypeName;
+				document.getElementById("CarBatchName").innerHTML = carInfoArry[i].CarBatchName;
+				document.getElementById("CompanyName").innerHTML = carInfoArry[i].CompanyName;
+				document.getElementById("UserRegionName").innerHTML = carInfoArry[i].UserRegionName;
+				break;			
+			}
+		}
+	}
+
+	
+    function carBatteryDataChart() {
+
+		var socData = new Array();
+		var voltageData = new Array();
+		var currentData = new Array();
+		for (var i = 0; i < carBatterParams.length; i ++)
+		{
+			socData[i]=new Array();
+			socData[i][0] = i;
+			socData[i][1] = carBatterParams[i].soc;
+
+			voltageData[i]=new Array();
+			voltageData[i][0] = i;
+			voltageData[i][1] = carBatterParams[i].batteryVoltage;
+
+			currentData[i]=new Array();
+			currentData[i][0] = i;
+			currentData[i][1] = carBatterParams[i].batteryCurrent;
+		}
+	 	
+        
+       
+        console.info("var plot = $.plot($(#carBattery),");
+        var plot = $.plot($("#carBattery"), [{
+                    data: socData,
+                    label: "soc"
+                }
+                , {
+                    data: voltageData,
+                    label: "voltage"
+                }
+                , {
+                    data: currentData,
+                    label: "current"
+                }
+            ], {
+                series: {
+                    lines: {
+                        show: true,
+                        lineWidth: 2,
+                        fill: true,
+                        fillColor: {
+                            colors: [{
+                                    opacity: 0.05
+                                }, {
+                                    opacity: 0.01
+                                }, {
+                                    opacity: 0.01
+                                }
+                            ]
+                        }
+                    },
+                    points: {
+                        show: false
+                    },
+                    shadowSize: 2
+                },
+                grid: {
+                    hoverable: true,
+                    clickable: true,
+                    tickColor: "#eee",
+                    borderWidth: 0
+                },
+                colors: ["#DB5E8C", "#F0AD4E", "#5E87B0"],
+                xaxis: {
+                    ticks: 11,
+                    tickDecimals: 0
+                },
+                yaxis: {
+                    ticks: 11,
+                    tickDecimals: 0
+                }
+            });
+
+
+        function showTooltip(x, y, contents) {
+            $('<div id="tooltip">' + contents + '</div>').css({
+                    position: 'absolute',
+                    display: 'none',
+                    top: y + 5,
+                    left: x + 15,
+                    border: '1px solid #333',
+                    padding: '4px',
+                    color: '#fff',
+                    'border-radius': '3px',
+                    'background-color': '#333',
+                    opacity: 0.80
+                }).appendTo("body").fadeIn(200);
+        }
+
+        var previousPoint = null;
+        $("#carBattery").bind("plothover", function (event, pos, item) {
+            $("#x").text(pos.x.toFixed(2));
+            $("#y").text(pos.y.toFixed(2));
+
+            if (item) {
+                if (previousPoint != item.dataIndex) {
+                    previousPoint = item.dataIndex;
+
+                    $("#tooltip").remove();
+                    var x = item.datapoint[0].toFixed(2),
+                        y = item.datapoint[1].toFixed(2);
+
+                    // console.info("pageX = "+item.pageX+"pageY = "+item.pageY);
+                    // console.info("x = "+carBatterParams[parseInt(x)].date);
+                    var dateTmp = carBatterParams[parseInt(x)].date;
+                    // dateTmp=dateTmp.Substring(0,dateTmp.length-2);
+                    console.info("dateTmp = "+dateTmp);
+                    showTooltip(item.pageX, item.pageY, "时间:"+dateTmp+"  参数:"+y);
+                }
+            } else {
+                $("#tooltip").remove();
+                previousPoint = null;
+            }
+        });
+    }
+	// carBatteryDataChart();
+
+
+</script>

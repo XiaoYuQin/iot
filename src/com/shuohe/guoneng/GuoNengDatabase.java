@@ -44,6 +44,79 @@ public class GuoNengDatabase {
             return null;
         }  
 	}
+	public static String getShaolinBusInfo()
+	{
+	    String sql = null;  
+	    DBhelper db1 = null;  
+	    ResultSet ret = null;  
+		sql = "select * from shaolincarlist";//SQL语句  
+        db1 = new DBhelper(sql);//创建DBHelper对象  
+        try {  
+            ret = db1.pst.executeQuery();//执行语句，得到结果集  
+            
+            ArrayList<ShaolinBusInfo> shaolinbusList = new ArrayList<ShaolinBusInfo>();
+            
+            while (ret.next()) {  
+            	ShaolinBusInfo bus = new ShaolinBusInfo(
+            			ret.getString(2), //CarBatchName
+            			ret.getString(3), //CarId
+            			ret.getString(4), //CarTypeName
+            			ret.getString(5), //CompanyName
+            			ret.getString(6), //LicensePlate
+            			ret.getString(7), //TerminalCode
+            			ret.getString(8), //UserRegionName
+            			ret.getString(9) //VinNo
+            		);
+            	shaolinbusList.add(bus);
+            }//显示数据  
+            String jsonString = toJsonByPretty(shaolinbusList);
+            //System.out.println(jsonString);
+            ret.close();  
+            db1.close();//关闭连接  
+            return jsonString;
+        } catch (SQLException e) {  
+            e.printStackTrace();  
+            return null;
+        }  
+	}
+	/**
+	 * @param carId
+	 * @param lineNumber 请求的条数
+	 * @return
+	 */
+	public static String getShaolinBusBatteryHistoryForLast(String carId,String lineNumber)
+	{
+	    String sql = null;  
+	    DBhelper db1 = null;  
+	    ResultSet ret = null;  
+		sql = "SELECT * FROM shaolincarparamspider WHERE carID="+carId+" ORDER BY id DESC LIMIT "+lineNumber;//SQL语句  			
+		
+        db1 = new DBhelper(sql);//创建DBHelper对象  
+        try {  
+            ret = db1.pst.executeQuery();//执行语句，得到结果集  
+            
+            ArrayList<ShaoLinBusBattery> shaolinbusList = new ArrayList<ShaoLinBusBattery>();
+            
+            while (ret.next()) {  
+            	ShaoLinBusBattery bus = new ShaoLinBusBattery(
+            			Integer.parseInt(ret.getString(3)), //gpsSignal
+            			Float.parseFloat(ret.getString(4)), //soc
+            			Float.parseFloat(ret.getString(5)), //batteryVoltage
+            			Float.parseFloat(ret.getString(6)), //batteryCurrent
+            			ret.getString(9)
+            		);
+            	shaolinbusList.add(bus);
+            }//显示数据  
+            String jsonString = toJsonByPretty(shaolinbusList);
+            //System.out.println(jsonString);
+            ret.close();  
+            db1.close();//关闭连接  
+            return jsonString;
+        } catch (SQLException e) {  
+            e.printStackTrace();  
+            return null;
+        }  
+	}
 	
 	
 	/**

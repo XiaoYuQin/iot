@@ -1100,6 +1100,17 @@ var App = function () {
 	/*	Fuel UX Tree
 	/*-----------------------------------------------------------------------------------*/
 	var handleTree = function () {
+
+        $('#carsTree').admin_tree({
+            dataSource: carsTreeDataSource ,
+            loadingHTML:'<div class="tree-loading"><i class="fa fa-spinner fa-2x fa-spin"></i></div>',
+            'open-icon' : 'fa-folder-open',
+            'close-icon' : 'fa-folder',
+            'selectable' : false,
+            'selected-icon' : null,
+            'unselected-icon' : null
+        });
+        
 		$('#tree1').admin_tree({
 			dataSource: treeDataSource ,
 			multiSelect:true,

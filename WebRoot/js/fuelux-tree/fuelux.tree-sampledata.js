@@ -157,3 +157,20 @@ tree_data_3['employees']['additionalParameters'] = {
 }
 
 var treeDataSource3 = new DataSourceTree({data: tree_data_3});
+
+var car_tree_data = {
+    '50007445' : {name: '<font size="3">豫EGJ983</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007445);"></i> ', type: 'item'},
+    '50007556' : {name: '<font size="3">豫EGJ971</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007556);"></i> ', type: 'item'},
+    '50007555' : {name: '<font size="3">豫EGJ976</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007555);"></i> ', type: 'item'},
+    '50007550' : {name: '<font size="3">豫EGJ978</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007550);"></i> ', type: 'item'},
+    '50007450' : {name: '<font size="3">豫EGJ957</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007450);"></i> ', type: 'item'},
+    '50007444' : {name: '<font size="3">豫EGJ993</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007444);"></i> ', type: 'item'},
+    '50007449' : {name: '<font size="3">豫EGJ980</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007449);"></i> ', type: 'item'},
+    '50007447' : {name: '<font size="3">豫EGJ997</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007447);"></i> ', type: 'item'},
+    '50007446' : {name: '<font size="3">豫EGJ990</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007446);"></i> ', type: 'item'},
+    '50007443' : {name: '<font size="3">豫EGJ992</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007443);"></i> ', type: 'item'},
+    '50007438' : {name: '<font size="3">豫EGJ917</font>  <i class="fa fa-map-marker fa-2x" onclick="itemClicked(50007438);"></i> ', type: 'item'}
+}
+
+
+var carsTreeDataSource = new DataSourceTree({data: car_tree_data});
