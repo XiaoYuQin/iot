@@ -431,7 +431,7 @@
 		//每次提交前, 先放弃上一次ajax的提交, 这样就不会同时有多个ajax正在请求, 卡死浏览器
 		ajax = $.ajax(
 		{
-			url : "http://shuohe-tech.imwork.net/iot/business/getShaolinBusCarInfoById.jsp"//请求的url
+			url : "http://shuohe-tech.imwork.net:8080/iot/business/getShaolinBusCarInfoById.jsp"//请求的url
 			,async : false
 			,dataType : "jsonp"
 			//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
@@ -474,7 +474,7 @@
 		//每次提交前, 先放弃上一次ajax的提交, 这样就不会同时有多个ajax正在请求, 卡死浏览器
 		ajax = $.ajax(
 		{
-			url : "http://shuohe-tech.imwork.net/iot/business/getShaolinBusBatteryParamById.jsp"//请求的url
+			url : "http://shuohe-tech.imwork.net:8080/iot/business/getShaolinBusBatteryParamById.jsp"//请求的url
 			,async : false
 			,dataType : "jsonp"			
 			,jsonp : "callback"//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)

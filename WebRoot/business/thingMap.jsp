@@ -429,7 +429,7 @@
 								//每次提交前, 先放弃上一次ajax的提交, 这样就不会同时有多个ajax正在请求, 卡死浏览器
 								ajax = $.ajax(
 								{
-									url : "http://shuohe-tech.imwork.net/iot/business/getShaolinBuses.jsp"//请求的url
+									url : "http://shuohe-tech.imwork.net:8080/iot/business/getShaolinBuses.jsp"//请求的url
 									,
 									async : false,
 									dataType : "jsonp"
