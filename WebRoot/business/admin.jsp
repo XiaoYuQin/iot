@@ -223,33 +223,8 @@
 		<div id="main-content">
 			<div class="container">
 				<div class="row">
-					<div id="content" class="col-lg-12">
-						<!-- PAGE HEADER-->
-						<div class="row">
-							<div class="col-sm-12">
-								<div class="page-header">
-									<!-- STYLER -->
-									
-									<!-- /STYLER -->
-									<!-- BREADCRUMBS -->
-									<ul class="breadcrumb">
-										<li>
-											<i class="fa fa-home"></i>
-											<a href="../business/index.jsp">主页</a>
-										</li>		
-										<li>
-											<a >用户设置</a>
-										</li>										
-									</ul>
-									<!-- /BREADCRUMBS -->
-									<div class="clearfix">
-										<h3 class="content-title pull-left">用户设置</h3>
-									</div>
-									<div class="description">查看及修改您的资料</div>
-								</div>
-							</div>
-						</div>
-						<!-- /PAGE HEADER -->
+					<div id="content" class="col-lg-12">	
+						<div class="divide-20"></div>					
 						<!-- 用户资料 -->
 						<div class="row">
 							<div class="col-md-2">

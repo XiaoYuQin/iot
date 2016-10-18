@@ -281,32 +281,7 @@
 			<div class="container">
 				<div class="row">
 					<div id="content" class="col-lg-12">
-						<!-- PAGE HEADER-->
-						<div class="row">
-							<div class="col-sm-12">
-								<div class="page-header">
-									<!-- STYLER -->
-									
-									<!-- /STYLER -->
-									<!-- BREADCRUMBS -->
-									<ul class="breadcrumb">
-										<li>
-											<i class="fa fa-home"></i>
-											<a href="index.html">主页</a>
-										</li>
-										<li>传感器报表</li>
-									</ul>
-									<!-- /BREADCRUMBS -->
-									<div class="clearfix">
-										<h3 class="content-title pull-left">传感器报表</h3>
-									</div>
-									<div class="description">显示一个单独的传感器的数据</div>
-								</div>
-							</div>
-						</div>
-						<!-- /PAGE HEADER -->
-
-
+					<div class="divide-20"></div>
 						<!-- INTERACTIVE CHART -->
 						<div class="row">
 							<div class="col-md-2">
@@ -506,8 +481,7 @@
 	
 
 	var initCarId = "50007446";
-	itemClicked(initCarId);
-	var t1 = window.setInterval("getCarBatteryParam(initCarId)", 10000);
+
 	//点击摘取车辆信息，并且刷新显示详情
 	function itemClicked(e){
 		initCarId = e;
@@ -535,12 +509,68 @@
 		}
 	}
 
-	
-    function carBatteryDataChart() {
+	console.info("var plot = $.plot($(#carBattery),");
+    var plot = $.plot($("#carBattery"), [{
+                data: socData,
+                label: "soc"
+            }
+            , {
+                data: voltageData,
+                label: "voltage"
+            }
+            , {
+                data: currentData,
+                label: "current"
+            }
+        ], {
+            series: {
+                lines: {
+                    show: true,
+                    lineWidth: 2,
+                    fill: true,
+                    fillColor: {
+                        colors: [{
+                                opacity: 0.05
+                            }, {
+                                opacity: 0.01
+                            }, {
+                                opacity: 0.01
+                            }
+                        ]
+                    }
+                },
+                points: {
+                    show: false
+                },
+                shadowSize: 2
+            },
+            grid: {
+                hoverable: true,
+                clickable: true,
+                tickColor: "#eee",
+                borderWidth: 0
+            },
+            colors: ["#DB5E8C", "#F0AD4E", "#5E87B0"],
+            xaxis: {
+                ticks: 11,
+                tickDecimals: 0
+            },
+            yaxis: {
+                ticks: 11,
+                tickDecimals: 0
+            }
+        });
 
-		var socData = new Array();
-		var voltageData = new Array();
-		var currentData = new Array();
+	var socData = new Array();
+	var voltageData = new Array();
+	var currentData = new Array();
+
+
+       // myChart = new Chart('bar', data, '#chart');
+
+    function carBatteryDataChart() {
+    	
+    	console.info("carBatteryDataChart");
 		for (var i = 0; i < carBatterParams.length; i ++)
 		{
 			socData[i]=new Array();
@@ -555,104 +585,74 @@
 			currentData[i][0] = i;
 			currentData[i][1] = carBatterParams[i].batteryCurrent;
 		}
-	 	
+
+		var chart_updata = {
+			"socData": [
+				{
+					"data": socData,
+					"className": "SOC"
+				}
+			],
+			"voltageData": [
+				{
+					"data": voltageData,
+					"className": "电压"
+				}
+			],
+			"currentData": [
+				{
+					"data": currentData,
+					"className": "电流"
+				}
+			]
+		}
+
+	    plot.setData(chart_updata);
+        plot.draw();	 	
+	}
         
-       
-        console.info("var plot = $.plot($(#carBattery),");
-        var plot = $.plot($("#carBattery"), [{
-                    data: socData,
-                    label: "soc"
-                }
-                , {
-                    data: voltageData,
-                    label: "voltage"
-                }
-                , {
-                    data: currentData,
-                    label: "current"
-                }
-            ], {
-                series: {
-                    lines: {
-                        show: true,
-                        lineWidth: 2,
-                        fill: true,
-                        fillColor: {
-                            colors: [{
-                                    opacity: 0.05
-                                }, {
-                                    opacity: 0.01
-                                }, {
-                                    opacity: 0.01
-                                }
-                            ]
-                        }
-                    },
-                    points: {
-                        show: false
-                    },
-                    shadowSize: 2
-                },
-                grid: {
-                    hoverable: true,
-                    clickable: true,
-                    tickColor: "#eee",
-                    borderWidth: 0
-                },
-                colors: ["#DB5E8C", "#F0AD4E", "#5E87B0"],
-                xaxis: {
-                    ticks: 11,
-                    tickDecimals: 0
-                },
-                yaxis: {
-                    ticks: 11,
-                    tickDecimals: 0
-                }
-            });
-
-
-        function showTooltip(x, y, contents) {
-            $('<div id="tooltip">' + contents + '</div>').css({
-                    position: 'absolute',
-                    display: 'none',
-                    top: y + 5,
-                    left: x + 15,
-                    border: '1px solid #333',
-                    padding: '4px',
-                    color: '#fff',
-                    'border-radius': '3px',
-                    'background-color': '#333',
-                    opacity: 0.80
-                }).appendTo("body").fadeIn(200);
-        }
-
-        var previousPoint = null;
-        $("#carBattery").bind("plothover", function (event, pos, item) {
-            $("#x").text(pos.x.toFixed(2));
-            $("#y").text(pos.y.toFixed(2));
-
-            if (item) {
-                if (previousPoint != item.dataIndex) {
-                    previousPoint = item.dataIndex;
-
-                    $("#tooltip").remove();
-                    var x = item.datapoint[0].toFixed(2),
-                        y = item.datapoint[1].toFixed(2);
-
-                    // console.info("pageX = "+item.pageX+"pageY = "+item.pageY);
-                    // console.info("x = "+carBatterParams[parseInt(x)].date);
-                    var dateTmp = carBatterParams[parseInt(x)].date;
-                    // dateTmp=dateTmp.Substring(0,dateTmp.length-2);
-                    console.info("dateTmp = "+dateTmp);
-                    showTooltip(item.pageX, item.pageY, "时间:"+dateTmp+"  参数:"+y);
-                }
-            } else {
-                $("#tooltip").remove();
-                previousPoint = null;
-            }
-        });
+    function showTooltip(x, y, contents) {
+        $('<div id="tooltip">' + contents + '</div>').css({
+            position: 'absolute',
+            display: 'none',
+            top: y + 5,
+            left: x + 15,
+            border: '1px solid #333',
+            padding: '4px',
+            color: '#fff',
+            'border-radius': '3px',
+            'background-color': '#333',
+            opacity: 0.80
+        }).appendTo("body").fadeIn(200);
     }
-	// carBatteryDataChart();
 
+    var previousPoint = null;
+    $("#carBattery").bind("plothover", function (event, pos, item) {
+        $("#x").text(pos.x.toFixed(2));
+        $("#y").text(pos.y.toFixed(2));
+
+        if (item) {
+            if (previousPoint != item.dataIndex) {
+                previousPoint = item.dataIndex;
+
+                $("#tooltip").remove();
+                var x = item.datapoint[0].toFixed(2),
+                    y = item.datapoint[1].toFixed(2);
+
+                // console.info("pageX = "+item.pageX+"pageY = "+item.pageY);
+                // console.info("x = "+carBatterParams[parseInt(x)].date);
+                var dateTmp = carBatterParams[parseInt(x)].date;
+                // dateTmp=dateTmp.Substring(0,dateTmp.length-2);
+                console.info("dateTmp = "+dateTmp);
+                showTooltip(item.pageX, item.pageY, "时间:"+dateTmp+"  参数:"+y);
+            }
+        } else {
+            $("#tooltip").remove();
+            previousPoint = null;
+        }
+    });
+	// carBatteryDataChart();
+	itemClicked(initCarId);
+	var t1 = window.setInterval("getCarBatteryParam(initCarId)", 10000);
 
 </script>

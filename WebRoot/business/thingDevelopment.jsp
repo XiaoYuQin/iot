@@ -196,33 +196,7 @@
 			<div class="container">
 				<div class="row">
 					<div id="content" class="col-lg-12">
-						<!-- PAGE HEADER-->
-						<div class="row">
-							<div class="col-sm-12">
-								<div class="page-header">
-									<!-- STYLER -->
-									
-									<!-- /STYLER -->
-									<!-- BREADCRUMBS -->
-									<ul class="breadcrumb">
-										<li>
-											<i class="fa fa-home"></i>
-											<a href="../business/index.jsp">主页</a>
-										</li>		
-										<li>
-											<a href="#">设备开发</a>
-										</li>
-										
-									</ul>
-									<!-- /BREADCRUMBS -->
-									<div class="clearfix">
-										<h3 class="content-title pull-left">设备开发</h3>
-									</div>
-									<div class="description">在此新增您的设备</div>
-								</div>
-							</div>
-						</div>
-						<!-- /PAGE HEADER -->
+						<div class="divide-20"></div>
 						<!-- 新增设备 -->
 						<div class="row">
 							<div class="col-md-12">
