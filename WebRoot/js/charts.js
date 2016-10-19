@@ -606,12 +606,12 @@ var Charts = function () {
                 var updateInterval = 30;
                 var plot = $.plot($("#chart_4"), [getRandomData()], options);
 
-                function update() {
-                    plot.setData([getRandomData()]);
-                    plot.draw();
-                    setTimeout(update, updateInterval);
-                }
-                update();
+                // function update() {
+                //     plot.setData([getRandomData()]);
+                //     plot.draw();
+                //     setTimeout(update, updateInterval);
+                // }
+                // update();
             }
 
             /* Bars with controls */
