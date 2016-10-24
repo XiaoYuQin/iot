@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ page language="java" import="java.util.*"%>
-<%@ page import="os.*" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -285,7 +285,7 @@
 													<td class="hidden-xs">LS8GDEB47F1003240</td>
 													<td class="center"><font color="green">正常</font></td>
 												</tr>
-												<tr class="gradeX" value="123" onclick=print("你好two") style="cursor:pointer;">
+												<tr class="gradeX" value="123" onclick=print"('你好two');" style="cursor:pointer;">
 												<!-- <input type="button" name="button3" value="Third" onclick="print ("你好three")">  -->
 													<td>少林纯电动客车</td>
 													<td>林州市天安公共交通有限责任公司</td>
