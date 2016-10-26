@@ -3,6 +3,7 @@ package com.shuohe.datatable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 import com.database.DBhelper;
 import com.google.gson.Gson;
@@ -12,33 +13,102 @@ public class Datatable {
 
 	static String tableName = "datatablesList";
 	
+	/**
+	 * 返回所有用户的实体类
+	 * @return
+	 */
+	public static ArrayList<DatatableStruct> getAllDatatables()
+	{
+	    String sql = null;  
+	    DBhelper db1 = null;  
+	    ResultSet ret = null;  
+		sql = "select * from "+tableName+"";//SQL语句  
+        db1 = new DBhelper(sql);//创建DBHelper对象  
+        try {  
+            ret = db1.pst.executeQuery();//执行语句，得到结果集  
+            
+            ArrayList<DatatableStruct> datatableStructs = new ArrayList<DatatableStruct>();
+            
+            while (ret.next()) {  
+//            	public DatatableStruct(String name,String createDate,String createUser,String status,String info)
+            	DatatableStruct datatableStruct = new DatatableStruct(
+            			ret.getString(2),	//name
+            			ret.getString(3),	//password            			
+            			ret.getString(4),	//mail
+            			ret.getString(5),	//signUpDate
+            			ret.getString(6) 	//status
+            		);
+            	datatableStructs.add(datatableStruct);
+            }//显示数据  
+            
+            //System.out.println(jsonString);
+            ret.close();  
+            db1.close();//关闭连接  
+            return datatableStructs;
+        } catch (SQLException e) {  
+            e.printStackTrace();  
+            return null;
+        }  
+	}
+	
+	
+
+	
 	public static String creatNewDatabase(String name,String status,String info,String user)
 	{
 		String sql = null;  
-	    DBhelper db1 = null;  
-	    
-	    if(rechecking(name))
-	    	return "{\"result\":false,\"info\":\"表名重复\"}";
-	    	    
+		DBhelper db1 = null;  
+		
+		if(rechecking(name))
+			return "{\"result\":false,\"info\":\"表名重复\"}";
+		
+		if(!creatDatatableDatabase(name))
+		{
+			return "{\"result\":false,\"info\":\"创建数据表失败\"}";
+		}
+			    				
 		sql = "insert into "+tableName+" values(0"+","
-				+"'"+name+"'"+","
-				+"'"+status+"'"+","
-				+"'"+info+"'"+","
-				+"'"+getSystemDateToString()+"'"+","
-				+"'"+user+"'"+")";
+			+"'"+name+"'"+","
+			+"'"+status+"'"+","
+			+"'"+info+"'"+","
+			+"'"+getSystemDateToString()+"'"+","
+			+"'"+user+"'"+")";
 		
-		 System.out.println(sql);
-        db1 = new DBhelper(sql);//创建DBHelper对象  
-        try {  
-            boolean ret = db1.pst.execute();//执行语句，得到结果集         
-            db1.close();//关闭连接        
-            return "{\"result\":true,\"info\":\"创建成功\"}";
-        } catch (SQLException e) {  
-            e.printStackTrace();  
-            return "{\"result\":false,\"info\":\"数据库错误\"}";
-        }  
-		
+		System.out.println(sql);		 
+		db1 = new DBhelper(sql);//创建DBHelper对象  		 	
+		 
+		try {  
+			db1.pst.execute();
+			db1.close();//关闭连接        
+			return "{\"result\":true,\"info\":\"创建成功\"}";
+		} catch (SQLException e) {  
+			e.printStackTrace();  
+			return "{\"result\":false,\"info\":\"数据库错误\"}";
+		}  		
 	}
+
+	public static boolean creatDatatableDatabase(String tableName)
+	{
+		String sql = null;  
+		DBhelper db1 = null;  
+					    			
+//		sql = "create database "+tableName;
+		sql = "CREATE TABLE "+tableName+"(id int NOT NULL auto_increment,PRIMARY KEY (id))";
+//		CREATE TABLE admin(id int(4) NOT NULL auto_increment,PRIMARY KEY (id))
+		
+		System.out.println(sql);		 
+		db1 = new DBhelper(sql);//创建DBHelper对象  		 
+		 
+		try {  
+			db1.pst.execute();
+			db1.close();//关闭连接        
+			return true;
+		} catch (SQLException e) {  
+			e.printStackTrace();  
+			return false;
+		}  
+	}
+	
 	/**
 	 * 检测数据库中是否已经有相同名称的数据表
 	 * @param name
@@ -66,6 +136,54 @@ public class Datatable {
             return false;
         }  
 	}
+	
+	/**
+	 * 根据数据表的名称获得数据表中的键名组成的Json字符串
+	 * @return
+	 */
+	public static String getFiledByTableName(String tableName)
+	{
+
+	 	String sql = null;  
+	    DBhelper db1 = null;  
+	    ResultSet ret = null;  
+	    sql = "show full columns from "+tableName;
+        db1 = new DBhelper(sql);//创建DBHelper对象  
+        try {  
+            ret = db1.pst.executeQuery();//执行语句，得到结果集  
+            
+            ArrayList<DatabaseStruct> datatableStructs = new ArrayList<DatabaseStruct>();
+            
+            while (ret.next()) {  
+//	            	public DatatableStruct(String name,String createDate,String createUser,String status,String info)
+            	DatabaseStruct databaseStruct = new DatabaseStruct(
+            			ret.getString(1),	//name
+            			ret.getString(2),	//password            			
+            			ret.getString(3),	//mail
+            			ret.getString(4),	//signUpDate
+            			ret.getString(5), 	//status
+            			ret.getString(6),	//password            			
+            			ret.getString(7),	//mail
+            			ret.getString(8),	//signUpDate
+            			ret.getString(9) 	//status
+            		);
+            	datatableStructs.add(databaseStruct);
+            }//显示数据  
+            
+            //System.out.println(jsonString);
+            ret.close();  
+            db1.close();//关闭连接  
+            return toJsonByPretty(datatableStructs);
+        } catch (SQLException e) {  
+            e.printStackTrace();  
+            return null;
+        }  
+		
+	}
+	
+	
+	
+	
 	/**
 	 * 获得系统时间
 	 * @author    秦晓宇

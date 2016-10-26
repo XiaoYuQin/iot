@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page import="com.shuohe.datatable.*"%> 
+<%@ page import="java.util.ArrayList" %> 
 <%
     String name = request.getContextPath()+"/";
 %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,17 +31,18 @@
 	<!-- INBOX CSS -->
 	<link rel="stylesheet" href="../../../css/inbox.css">
 
-	<!-- VERTICAL TIMELINE -->
-	<!-- <link rel="stylesheet" href="../../../js/vertical-timeline/css/style.css"> -->
-
 	<link rel="stylesheet" type="text/css" href="../../../js/fuelux-tree/fuelux.min.css" />
 
 
 	<style>		
 		#creatDatatable,
-		#modifyDatatable {
+		#modifyDatatable,
+		#datatableFiled,
+		#datatablePermissions,
+		#datatableAbout {
 		  display: none;
 		}
+
 	</style>
 
 	<style> 
@@ -222,14 +226,6 @@
 							<li><a class=""><span class="sub-menu-text">操作日志</span></a></li>
 						</ul>
 					</li>
-
-<!-- 					<li class="active">
-						<a class="" >
-							<i class="fa fa-gear fa-fw"></i> 
-							<span class="menu-text">系统设置</span>
-							<span class="selected"></span>
-						</a>
-					</li> -->
 				</ul>
 				<!-- /SIDEBAR MENU -->
 			</div>
@@ -263,29 +259,21 @@
 						</div>
 						<!-- </div> -->
 						<div  class="col-md-9">
-							<!-- <div class="box border blue" style="height: 650px">
-								<div class="box-title">
-									<h4><i class="fa fa-signal"></i>位置</h4>
-									<div class="tools">
-										<a href="javascript:;" class="reload">
-											<i class="fa fa-refresh"></i>
-										</a>
-									</div>
-								</div>
-								<div class="box-body" >
-									<section style="height: 590px">
-										<div>fasdfasdfasdf</div>
-
-									</section>
-								</div>
-							</div> -->
 							<section id="creatDatatable" class="visible">
 								
-
 							</section>
+
 							<section id="modifyDatatable">
-								<div class="box-body big">
-									<h3 class="form-title">新建数据表</h3>
+								<div class="box border blue">
+									<div class="box-title">
+										<h4><i></i>新建数据表</h4>
+										<div class="tools">
+											<a href="javascript:;" class="reload">
+												<i class="fa fa-refresh"></i>
+											</a>
+										</div>
+									</div>
+									<div class="box-body">
 									<!-- <form role="form"> -->
 										<div class="form-group">
 											<label>名称</label><br>
@@ -304,7 +292,146 @@
 										</div>
 
 										<button class="btn btn-success" onclick="createNewTable();">提交</button><img id="createDatatableWaitImag" style="display:none;" src="../../../img/loaders/4.gif">
-									<!-- </form>								 -->
+									<!-- </form>	
+																 -->
+									</div>
+								</div>																 
+							</section>
+							<section id="datatableFiled">
+								<div class="box border blue">
+									<div class="box-title">
+										<h4><i></i>字段设置</h4>
+										<div class="tools">
+											<a href="javascript:;" class="reload">
+												<i class="fa fa-refresh"></i>
+											</a>
+										</div>
+									</div>
+									<div class="box-body">
+										<table class="table table-bordered">
+											<thead>
+												<tr>
+													<th>#</th>
+													<th>字段号</th>
+													<th>名称</th>
+													<th>数据类型</th>
+													<th>选项字典</th>
+													<th>应用字段</th>
+													<th>不得重复</th>
+													<th>操作</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>1</td>
+													<td>Mark</td>
+													<td>Otto</td>
+													<td>@mdo</td>
+													<td>@mdo</td>
+													<td>@mdo</td>
+													<td>@mdo</td>
+													<td>
+														<button class="btn btn-xs btn-inverse">修改</button>
+														<button class="btn btn-xs btn-danger">修改</button>
+													</td>
+												</tr>
+												<tr>
+													<td>1</td>
+													<td>Mark</td>
+													<td>Otto</td>
+													<td>@mdo</td>
+													<td>@mdo</td>
+													<td>@mdo</td>
+													<td>@mdo</td>
+													<td>
+														<button class="btn btn-xs btn-inverse">修改</button>
+														<button class="btn btn-xs btn-danger">修改</button>
+													</td>
+												</tr>
+												<tr>
+													<td>1</td>
+													<td>Mark</td>
+													<td>Otto</td>
+													<td>@mdo</td>
+													<td>@mdo</td>
+													<td>@mdo</td>
+													<td>@mdo</td>
+													<td>
+													<!-- 	<button class="btn btn-xs btn-inverse">修改</button>
+														<button class="btn btn-xs btn-danger">修改</button> -->
+															<button type="button" class="btn btn-xs btn-inverse" data-dismiss="modal">修改</button>
+															<button type="button" class="btn btn-xs btn-danger" data-dismiss="modal">删除</button>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+										<div class="btn-toolbar pull-righ">
+											<button class="btn btn-success btn-right" onclick="createNewTable();">新增字段</button>
+											<img id="createDatatableWaitImag" style="display:none;" src="../../../img/loaders/4.gif">
+										</div>
+									</div>
+								</div>
+							</section>
+							<section id="datatablePermissions">
+								<div class="box border blue">
+									<div class="box-title">
+										<h4><i></i>权限设置</h4>
+										<div class="tools">
+											<a href="javascript:;" class="reload">
+												<i class="fa fa-refresh"></i>
+											</a>
+										</div>
+									</div>
+									<div class="box-body">
+										<div class="form-group">
+											<label>名称</label><br>
+											<input type="text" class="form-control" id="creatDatatableName" placeholder="请输入名称">
+										</div>
+										<div class="form-group">
+											<label>状态</label>
+											<select class="form-control" id="createDataTableStatus">
+												<option>使用</option>
+												<option>停用</option>
+											</select>
+										</div>
+										<div class="form-group">
+											<label>说明:</label> 
+											<textarea id="createDataTableInfo" rows="3" cols="5" name="textarea" class="form-control"></textarea>
+										</div>
+
+										<button class="btn btn-success" onclick="createNewTable();">提交</button><img id="createDatatableWaitImag" style="display:none;" src="../../../img/loaders/4.gif">
+									</div>
+								</div>
+							</section>
+							<section id="datatableAbout">
+								<div class="box border blue">
+									<div class="box-title">
+										<h4><i></i>相关</h4>
+										<div class="tools">
+											<a href="javascript:;" class="reload">
+												<i class="fa fa-refresh"></i>
+											</a>
+										</div>
+									</div>
+									<div class="box-body">
+										<div class="form-group">
+											<label>名称</label><br>
+											<input type="text" class="form-control" id="creatDatatableName" placeholder="请输入名称">
+										</div>
+										<div class="form-group">
+											<label>状态</label>
+											<select class="form-control" id="createDataTableStatus">
+												<option>使用</option>
+												<option>停用</option>
+											</select>
+										</div>
+										<div class="form-group">
+											<label>说明:</label> 
+											<textarea id="createDataTableInfo" rows="3" cols="5" name="textarea" class="form-control"></textarea>
+										</div>
+
+										<button class="btn btn-success" onclick="createNewTable();">提交</button><img id="createDatatableWaitImag" style="display:none;" src="../../../img/loaders/4.gif">
+									</div>	
 								</div>
 							</section>
 						</div>
@@ -345,23 +472,13 @@
 	<script type="text/javascript" src="../../../js/datatables/media/assets/js/datatables.min.js"></script>
 	<script type="text/javascript" src="../../../js/datatables/extras/TableTools/media/js/TableTools.min.js"></script>
 	<script type="text/javascript" src="../../../js/datatables/extras/TableTools/media/js/ZeroClipboard.min.js"></script>
-	
-	<!-- VERTICAL TIMELINE -->
-<!-- 	<script type="text/javascript" src="../../../js/vertical-timeline/js/handlebars.js"></script>
-	<script type="text/javascript" src="../../../js/vertical-timeline/js/tabletop.js"></script>
-	<script type="text/javascript" src="../../../s/vertical-timeline/js/plugins.js"></script>
-	<script type="text/javascript" src="../../../js/vertical-timeline/js/script.js"></script> -->
 
 	<!-- BOOTBOX -->
 	<script type="text/javascript" src="../../../js/bootbox/bootbox.min.js"></script>
 
 	<!-- FUELUX TREE -->
-	<script type="text/javascript" src="../../../js/fuelux-tree/fuelux.tree-sampledata.js"></script>
+	<!-- <script type="text/javascript" src="../../../js/fuelux-tree/fuelux.tree-sampledata.js"></script> -->
 	<script type="text/javascript" src="../../../js/fuelux-tree/fuelux.tree.min.js"></script>
-
-	<!-- CUSTOM SCRIPT -->
-	<!-- <script src="../../../js/script.js"></script> -->
-	<!-- <script src="../../../js/inbox.js"></script> -->
 	
 	<script>
 		jQuery(document).ready(function() {		
@@ -374,6 +491,104 @@
 </body>
 </html>
 <script type="text/javascript">
+	var DataSourceTree = function(options) {
+		this._data 	= options.data;
+		this._delay = options.delay;
+	}
+
+	DataSourceTree.prototype.data = function(options, callback) {
+		var self = this;
+		var $data = null;
+
+		if(!("name" in options) && !("type" in options)){
+			$data = this._data;//the root tree
+			callback({ data: $data });
+			return;
+		}
+		else if("type" in options && options.type == "folder") {
+			if("additionalParameters" in options && "children" in options.additionalParameters)
+				$data = options.additionalParameters.children;
+			else $data = {}//no data
+		}
+		
+		if($data != null)//this setTimeout is only for mimicking some random delay
+			setTimeout(function(){callback({ data: $data });} , 0);
+
+		//we have used static data here
+		//but you can retrieve your data dynamically from a server using ajax call
+		//checkout examples/treeview.html and examples/treeview.js for more info
+	};
+
+
+
+	// var tree_data_3 = {
+	// 	'test' : {name: 'test', type: 'folder'},
+	// 	'测试' : {name: '测试', type: 'folder'}
+	// }
+	// tree_data_3['test']['additionalParameters'] = {
+	// 	'children' : {
+	// 		'field' : {name: '字段设置', type: 'item'},
+	// 		'permissions' : {name: '权限设置', type: 'item'},
+	// 		'about' : {name: '相关数据', type: 'item'}
+	// 	}
+	// }
+	// tree_data_3['测试']['additionalParameters'] = {
+	// 	'children' : {
+	// 		'field' : {name: '字段设置', type: 'item'},
+	// 		'permissions' : {name: '权限设置', type: 'item'},
+	// 		'about' : {name: '<span onclick=\"itemClicked(\'50007445\');\">相关数据</span>', type: 'item'}
+	// 	}
+	// }
+
+
+
+	<%  			
+		ArrayList<DatatableStruct> datatables = new ArrayList<DatatableStruct>();
+		datatables = Datatable.getAllDatatables();
+		out.println("var tree_data_3 = {");
+		for(int i=0;i<datatables.size();i++)
+		{			
+			out.println("\'"+datatables.get(i).getName()+"\' : {name: \'"+datatables.get(i).getName() +"\', type: \'folder\'},");
+		}
+		out.println("}");
+		for(int i=0;i<datatables.size();i++)
+		{			
+			out.println("tree_data_3[\'"+datatables.get(i).getName()+"\'][\'additionalParameters\'] = {");
+			out.println("\'children\' : {");
+			out.println("\'field\' : {name: \'<span onclick=\\\"showFieldSection(\\\'"+datatables.get(i).getName()+"\\\');\\\">字段设置</span>\', type: \'item\'},");
+			out.println("\'permissions\' : {name: \'<span onclick=\\\"showPermissionsSection(\\\'"+datatables.get(i).getName()+"\\\');\\\">权限设置</span>\', type: \'item\'},");
+			out.println("\'about\' : {name: \'<span onclick=\\\"showAboutSection(\\\'"+datatables.get(i).getName()+"\\\');\\\">相关数据</span>\', type: \'item\'}");
+			out.println("}}");
+		}
+	%>			
+
+	var treeDataSource3 = new DataSourceTree({data: tree_data_3});
+
+
+
+	function showFieldSection(name)
+	{
+		console.info("showFieldSection = "+name);
+		swapScreen('datatableFiled');
+		sendDatatableFieldReq(name);
+	}
+	function showPermissionsSection(name)
+	{
+		console.info("showPermissionsSection = "+name);
+		swapScreen('datatablePermissions');
+	}
+	function showAboutSection(name)
+	{
+		console.info("showAboutSection = "+name);
+		swapScreen('datatableAbout');
+	}
+
+
+
+
+
+
+
 	var userAccountApp = function () {
 
 	var currentPage = ''; // current page
@@ -428,35 +643,7 @@
 			});
 		});		
 	}
-	function showInfoBootbox()
-	{
-
-	}
-	// var handleTimeline = function () {
-	// 	createStoryJS({
-	// 		type:		'timeline',
-	// 		width:		'100%',
-	// 		height:		'600',
-	// 		source:		'js/timelinejs/example_json.json',
-	// 		embed_id:	'my-timeline',
-	// 		debug:		true,
-	// 		css:        'js/timelinejs/css/timeline.css',     
- //            js:         'js/timelinejs/js/timeline-min.js'    
-	// 	});
-	// }
-
 	var handleTree = function () {
-
-		$('#tree1').admin_tree({
-			dataSource: treeDataSource ,
-			multiSelect:true,
-			loadingHTML:'<div class="tree-loading"><i class="fa fa-spinner fa-2x fa-spin"></i></div>',
-			'open-icon' : 'fa-minus',
-			'close-icon' : 'fa-plus',
-			'selectable' : false,
-			'selected-icon' : 'fa-check',
-			'unselected-icon' : 'fa-times'
-		});
 		$('#tree3').admin_tree({
 			dataSource: treeDataSource3 ,
 			multiSelect:true,
@@ -464,19 +651,9 @@
 			'open-icon' : 'fa-minus-square',
 			'close-icon' : 'fa-plus-square',
 			'selectable' : false,
-			'selected-icon' : 'fa-check',
-			'unselected-icon' : 'fa-times'
-		});
-		$('#tree2').admin_tree({
-			dataSource: treeDataSource2 ,
-			loadingHTML:'<div class="tree-loading"><i class="fa fa-spinner fa-2x fa-spin"></i></div>',
-			'open-icon' : 'fa-folder-open',
-			'close-icon' : 'fa-folder',
-			'selectable' : false,
 			'selected-icon' : null,
 			'unselected-icon' : null
 		});
-      
 		//To add font awesome support
 		$('.tree').find('[class*="fa-"]').addClass("fa");
 	}
@@ -632,7 +809,7 @@
 </script>
 <script type="text/javascript">
 	function swapScreen(id) {
-		console.info("swapScreen");
+		console.info("swapScreen = "+id);
 		jQuery('.visible').removeClass('visible animated fadeInUp');
 		jQuery('#'+id).addClass('visible animated fadeInUp');
 	}
@@ -722,6 +899,50 @@
 			}
 		});		
 		document.getElementById("createDatatableWaitImag").style.display = "none";
+	}
+	function sendDatatableFieldReq(table)
+	{
+		console.info("sendDatatableFieldReq("+table+")");
+		ajax.abort();
+		//每次提交前, 先放弃上一次ajax的提交, 这样就不会同时有多个ajax正在请求, 卡死浏览器
+		ajax = $.ajax(
+		{
+			url : "http://shuohe-tech.imwork.net:8080/iot/business/getDatatableFiledsByTableName.jsp"//请求的url
+			,async : false
+			,dataType : "jsonp"			
+			,jsonp : "callback"//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
+			,jsonpCallback : "datatableFieldCallback"
+			,data:  { "tableName": table }
+		});
+	}
+	function datatableFieldCallback(data)
+	{
+		var fileds = jQuery.parseJSON(JSON.stringify(data));
+		// console.info("cars="+JSON.stringify(data));
+		// console.info(cars.length);		
+		for (var i = 0; i < fileds.length; i++)
+		{		
+			// carInfo = new Object();
+			// carInfo.LicensePlate = cars[i].LicensePlate;
+			// carInfo.VinNo = cars[i].VinNo;
+			// carInfo.CarId = cars[i].CarId;
+			// carInfo.CarTypeName = cars[i].CarTypeName;
+			// carInfo.CarBatchName = cars[i].CarBatchName;
+			// carInfo.CompanyName = cars[i].CompanyName;
+			// carInfo.UserRegionName = cars[i].UserRegionName;
+			// carInfo.TerminalCode = cars[i].TerminalCode;
+			// carInfoArry.push(carInfo);
+
+			console.info(fileds[i].Field);
+			console.info(fileds[i].Type);
+			console.info(fileds[i].Collation);
+			console.info(fileds[i].Null);
+			console.info(fileds[i].Key);
+			console.info(fileds[i].Default);
+			console.info(fileds[i].Extra);
+			console.info(fileds[i].Privileges);
+			console.info(fileds[i].Comment);
+		}
 	}
 
 
