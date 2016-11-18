@@ -221,9 +221,11 @@
 							<span class="arrow"></span>
 						</a>
 						<ul class="sub">
-							<li><a class="" href="../../../business/systemManage/userManage/userManager.jsp"><span class="sub-menu-text">用户管理</span></a></li>
+							<li><a class="" href="../../business/systemManage/userManage/userManager.jsp"><span class="sub-menu-text">用户管理</span></a></li>
+							<li><a class="" href="../../business/systemManage/permissionsManage/permissionsManager.jsp"><span class="sub-menu-text">权限管理</span></a></li>
 							<li><a class=""><span class="sub-menu-text">数据表管理</span></a></li>
-							<li><a class=""><span class="sub-menu-text">操作日志</span></a></li>
+							<li><a class="" href="../../business/senserTable.jsp"><span class="sub-menu-text">操作日志</span></a></li>
+						</ul>
 						</ul>
 					</li>
 				</ul>

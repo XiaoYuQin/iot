@@ -191,9 +191,10 @@
 							<span class="arrow"></span>
 						</a>
 						<ul class="sub">
-							<li><a class="" href="../../../business/systemManage/userManage/userManager.jsp"><span class="sub-menu-text">用户管理</span></a></li>
+							<li><a class="" href="../../business/systemManage/userManage/userManager.jsp"><span class="sub-menu-text">用户管理</span></a></li>
 							<li><a class=""><span class="sub-menu-text">权限管理</span></a></li>
-							<li><a class=""><span class="sub-menu-text">操作日志</span></a></li>
+							<li><a class="" href="../../business/systemManage/permissionsManage/dataTableManager.jsp"><span class="sub-menu-text">数据表管理</span></a></li>
+							<li><a class="" href="../../business/senserTable.jsp"><span class="sub-menu-text">操作日志</span></a></li>
 						</ul>
 					</li>
 
@@ -222,10 +223,10 @@
 							<!-- BOX -->
 							<div class="box border">
 								<div class="box-title">
-									<h4><i class="fa fa-columns"></i><span class="hidden-inline-mobile">数据表管理</span></h4>
+									<h4><i class="fa fa-columns"></i><span class="hidden-inline-mobile">授权管理</span></h4>
 								</div>
 								<div class="box-body">
-									<div class="tabbable header-tabs">
+							<!-- 		<div class="tabbable header-tabs">
 										<ul class="nav nav-tabs">
 											<li>
 												<a href="#box_tab5" data-toggle="tab">
@@ -237,7 +238,6 @@
 												<a href="#box_tab4" data-toggle="tab">
 													<i class="fa fa-home"></i> 
 													<span class="hidden-inline-mobile">用户账号</span> 
-													<!-- <span class="badge badge-blue font-11">3</span> -->
 												</a>
 											</li>
 										</ul>
@@ -248,7 +248,8 @@
 											<div class="tab-pane fade" id="box_tab5">
 											</div>
 									  	</div>
-								   	</div>
+								   	</div> -->
+								   	
 								</div>
 							</div>
 							<!-- /BOX -->

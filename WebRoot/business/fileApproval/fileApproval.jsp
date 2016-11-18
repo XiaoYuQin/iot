@@ -1,11 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%
+    String name = request.getContextPath()+"/";
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta charset="utf-8">
-	<title>朔和云 | 系统管理</title>
+	<title>朔和云 | 文件审批</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
 	<meta name="description" content="">
 	<meta name="author" content="">
@@ -15,48 +17,25 @@
 	<link rel="stylesheet" type="text/css"  href="../../css/responsive.css" >
 	
 	<link href="../../font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../../js/jquery-ui-1.10.3.custom/css/custom-theme/jquery-ui-1.10.3.custom.min.css" />
 	<!-- DATE RANGE PICKER -->
 	<link rel="stylesheet" type="text/css" href="../../js/bootstrap-daterangepicker/daterangepicker-bs3.css" />
 	<!-- UNIFORM -->
 	<link rel="stylesheet" type="text/css" href="../../js/uniform/css/uniform.default.min.css" />
+	<link rel="stylesheet" type="text/css" href="../../js/datatables/media/css/jquery.dataTables.min.css" />
+	<link rel="stylesheet" type="text/css" href="../../js/datatables/media/assets/css/datatables.min.css" />
+	<link rel="stylesheet" type="text/css" href="../../js/datatables/extras/TableTools/media/css/TableTools.min.css" />
 	<!-- INBOX CSS -->
 	<link rel="stylesheet" href="../../css/inbox.css">
-	<!-- FONTS -->
-
-	
-    <!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
-    <script src="http://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
-
-	<!-- <link rel="stylesheet" href="../../js/openlayer3/ol.css"> -->
-
-	<style>
-      a.skiplink {
-        position: absolute;
-        clip: rect(1px, 1px, 1px, 1px);
-        padding: 0;
-        border: 0;
-        height: 1px;
-        width: 1px;
-        overflow: hidden;
-      }
-      a.skiplink:focus {
-        clip: auto;
-        height: auto;
-        width: auto;
-        background-color: #fff;
-        padding: 0.3em;
-      }
-      #map:focus {
-        outline: #4A74A8 solid 0.15em;
-      }
-    </style>
-
 </head>
 <body>
 	<!-- HEADER -->
 	<header class="navbar clearfix" id="header">
 		<div class="container">
-				
+				<script type="text/javascript">
+					var name = "<%=name %>";
+					console.info("name = "+name);
+				</script>
 				<div class="navbar-brand">
 					<!-- COMPANY LOGO -->
 					<a href="index.html">
@@ -205,6 +184,13 @@
 							<span class="menu-text">用户设置</span>
 						</a>
 					</li>
+					<li class="active">
+						<a class="" >
+							<i class="fa fa-gear fa-fw"></i> 
+							<span class="menu-text">文件审批</span>
+							<span class="selected"></span>
+						</a>
+					</li>
 					<li class="has-sub">
 						<a href="javascript:;" class="">
 							<i class="fa fa-gear fa-fw"></i> 
@@ -212,10 +198,9 @@
 							<span class="arrow"></span>
 						</a>
 						<ul class="sub">
-							<li><a class="" href="../../business/systemManage/userManage/userManager.jsp"><span class="sub-menu-text">用户管理</span></a></li>
-							<li><a class="" href="../../business/systemManage/permissionsManage/permissionsManager.jsp"><span class="sub-menu-text">权限管理</span></a></li>
-							<li><a class="" href="../../business/systemManage/permissionsManage/dataTableManager.jsp"><span class="sub-menu-text">数据表管理</span></a></li>
-							<li><a class="" href="../../business/senserTable.jsp"><span class="sub-menu-text">操作日志</span></a></li>
+							<li><a class=""><span class="sub-menu-text">用户管理</span></a></li>
+							<li><a class="" href="../../business/systemManage/dataTableManage/dataTableManager.jsp"><span class="sub-menu-text">数据表管理</span></a></li>
+							<li><a class=""><span class="sub-menu-text">操作日志</span></a></li>
 						</ul>
 					</li>
 
@@ -234,48 +219,48 @@
 		<div id="main-content">
 			<div class="container">
 				<div class="row">
+					
+
 					<div id="content" class="col-lg-12">
 						<!-- /PAGE HEADER -->
 						<div class="divide-20"></div>
-						<!-- 用户资料 -->
-						<div class="row">
-							<div class="col-md-2">
-								<div class="list-group">
-								  <li class="list-group-item zero-padding">
-									<img alt="" class="img-responsive" src="../../img/profile/default.jpg" height="180" width="270">
-								  </li>
-								  <div class="list-group-item profile-details">
-										<h2>小明</h2>						
-								 </div>
-								  <a class="list-group-item"><i class="fa fa-user fa-fw"></i> 用户资料</a>
-								  <a href="../../business/admin.jsp" class="list-group-item"><i class="fa fa-cog fa-fw"></i> 设置</a>
-								</div>														
+
+						<div class="col-md-12">
+							<!-- BOX -->
+							<div class="box border">
+								<div class="box-title">
+									<h4><i class="fa fa-columns"></i><span class="hidden-inline-mobile">文件审批</span></h4>
+								</div>
+								<div class="box-body">
+									<div class="tabbable header-tabs">
+										<ul class="nav nav-tabs">
+											<li>
+												<a href="#box_tab5" data-toggle="tab">
+													<i class="fa fa-flask"></i> 
+													<span class="hidden-inline-mobile">历史审批</span>
+												</a>
+											</li>
+											<li class="active">
+												<a href="#box_tab4" data-toggle="tab">
+													<i class="fa fa-home"></i> 
+													<span class="hidden-inline-mobile">当前审批</span> 
+													<!-- <span class="badge badge-blue font-11">3</span> -->
+												</a>
+											</li>
+										</ul>
+									  	<div class="tab-content">
+											<div class="tab-pane fade in active" id="box_tab4">
+												<%@ include file="approval.jsp" %>		
+											</div>
+											<div class="tab-pane fade" id="box_tab5">
+											</div>
+									  	</div>
+								   	</div>
+								</div>
 							</div>
-							<div class="col-md-8">
-								<div class="box border">
-									<div class="box-title">
-										<h4><i class="fa fa-gear"></i><span class="hidden-inline-mobile">简介</span></h4>
-									</div>
-									<div class="box-body">
-										<!-- <div class="list-group"> -->
-											<!-- <div class="list-group-item profile-details"> -->
-												<i class="fa fa-suitcase"></i> <font size="3">职务： </font><font size="2">技术职员</font>	
-												<div class="divide-20"></div>
-												<i class="fa fa-users"></i> <font size="3">部门： </font><font size="2">北京海淀售后部</font>	
-												<div class="divide-20"></div>
-												<i class="fa fa-phone"></i> <font size="3">电话： </font><font size="2">12345678901</font>	
-												<div class="divide-20"></div>
-												<i class="fa fa-envelope"></i> <font size="3">邮箱： </font><font size="2">xiaoming@qq.com</font>	
-												<div class="divide-20"></div>
-												<i class="fa fa-map-marker"></i> <font size="3">地点： </font><font size="2">北京海淀</font>	
-												<div class="divide-20"></div>				
-											<!-- </div> -->
-										<!-- </div>		 -->
-									</div>
-								</div>												
-							</div>
-							<!-- 用户资料 -->
+							<!-- /BOX -->
 						</div>
+							
 						<div class="footer-tools">
 							<span class="go-top">
 								<i class="fa fa-chevron-up"></i> Top
@@ -291,7 +276,6 @@
 	<!-- Placed at the end of the document so the pages load faster -->
 	<!-- JQUERY -->
 	<script src="../../js/jquery/jquery-2.0.3.min.js"></script>
-	<script src="../../js/jquery/jquery-2.2.3.min.js"></script>
 	<!-- JQUERY UI-->
 	<script src="../../js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js"></script>
 	<!-- BOOTSTRAP -->
@@ -313,17 +297,24 @@
 	<script type="text/javascript" src="../../js/bootstrap-wysiwyg/bootstrap-wysiwyg.min.js"></script>
 	<!-- COOKIE -->
 	<script type="text/javascript" src="../../js/jQuery-Cookie/jquery.cookie.min.js"></script>
-
-
+	<script type="text/javascript" src="../../js/datatables/media/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="../../js/datatables/media/assets/js/datatables.min.js"></script>
+	<script type="text/javascript" src="../../js/datatables/extras/TableTools/media/js/TableTools.min.js"></script>
+	<script type="text/javascript" src="../../js/datatables/extras/TableTools/media/js/ZeroClipboard.min.js"></script>
 	<!-- CUSTOM SCRIPT -->
 	<script src="../../js/script.js"></script>
 	<script src="../../js/inbox.js"></script>
 	<script>
-		jQuery(document).ready(function() {		
-			App.setPage("inbox");  //Set current page
+			jQuery(document).ready(function() {		
+			App.setPage("dynamic_table");  //Set current page
 			App.init(); //Initialise plugins and elements
-			Inbox.init();
 		});
+
+		function b1()
+		{
+		  
+		}
+
 	</script>
 	<!-- /JAVASCRIPTS -->
 </body>
