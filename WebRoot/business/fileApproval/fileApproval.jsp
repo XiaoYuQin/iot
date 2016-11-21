@@ -362,16 +362,16 @@
 																	fileApprovalsLeader = FileApprovalDatabase.getAllFileApprovalByLeader(request.getSession().getAttribute("username")+"");
 																	for(int i=0;i<fileApprovalsLeader.size();i++)
 																	{							
-																		out.println("<tr  class=\"gradeX \" onclick=getFileApprovalsInfo(\""+fileApprovalsLeader.get(i).getId()+"\"); href=\"#table-modal\" style=\"cursor:pointer;\">");
-																		out.println("	<td>"+fileApprovalsLeader.get(i).getId()+"</td>");
-																		out.println("	<td>"+fileApprovalsLeader.get(i).getSponsor()+"</td>");
-																		out.println("	<td>"+fileApprovalsLeader.get(i).getleader()+"</td>");
+																		out.println("<tr  class=\"gradeX \">");
+																		out.println("	<td onclick=getFileApprovalsInfo(\""+fileApprovalsLeader.get(i).getId()+"\"); href=\"#table-modal\" style=\"cursor:pointer;\">"+fileApprovalsLeader.get(i).getId()+"</td>");
+																		out.println("	<td onclick=getFileApprovalsInfo(\""+fileApprovalsLeader.get(i).getId()+"\"); href=\"#table-modal\" style=\"cursor:pointer;\">"+fileApprovalsLeader.get(i).getSponsor()+"</td>");
+																		out.println("	<td onclick=getFileApprovalsInfo(\""+fileApprovalsLeader.get(i).getId()+"\"); href=\"#table-modal\" style=\"cursor:pointer;\">"+fileApprovalsLeader.get(i).getleader()+"</td>");
 																		if(fileApprovalsLeader.get(i).getDescribe().length()>10)
-																			out.println("	<td>"+fileApprovalsLeader.get(i).getDescribe().substring(0, 9)+"...</td>");
+																			out.println("	<td onclick=getFileApprovalsInfo(\""+fileApprovalsLeader.get(i).getId()+"\"); href=\"#table-modal\" style=\"cursor:pointer;\">"+fileApprovalsLeader.get(i).getDescribe().substring(0, 9)+"...</td>");
 																		else
-																			out.println("	<td>"+fileApprovalsLeader.get(i).getDescribe()+"</td>");
-																		out.println("	<td>"+fileApprovalsLeader.get(i).getFile()+"</td>");
-																		out.println("	<td>");
+																			out.println("	<td onclick=getFileApprovalsInfo(\""+fileApprovalsLeader.get(i).getId()+"\"); href=\"#table-modal\" style=\"cursor:pointer;\">"+fileApprovalsLeader.get(i).getDescribe()+"</td>");
+																		out.println("	<td onclick=getFileApprovalsInfo(\""+fileApprovalsLeader.get(i).getId()+"\"); href=\"#table-modal\" style=\"cursor:pointer;\">"+fileApprovalsLeader.get(i).getFile()+"</td>");
+																		out.println("	<td onclick=getFileApprovalsInfo(\""+fileApprovalsLeader.get(i).getId()+"\"); href=\"#table-modal\" style=\"cursor:pointer;\">");
 																		//System.out.println("getStatus = "+fileApprovals.get(i).getStatus());
 																		switch(fileApprovalsLeader.get(i).getStatus())
 																		{
@@ -387,10 +387,10 @@
 																		}		
 																		out.println("	</td>");		
 																		out.println("	<td>");
-																			out.println("		<button class=\"btn btn-xs btn-success\" onclick=getFileApprovalsInfo(\""+fileApprovalsLeader.get(i).getId()+"\">通过</button>");
-																			out.println("		<button class=\"btn btn-xs btn-danger\" onclick=getFileApprovalsInfo(\""+fileApprovalsLeader.get(i).getId()+"\">驳回</button>");					
+																			out.println("		<button class=\"btn btn-xs btn-success\" onclick=passFileApproval(\""+fileApprovalsLeader.get(i).getId()+"\")>通过</button>");
+																			out.println("		<button class=\"btn btn-xs btn-danger\" onclick=rejectFileApproval(\""+fileApprovalsLeader.get(i).getId()+"\")>驳回</button>");					
 																		out.println("	</td>");																		
-																		out.println("	<td>"+fileApprovalsLeader.get(i).getDate()+"</td>");								
+																		out.println("	<td onclick=getFileApprovalsInfo(\""+fileApprovalsLeader.get(i).getId()+"\"); href=\"#table-modal\" style=\"cursor:pointer;\">"+fileApprovalsLeader.get(i).getDate()+"</td>");								
 																		out.println("</tr>");
 																	}		
 																%>					
@@ -886,22 +886,22 @@ var checkLayout = function() {
 	// console.info(message4);
 
 
-	var rejectFileApprovalMessage = 
-	"\
-		<form role=\"form\">\
-			<H3>确定要驳回审批申请么？</H3>\
-			<div class=\"form-group\">\
-				<label>驳回意见</label>\
-				<textarea id=\"describe\" class=\"form-control\" rows=\"3\" placeholder=\"请输入驳回意见...\"></textarea>\
-			</div>\
-		</form>\
-	";
-	var passFileApprovalMessage = 
-	"\
-		<form role=\"form\">\
-			<H3>确定要通过审批申请么？</H3>\
-		</form>\
-	";
+	// var rejectFileApprovalMessage = 
+	// "\
+	// 	<form role=\"form\">\
+	// 		<H3>确定要驳回审批申请么？</H3>\
+	// 		<div class=\"form-group\">\
+	// 			<label>驳回意见</label>\
+	// 			<textarea id=\"describe\" class=\"form-control\" rows=\"3\" placeholder=\"请输入驳回意见...\"></textarea>\
+	// 		</div>\
+	// 	</form>\
+	// ";
+	// var passFileApprovalMessage = 
+	// "\
+	// 	<form role=\"form\">\
+	// 		<H3>确定要通过审批申请么？</H3>\
+	// 	</form>\
+	// ";
 
 
 	// var showFileApprovalInfoMessage = 
@@ -984,36 +984,36 @@ var checkLayout = function() {
 			}
 			});
 		});		
-		$(".rejectFileApproval").click(function(){
-			bootbox.dialog({
-			message : rejectFileApprovalMessage,
-			title: "驳回审批申请",
-			buttons: {
-				success: {
-					label: "确定",
-					className: "btn-success",
-					callback: function() {						
-						// Example.show("great success");
-					}
-				}
-			}
-			});
-		});	
-		$(".passFileApproval").click(function(){
-			bootbox.dialog({
-			message : passFileApprovalMessage,
-			title: "通过审批申请",
-			buttons: {
-				success: {
-					label: "确定",
-					className: "btn-success",
-					callback: function() {						
-						// Example.show("great success");
-					}
-				}
-			}
-			});
-		});		
+		// $(".rejectFileApproval").click(function(){
+		// 	bootbox.dialog({
+		// 	message : rejectFileApprovalMessage,
+		// 	title: "驳回审批申请",
+		// 	buttons: {
+		// 		success: {
+		// 			label: "确定",
+		// 			className: "btn-success",
+		// 			callback: function() {						
+		// 				// Example.show("great success");
+		// 			}
+		// 		}
+		// 	}
+		// 	});
+		// });	
+		// $(".passFileApproval").click(function(){
+		// 	bootbox.dialog({
+		// 	message : passFileApprovalMessage,
+		// 	title: "通过审批申请",
+		// 	buttons: {
+		// 		success: {
+		// 			label: "确定",
+		// 			className: "btn-success",
+		// 			callback: function() {						
+		// 				// Example.show("great success");
+		// 			}
+		// 		}
+		// 	}
+		// 	});
+		// });		
 		// $(".showFileApprovalInfo").click(function(){
 		// 	bootbox.dialog({
 		// 	message : showFileApprovalInfoMessage,
@@ -1371,7 +1371,55 @@ var checkLayout = function() {
 			}
 		});
 	}
-
-
+	var passFileApprovalMessage = 
+	"\
+		<form role=\"form\">\
+			<H3>确定要通过审批申请么？</H3>\
+		</form>\
+	";
+	function passFileApproval(id)
+	{
+		console.info("passFileApproval("+id+")");
+		bootbox.dialog({
+			message: passFileApprovalMessage,
+			title: "同意审批请求",
+			buttons: {
+				success: {
+					label: "确定",
+					className: "btn-success",
+					callback: function() {
+						// Example.show("great success");
+					}
+				}
+			}
+		});
+	}
+	var rejectFileApprovalMessage = 
+	"\
+		<form role=\"form\">\
+			<H3>确定要驳回审批申请么？</H3>\
+			<div class=\"form-group\">\
+				<label>驳回意见</label>\
+				<textarea id=\"describe\" class=\"form-control\" rows=\"3\" placeholder=\"请输入驳回意见...\"></textarea>\
+			</div>\
+		</form>\
+	";
+	function rejectFileApproval(id)
+	{
+		console.info("rejectFileApproval("+id+")");
+		bootbox.dialog({
+			message: rejectFileApprovalMessage,
+			title: "驳回审批请求",
+			buttons: {
+				success: {
+					label: "确定",
+					className: "btn-success",
+					callback: function() {
+						// Example.show("great success");
+					}
+				}
+			}
+		});
+	}
 
 </script>
