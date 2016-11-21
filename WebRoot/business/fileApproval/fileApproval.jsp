@@ -198,17 +198,17 @@
 							<li><a class="" href="../../business/senserTable.jsp"><span class="sub-menu-text">传感器数据</span></a></li>
 						</ul>
 					</li>
+					<li class="active">
+						<a class="" >
+							<i class="fa fa-briefcase fa-fw"></i> 
+							<span class="menu-text">文件审批</span>
+							<span class="selected"></span>
+						</a>
+					</li>					
 					<li>
 						<a class="" href="../../business/accountSettings.jsp">
 							<i class="fa fa-user fa-fw"></i>
 							<span class="menu-text">用户设置</span>
-						</a>
-					</li>
-					<li class="active">
-						<a class="" >
-							<i class="fa fa-gear fa-fw"></i> 
-							<span class="menu-text">文件审批</span>
-							<span class="selected"></span>
 						</a>
 					</li>
 					<li class="has-sub">
@@ -220,7 +220,6 @@
 						<ul class="sub">
 							<li><a class=""><span class="sub-menu-text">用户管理</span></a></li>
 							<li><a class="" href="../../business/systemManage/dataTableManage/dataTableManager.jsp"><span class="sub-menu-text">数据表管理</span></a></li>
-							<li><a class=""><span class="sub-menu-text">操作日志</span></a></li>
 						</ul>
 					</li>
 
@@ -820,7 +819,7 @@ var checkLayout = function() {
 	"<form role=\"form\">\
 			<div class=\"form-group\">\
 				<label for=\"userName\">发起人</label>\
-				<input type=\"text\" disabled = \"true\" class=\"form-control\" id=\"sponsor\" value=\" \">\
+				<input type=\"text\" disabled = \"true\" class=\"form-control\" id=\"sponsor\" value=\""+document.getElementById("userName").innerHTML+" \">\
 			</div>\
 			<div class=\"form-group\">\
 				<label for=\"userName\">审批人</label>\
@@ -1371,15 +1370,18 @@ var checkLayout = function() {
 			}
 		});
 	}
-	var passFileApprovalMessage = 
-	"\
-		<form role=\"form\">\
-			<H3>确定要通过审批申请么？</H3>\
-		</form>\
-	";
+
 	function passFileApproval(id)
 	{
-		console.info("passFileApproval("+id+")");
+
+		var passFileApprovalMessage = 
+		"\
+			<form role=\"form\">\
+				<H3>确定要通过审批申请么？</H3>\
+			</form>\
+		";
+
+
 		bootbox.dialog({
 			message: passFileApprovalMessage,
 			title: "同意审批请求",
@@ -1387,26 +1389,46 @@ var checkLayout = function() {
 				success: {
 					label: "确定",
 					className: "btn-success",
-					callback: function() {
+					callback: function() 
+					{
 						// Example.show("great success");
+						console.info("passFileApproval("+id+")");
+						var user = document.getElementById("userName").innerHTML;
+						ajax.abort();
+						//每次提交前, 先放弃上一次ajax的提交, 这样就不会同时有多个ajax正在请求, 卡死浏览器
+						ajax = $.ajax(
+						{
+							url : "http://localhost:8000/iot/business/interface/setFileApprovalPass.jsp"//请求的url
+							,async : false
+							,dataType : "jsonp"			
+							,jsonp : "callback"//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
+							,jsonpCallback : "passFileApprovalCallback"
+							,data:  { "id": id,"user":user}
+						});
 					}
 				}
 			}
 		});
+
+		
 	}
-	var rejectFileApprovalMessage = 
-	"\
-		<form role=\"form\">\
-			<H3>确定要驳回审批申请么？</H3>\
-			<div class=\"form-group\">\
-				<label>驳回意见</label>\
-				<textarea id=\"describe\" class=\"form-control\" rows=\"3\" placeholder=\"请输入驳回意见...\"></textarea>\
-			</div>\
-		</form>\
-	";
-	function rejectFileApproval(id)
+	function passFileApprovalCallback()
 	{
-		console.info("rejectFileApproval("+id+")");
+		console.info("passFileApprovalCallback");
+	}
+	
+	function rejectFileApproval(id,describe)
+	{
+		var rejectFileApprovalMessage = 
+		"\
+			<form role=\"form\">\
+				<H3>确定要驳回审批申请么？</H3>\
+				<div class=\"form-group\">\
+					<label>驳回意见</label>\
+					<textarea id=\"describe\" class=\"form-control\" rows=\"3\" placeholder=\"请输入驳回意见...\"></textarea>\
+				</div>\
+			</form>\
+		";
 		bootbox.dialog({
 			message: rejectFileApprovalMessage,
 			title: "驳回审批请求",
@@ -1414,12 +1436,30 @@ var checkLayout = function() {
 				success: {
 					label: "确定",
 					className: "btn-success",
-					callback: function() {
-						// Example.show("great success");
+					callback: function() 
+					{
+						console.info("rejectFileApproval("+id+")");
+						var user = document.getElementById("userName").innerHTML;
+						ajax.abort();
+						//每次提交前, 先放弃上一次ajax的提交, 这样就不会同时有多个ajax正在请求, 卡死浏览器
+						ajax = $.ajax(
+						{
+							url : "http://localhost:8000/iot/business/interface/setFileApprovalReject.jsp"//请求的url
+							,async : false
+							,dataType : "jsonp"			
+							,jsonp : "callback"//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
+							,jsonpCallback : "rejectFileApprovalCallback"
+							,data:  { "id": id,"describe":describe}
+						});
 					}
 				}
 			}
 		});
+		
+	}
+	function rejectFileApprovalCallback()
+	{
+		console.info("rejectFileApprovalCallback");
 	}
 
 </script>

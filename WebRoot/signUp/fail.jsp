@@ -25,5 +25,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     注册失败
     <br>
+    <%
+		String newLocn = "/iot/index.jsp";
+		response.setHeader("Location", newLocn);
+    %>
+
   </body>
 </html>

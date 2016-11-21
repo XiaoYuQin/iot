@@ -27,5 +27,10 @@
 <body>
 	注册成功
 	<br>
+	<%
+		response.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
+		String newLocn = "../business/index.jsp";
+		response.setHeader("Location", newLocn);
+	%>
 </body>
 </html>

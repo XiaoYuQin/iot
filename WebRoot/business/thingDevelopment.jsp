@@ -182,10 +182,28 @@
 								</ul>
 							</li>
 							<li>
+								<a class="" href="../business/fileApproval/fileApproval.jsp">
+									<i class="fa  fa-briefcase fa-fw"></i>
+									<span class="menu-text">文件审批</span>
+								</a>
+							</li>
+							<li>
 								<a class="" href="../business/accountSettings.jsp">
 									<i class="fa fa-user fa-fw" ></i> 
 									<span class="menu-text">账户设置</span>
 								</a>
+							</li>	
+							<li class="has-sub">
+								<a href="javascript:;" class="">
+									<i class="fa fa-gear fa-fw"></i> 
+									<span class="menu-text">系统设置</span>
+									<span class="arrow"></span>
+								</a>
+								<ul class="sub">
+									<li><a class="" href="../business/systemManage/userManage/userManager.jsp"><span class="sub-menu-text">用户管理</span></a></li>
+									<li><a class="" href="../business/positionManage/positionManager.jsp"><span class="sub-menu-text">职位管理</span></a></li>
+									<li><a class="" href="../business/systemManage/permissionsManage/dataTableManager.jsp"><span class="sub-menu-text">数据表管理</span></a></li>
+								</ul>
 							</li>	
 						</ul>
 						<!-- /SIDEBAR MENU -->
