@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;  
 import java.sql.PreparedStatement;  
 import java.sql.SQLException;  
+import java.sql.Statement;
   
 public class DBhelper {  
     public static final String url = "jdbc:mysql://127.0.0.1:3306/ape?useUnicode=true&characterEncoding=utf-8&useSSL=false";  
@@ -18,7 +19,7 @@ public class DBhelper {
         try {  
 			Class.forName(name).newInstance();//指定连接类型  
             conn = DriverManager.getConnection(url, user, password);//获取连接  
-            pst = conn.prepareStatement(sql);//准备执行语句  
+            pst = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);//准备执行语句  
         } catch (Exception e) {  
             e.printStackTrace();  
         }  

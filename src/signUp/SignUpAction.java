@@ -68,7 +68,14 @@ public class SignUpAction extends ActionSupport {
 		sql = "insert into login values(0"+","+"'"+name+"'"+","
 				+"'"+password+"'"+","
 				+"'"+getSystemDateToString()+"'"+","
-				+"'"+mail+"'"+")";
+				+"'"+mail+"'"+","
+				+"'"+"0"+"'"+","
+				+"'"+""+"'"+","
+				+"'"+""+"'"+","
+				+"'"+""+"'"+","
+				+"'"+""+"'"+","
+				+"'"+""+"'"
+				+")";
 		 System.out.println(sql);
         db1 = new DBhelper(sql);//创建DBHelper对象  
         try {  

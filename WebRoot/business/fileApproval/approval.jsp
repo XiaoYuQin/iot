@@ -9,7 +9,7 @@
 <head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta charset="utf-8">
-	<title>朔和云 | 文件审批</title>
+	<title>朔和云 | 设备列表</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
 	<meta name="description" content="">
 	<meta name="author" content="">
@@ -29,6 +29,22 @@
 	<link rel="stylesheet" type="text/css" href="../../js/datatables/extras/TableTools/media/css/TableTools.min.css" />
 	<!-- INBOX CSS -->
 	<link rel="stylesheet" href="../../css/inbox.css">
+	<!-- TYPEAHEAD -->
+	<link rel="stylesheet" type="text/css" href="../../js/typeahead/typeahead.css" />
+	<!-- FILE UPLOAD -->
+	<link rel="stylesheet" type="text/css" href="../../js/bootstrap-fileupload/bootstrap-fileupload.min.css" />
+	<!-- SELECT2 -->
+	<link rel="stylesheet" type="text/css" href="../../js/select2/select2.min.css" />
+	<!-- UNIFORM -->
+	<link rel="stylesheet" type="text/css" href="../../js/uniform/css/uniform.default.min.css" />
+	<!-- JQUERY UPLOAD -->
+	<!-- blueimp Gallery styles -->
+	<link rel="stylesheet" href="../../js/blueimp/gallery/blueimp-gallery.min.css">
+	<!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+	<link rel="stylesheet" href="../../js/jquery-upload/css/jquery.fileupload.css">
+	<link rel="stylesheet" href="../../js/jquery-upload/css/jquery.fileupload-ui.css">
+	<!-- MAGIC SUGGEST -->
+	<link rel="stylesheet" type="text/css" href="../../js/magic-suggest/magicsuggest-1.3.1-min.css" />
 
 	<!-- JAVASCRIPTS -->
 	<!-- Placed at the end of the document so the pages load faster -->
@@ -62,6 +78,39 @@
 
 	<!-- BOOTBOX -->
 	<script type="text/javascript" src="../../js/bootbox/bootbox.min.js"></script>
+
+	<!-- MAGIC SUGGEST -->
+	<script type="text/javascript" src="../../js/magic-suggest/magicsuggest-1.3.1-min.js"></script>
+	<!-- FILE UPLOAD -->
+	<!-- <script type="text/javascript" src="../../js/bootstrap-fileupload/bootstrap-fileupload.min.js"></script> -->
+	<!-- SELECT2 -->
+	<!-- <script type="text/javascript" src="../../js/select2/select2.min.js"></script> -->
+
+	<!-- JQUERY UPLOAD -->
+	<!-- The Templates plugin is included to render the upload/download listings -->
+	<!-- <script src="../../js/blueimp/javascript-template/tmpl.min.js"></script> -->
+	<!-- The Load Image plugin is included for the preview images and image resizing functionality -->
+	<!-- <script src="../../js/blueimp/javascript-loadimg/load-image.min.js"></script> -->
+	<!-- The Canvas to Blob plugin is included for image resizing functionality -->
+	<!-- <script src="../../js/blueimp/javascript-canvas-to-blob/canvas-to-blob.min.js"></script> -->
+	<!-- blueimp Gallery script -->
+	<!-- <script src="../../js/blueimp/gallery/jquery.blueimp-gallery.min.js"></script> -->
+	<!-- The basic File Upload plugin -->
+	<!-- <script src="../../js/jquery-upload/js/jquery.fileupload.min.js"></script> -->
+	<!-- The File Upload processing plugin -->
+	<!-- <script src="../../js/jquery-upload/js/jquery.fileupload-process.min.js"></script> -->
+	<!-- The File Upload image preview & resize plugin -->
+	<!-- <script src="../../js/jquery-upload/js/jquery.fileupload-image.min.js"></script> -->
+	<!-- The File Upload audio preview plugin -->
+	<!-- <script src="../../js/jquery-upload/js/jquery.fileupload-audio.min.js"></script> -->
+	<!-- The File Upload video preview plugin -->
+	<!-- <script src="../../js/jquery-upload/js/jquery.fileupload-video.min.js"></script> -->
+	<!-- The File Upload validation plugin -->
+	<!-- <script src="../../js/jquery-upload/js/jquery.fileupload-validate.min.js"></script> -->
+	<!-- The File Upload user interface plugin -->
+	<!-- <script src="../../js/jquery-upload/js/jquery.fileupload-ui.min.js"></script> -->
+	<!-- The main application script -->
+	<!-- <script src="../../js/jquery-upload/js/main.js"></script> -->
 
 	<!-- CUSTOM SCRIPT -->
 	<!-- <script src="../../js/script.js"></script> -->
@@ -129,8 +178,13 @@
 						<th class="hidden-xs">VIN</th>
 						<th>设备状态</th>
 					</tr>
-				</tfoot>		 -->							
+				</tfoot>		 -->					
 			</table>
+			<div class="btn-toolbar pull-righ">
+				<button class="btn btn-success btn-right userInfoBootbox">新建审批</button>
+				<button class="btn btn-success btn-right" onclick="location.reload();">刷新</button>
+				<input id="ms7" type="text"/>
+			</div>	
 			<!-- /BOX -->								
 		</div>
 	</div>
@@ -176,123 +230,70 @@
 	/*-----------------------------------------------------------------------------------*/
 	/*	Bootbox alerts
 	/*-----------------------------------------------------------------------------------*/
-	var messageString 
-		= "<div class='well' style='margin-top:25px;'>	\
-				<form class='form-horizontal' role='form'>	\
-					<div class='form-group'>	\
-						<label class='col-sm-3 control-label no-padding-right' for='txtOldPwd'>旧密码</label>	\
-						<div class='col-sm-9'>	\
-							<input type='text' id='txtOldPwd' placeholder='请输入旧密码' class='col-xs-10 col-sm-5' />	\
-						</div>\
-					</div>\
-					<div class='space-4'></div>\
-					<div class='form-group'>\
-						<label class='col-sm-3 control-label no-padding-right' for='txtNewPwd1'>新密码</label>\
-						<div class='col-sm-9'>\
-							<input type='text' id='txtNewPwd1' placeholder='请输入新密码' class='col-xs-10 col-sm-5' />\
-						</div>\
-					</div>\
-					<div class='space-4'></div>\
-						<div class='form-group'>\
-							<label class='col-sm-3 control-label no-padding-right' for='txtNewPwd2'>确认新密码</label>\
-						<div class='col-sm-9'>\
-							<input type='text' id='txtNewPwd2' placeholder='再次输入新密码' class='col-xs-10 col-sm-5' />\
-						</div>\
-					</div>\
-				</form>\
-			</div>";
-	var message2 = 
-	"\
-			<form role=\"form\">\
-			  <div class=\"form-group\">\
-				<label for=\"exampleInputEmail1\">Email address</label>\
-				<input type=\"email\" class=\"form-control\" id=\"exampleInputEmail1\" placeholder=\"Enter email\">\
-			  </div>\
-			  <div class=\"form-group\">\
-				<label for=\"exampleInputPassword1\">Password</label>\
-				<input type=\"password\" class=\"form-control\" id=\"exampleInputPassword1\" placeholder=\"Password\">\
-			  </div>\
-			  <div class=\"checkbox\">\
-				<label>\
-				  <input type=\"checkbox\"> Check me out\
-				</label>\
-			  </div>\
-			  <button type=\"submit\" class=\"btn btn-success\">Submit</button>\
-			</form>\
-			<div class=\"separator\"></div>\
-			<h3 class=\"form-title\">Inline form</h3>\
-			<form class=\"form-inline\" role=\"form\">\
-			  <div class=\"form-group\">\
-				<label class=\"sr-only\" for=\"exampleInputEmail2\">Email address</label>\
-				<input type=\"email\" class=\"form-control\" id=\"exampleInputEmail2\" placeholder=\"Enter email\">\
-			  </div>\
-			  <div class=\"form-group\">\
-				<label class=\"sr-only\" for=\"exampleInputPassword2\">Password</label>\
-				<input type=\"password\" class=\"form-control\" id=\"exampleInputPassword2\" placeholder=\"Password\">\
-			  </div>\
-			  <button type=\"submit\" class=\"btn btn-inverse\">Sign in</button>\
-			</form>\
-			<div class=\"separator\"></div>\
-			<h3 class=\"form-title\">Horizontal form</h3>\
-			<form class=\"form-horizontal\" role=\"form\">\
-			  <div class=\"form-group\">\
-				<label for=\"inputEmail3\" class=\"col-sm-2 control-label\">Email</label>\
-				<div class=\"col-sm-10\">\
-				  <input type=\"email\" class=\"form-control\" id=\"inputEmail3\" placeholder=\"Email\">\
-				</div>\
-			  </div>\
-			  <div class=\"form-group\">\
-				<label for=\"inputPassword3\" class=\"col-sm-2 control-label\">Password</label>\
-				<div class=\"col-sm-10\">\
-				  <input type=\"password\" class=\"form-control\" id=\"inputPassword3\" placeholder=\"Password\">\
-				</div>\
-			  </div>\
-			  <div class=\"form-group\">\
-				<div class=\"col-sm-offset-2 col-sm-10\">\
-				  <div class=\"checkbox\">\
-					<label>\
-					  <input type=\"checkbox\"> Remember me\
-					</label>\
-				  </div>\
-				</div>\
-			  </div>\
-			  <div class=\"form-group\">\
-				<div class=\"col-sm-offset-2 col-sm-10\">\
-				  <button type=\"submit\" class=\"btn btn-pink\">Sign in</button>\
-				</div>\
-			  </div>\
-			</form>\
-		</div>\
-	";
-
 	var message3 = 
 	"\
 		<form role=\"form\">\
 			<div class=\"form-group\">\
-				<label for=\"userName\">用户名:</label>\
-				<!-- <label id=\"userName\">用户名</label> -->\
-				<input type=\"text\" disabled = \"true\" class=\"form-control\" id=\"userName\" value=\"王二蛋\">\
+				<label for=\"userName\">发起人</label>\
+				<input type=\"text\" disabled = \"true\" class=\"form-control\" id=\"sponsor\" value=\" \">\
 			</div>\
 			<div class=\"form-group\">\
-				<label for=\"password\">密码</label>\
-				<input type=\"password\" class=\"form-control\" id=\"password\" placeholder=\"新密码\">\
+				<label for=\"userName\">审批人</label>\
 			</div>\
 			<div class=\"form-group\">\
-				<label for=\"password2\">再次输入密码</label>\
-				<input type=\"password\" class=\"form-control\" id=\"password2\" placeholder=\"再次输入密码\">\
+				<label>事项</label>\
+				<textarea class=\"form-control\" rows=\"3\" placeholder=\"请输入待审事项\"></textarea>\
 			</div>\
 			<div class=\"form-group\">\
-				<label for=\"mail\">邮箱</label>\
-				<input type=\"password\" class=\"form-control\" id=\"exampleInputPassword1\" placeholder=\"新邮箱地址\">\
-			</div>	\
+				<label for=\"password2\">待审文件</label>\
+				<input type=\"text\" class=\"form-control\" id=\"password2\" placeholder=\"请输入\">\
+			</div>\
+			<div class=\"form-group\">\
+				<div class=\"row fileupload-buttonbar\">\
+					<div class=\"col-lg-12\">\
+						<!-- The fileinput-button span is used to style the file input field as button -->\
+						<span class=\"btn btn-success fileinput-button\">\
+							<i class=\"fa fa-plus\"></i>\
+							<span>添加文件...</span>\
+							<input type=\"file\" name=\"files[]\" multiple>\
+						</span>\
+						<button type=\"submit\" class=\"btn btn-primary start\">\
+							<i class=\"fa fa-arrow-circle-o-up\"></i>\
+							<span>开始上传</span>\
+						</button>\
+						<button type=\"reset\" class=\"btn btn-warning cancel\">\
+							<i class=\"fa fa-ban\"></i>\
+							<span>取消上传</span>\
+						</button>\
+						<button type=\"button\" class=\"btn btn-danger delete\">\
+							<i class=\"fa fa-trash-o\"></i>\
+							<span>删除</span>\
+						</button>\
+						<!-- The loading indicator is shown during file processing -->\
+						<span class=\"fileupload-loading\"></span>\
+					</div>\
+					<!-- The global progress information -->\
+					<div class=\"col-lg-5 fileupload-progress fade\">\
+						<!-- The global progress bar -->\
+						<div class=\"progress progress-striped active\" role=\"progressbar\" aria-valuemin=\"0\" aria-valuemax=\"100\">\
+							<div class=\"progress-bar progress-bar-success\" style=\"width:0%;\"></div>\
+						</div>\
+						<!-- The extended global progress information -->\
+						<div class=\"progress-extended\">&nbsp;</div>\
+					</div>\
+				</div>\
+				<!-- The table listing the files available for upload/download -->\
+				<table role=\"presentation\" class=\"table table-striped\"><tbody class=\"files\"></tbody></table>\
+			</div>\
 		</form>\
 	";
+
 
 	var handleBootbox = function () {
 		$(".userInfoBootbox").click(function(){
 			bootbox.dialog({
 			message : message3,
-			title: "修改用户",
+			title: "文件审批",
 			buttons: {
 				success: {
 					label: "保存",
@@ -348,7 +349,57 @@
 			length_sel.addClass('form-control input-sm');
 		});
 	}
-	
+	/*-----------------------------------------------------------------------------------*/
+	/*	Magic Suggest
+	/*-----------------------------------------------------------------------------------*/
+	var handleMagicSuggest = function () {
+		var jsonData = [];
+            var cities = 'New York,Los Angeles,Chicago,Houston,Paris,Marseille,Toulouse,Lyon,Bordeaux,Philadelphia,Phoenix,San Antonio,San Diego,Dallas,San Jose,Jacksonville'.split(',');
+            for(var i=0;i<cities.length;i++) 
+                jsonData.push({id:i,name:cities[i],status:i%2?'Already Visited':'Planned for visit',coolness:Math.floor(Math.random() * 10) + 1});
+            var ms1 = $('#ms1').magicSuggest({
+                data: jsonData,
+                sortOrder: 'name',
+                value: [0],
+                selectionPosition: 'right',
+                groupBy: 'status',
+                maxDropHeight: 200
+            });
+            var ms2 = $('#ms2').magicSuggest({
+				width: '80%',
+                data: jsonData
+            });
+            var ms3 = $('#ms3').magicSuggest({
+                selectionPosition: 'bottom',
+                renderer: function(city){
+                    return '<div>' +
+                            '<div style="font-family: Arial; font-weight: bold">' + city.name + '</div>' +
+                            '<div><b>Cooooolness</b>: ' + city.coolness + '</div>' +
+                           '</div>';
+                },
+                minChars: 1,
+                selectionStacked: true,
+                data: jsonData
+            });
+            var ms4 = $('#ms4').magicSuggest({
+                data: [{id:1,label:'one'}, {id:2,label:'two'}, {id:3,label:'three'}],
+                displayField: 'label',
+                value: [1,3]
+            });
+            var ms5 = $('#ms5').magicSuggest({
+                width: '80%',
+                data: 'marilyn@monroe.com,mother@teresa.com,john@kennedy.com,martin@luther.com,nelson@mandela.com,winston@churchill.com,bill@gates.com,muhammad@ali.com,mahatma@gandhi.com,margaret@thatcher.com,charles@gaulle.com,christopher@colombus.com,george@orwell.com,charles@darwin.com,elvis@presley.com,albert@einstein.com,paul@mccartney.com,queen@elizabeth.com,queen@victoria.com,john@keynes.com,mikhail@gorbachev.com,jawaharlal@nehru.com,leonardo@vinci.com,louis@pasteur.com,leo@tolstoy.com,pablo@picasso.com,vincent@gogh.com,franklin@roosevelt.com,john@paul.com,neil@armstrong.com,thomas@edison.com,rosa@parks.com,aung@kyi.com,lyndon@johnson.com,ludwig@beethoven.com,oprah@winfrey.com,indira@gandhi.com,eva@peron.com,benazir@bhutto.com,desmond@tutu.com,dalai@lama.com,walt@disney.com,peter@sellers.com,barack@obama.com,malcolm@x.com,richard@branson.com,jesse@owens.com,ernest@hemingway.com,john@lennon.com,henry@ford.com,haile@selassie.com,joseph@stalin.com,lord@baden.com,michael@jordon.com,george@bush.com,osama@laden.com,fidel@castro.com,oscar@wilde.com,coco@chanel.com,amelia@earhart.com,adolf@hitler.com,mary@magdalene.com,alfred@hitchcock.com,michael@jackson.com,mata@hari.com,emmeline@pankhurst.com,ronald@reagan.com,lionel@messi.com,babe@ruth.com,bob@geldof.com,leon@trotsky.com,roger@federer.com,sigmund@freud.com,woodrow@wilson.com,mao@zedong.com,katherine@hepburn.com,audrey@hepburn.com,david@beckham.com,tiger@woods.com,usain@bolt.com,bill@cosby.com,carl@lewis.com,prince@charles.com,jacqueline@onassis.com,billie@holiday.com,virginia@woolf.com,billie@king.com,kylie@minogue.com,anne@frank.com,emile@zatopek.com,lech@walesa.com,christiano@ronaldo.com,yoko@ono.com,julie@andrews.com,florence@nightingale.com,marie@curie.com,stephen@hawking.com,tim@lee.com,lady@gaga.com,lance@armstrong.com,jon@stewart.com,scarlett@johansson.com,larry@page.com,sergey@brin.com,roman@abramovich.com,rupert@murdoch.com,al@gore.com,sacha@baron.com,george@clooney.com,paul@krugman.com,jimmy@wales.com'
+            });
+            var ms6 = $('#ms6').magicSuggest({
+                // will fetch data from options
+            });
+            var ms7 = $('#ms7').magicSuggest({
+                data: jsonData,
+                resultAsString: true,
+                maxSelection: 1,
+                maxSelectionRenderer: function(){}
+            })
+	}
 
 	/*-----------------------------------------------------------------------------------*/
 	/*	Handles Profile Edit
@@ -362,6 +413,7 @@
         init: function () {
 			handleDataTables();	//Function to display data tables		
 			handleBootbox();	
+			handleMagicSuggest();
         },
 
         //Set page
