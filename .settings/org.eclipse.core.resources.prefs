@@ -1,3 +1,6 @@
 eclipse.preferences.version=1
 encoding//WebRoot/business/index.jsp=UTF-8
 encoding//WebRoot/test.jsp=UTF-8
+encoding//src/com/shuohe/file/DownloadServlet.java=UTF-8
+encoding//src/com/shuohe/file/ListFileServlet.java=UTF-8
+encoding//src/com/shuohe/file/UploadServlet.java=UTF-8

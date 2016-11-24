@@ -12,7 +12,7 @@
 	<meta name="author" content="">
 
 	<link rel="stylesheet" type="text/css" href="../css/cloud-admin.css" >
-	<link rel="stylesheet" type="text/css"  href="../css/themes/default.css" id="skin-switcher" >
+	<link rel="stylesheet" type="text/css"  href="../css/themes/night.css" id="skin-switcher" >
 	<link rel="stylesheet" type="text/css"  href="../css/responsive.css" >
 	
 	<link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -27,13 +27,27 @@
 	<!-- HEADER -->
 	<header class="navbar clearfix" id="header">
 		<div class="container">
-				
-				<div class="navbar-brand">
-					<!-- COMPANY LOGO -->
-					<a href="index.html">
-						<img src="../img/logo/logo.png" alt="Cloud Admin Logo" class="img-responsive" height="100" width="300"/>
-					</a>
-				</div>	
+				<span><font size="6" color="#ffffff">国联电池信息管理系统</font></span>
+				<!-- <ul class="nav navbar-nav pull-left hidden-xs" id="navbar-left">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<i class="fa fa-cog"></i>
+							<span class="name">Skins</span>
+							<i class="fa fa-angle-down"></i>
+						</a>
+						<ul class="dropdown-menu skins">
+							<li class="dropdown-title">
+								<span><i class="fa fa-leaf"></i> Theme Skins</span>
+							</li>
+							<li><a href="#" data-skin="default">Subtle (default)</a></li>
+							<li><a href="#" data-skin="night">Night</a></li>
+							<li><a href="#" data-skin="earth">Earth</a></li>
+							<li><a href="#" data-skin="utopia">Utopia</a></li>
+							<li><a href="#" data-skin="nature">Nature</a></li>
+							<li><a href="#" data-skin="graphite">Graphite</a></li>
+						 </ul>
+					</li>
+				</ul> -->
 				<!-- BEGIN TOP NAVIGATION MENU -->					
 				<ul class="nav navbar-nav pull-right">
 					<!-- BEGIN NOTIFICATION DROPDOWN -->	
@@ -201,7 +215,7 @@
 						<ul class="sub">
 							<li><a class="" href="../business/systemManage/userManage/userManager.jsp"><span class="sub-menu-text">用户管理</span></a></li>
 							<li><a class="" href="../business/positionManage/positionManager.jsp"><span class="sub-menu-text">职位管理</span></a></li>
-							<li><a class="" href="../business/systemManage/permissionsManage/dataTableManager.jsp"><span class="sub-menu-text">数据表管理</span></a></li>
+							<li><a class="" href="../business/systemManage/dataTableManage/dataTableManager.jsp"><span class="sub-menu-text">数据表管理</span></a></li>
 						</ul>
 					</li>
 				</ul>

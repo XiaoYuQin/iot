@@ -16,7 +16,7 @@
 	<meta name="author" content="">
 	<!-- STYLESHEETS --><!--[if lt IE 9]><script src="js/flot/excanvas.min.js"></script><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script><![endif]-->
 	<link rel="stylesheet" type="text/css" href="../../../css/cloud-admin.css" >
-	<link rel="stylesheet" type="text/css"  href="../../../css/themes/default.css" id="skin-switcher" >
+	<link rel="stylesheet" type="text/css"  href="../../../css/themes/night.css" id="skin-switcher" >
 	<link rel="stylesheet" type="text/css"  href="../../../css/responsive.css" >
 	
 	<link href="../../../font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -209,13 +209,13 @@
 						</ul>
 					</li>
 					<li>
-						<a class="" href="../../business/fileApproval/fileApproval.jsp">
+						<a class="" href="../../../business/fileApproval/fileApproval.jsp">
 							<i class="fa  fa-briefcase fa-fw"></i>
 							<span class="menu-text">文件审批</span>
 						</a>
 					</li>
 					<li>
-						<a class="" href="../../business/accountSettings.jsp">
+						<a class="" href="../../../business/accountSettings.jsp">
 							<i class="fa fa-user fa-fw" ></i> 
 							<span class="menu-text">账户设置</span>
 						</a>
@@ -227,9 +227,9 @@
 							<span class="arrow"></span>
 						</a>
 						<ul class="sub">
-							<li><a class="" href="../../business/systemManage/userManage/userManager.jsp"><span class="sub-menu-text">用户管理</span></a></li>
-							<li><a class="" href="../../business/positionManage/positionManager.jsp"><span class="sub-menu-text">职位管理</span></a></li>
-							<li><a class="" href="../../business/systemManage/permissionsManage/dataTableManager.jsp"><span class="sub-menu-text">数据表管理</span></a></li>
+							<li><a class="" href="../../../business/systemManage/userManage/userManager.jsp"><span class="sub-menu-text">用户管理</span></a></li>
+							<li><a class="" href="../../../business/positionManage/positionManager.jsp"><span class="sub-menu-text">职位管理</span></a></li>
+							<li><a class="" href="../../../business/systemManage/dataTableManage/dataTableManager.jsp"><span class="sub-menu-text">数据表管理</span></a></li>
 						</ul>
 					</li>
 				</ul>
@@ -297,7 +297,8 @@
 											<textarea id="createDataTableInfo" rows="3" cols="5" name="textarea" class="form-control"></textarea>
 										</div>
 
-										<button class="btn btn-success" onclick="createNewTable();">提交</button><img id="createDatatableWaitImag" style="display:none;" src="../../../img/loaders/4.gif">
+										<button class="btn btn-success" onclick="createNewTable();">提交</button>
+										<img id="createDatatableWaitImag" style="display:none;" src="../../../img/loaders/4.gif">
 									<!-- </form>	
 																 -->
 									</div>
@@ -405,7 +406,8 @@
 											<textarea id="createDataTableInfo" rows="3" cols="5" name="textarea" class="form-control"></textarea>
 										</div>
 
-										<button class="btn btn-success" onclick="createNewTable();">提交</button><img id="createDatatableWaitImag" style="display:none;" src="../../../img/loaders/4.gif">
+										<button class="btn btn-success" onclick="createNewTable();">提交</button>
+										<img id="createDatatableWaitImag" style="display:none;" src="../../../img/loaders/4.gif">
 									</div>
 								</div>
 							</section>
@@ -436,7 +438,8 @@
 											<textarea id="createDataTableInfo" rows="3" cols="5" name="textarea" class="form-control"></textarea>
 										</div>
 
-										<button class="btn btn-success" onclick="createNewTable();">提交</button><img id="createDatatableWaitImag" style="display:none;" src="../../../img/loaders/4.gif">
+										<button class="btn btn-success" onclick="createNewTable();">提交</button>
+										<img id="createDatatableWaitImag" style="display:none;" src="../../../img/loaders/4.gif">
 									</div>	
 								</div>
 							</section>
@@ -860,7 +863,7 @@
 		else
 		{
 			sendCreatDatatableRequest(name,status,info);			
-			document.getElementById("createDatatableWaitImag").style.display = "";
+			document.getElementById('createDatatableWaitImag').style.display = "inline";
 		}
 
 	}
@@ -877,7 +880,7 @@
 		//每次提交前, 先放弃上一次ajax的提交, 这样就不会同时有多个ajax正在请求, 卡死浏览器
 		ajax = $.ajax(
 		{
-			url : "http://shuohe-tech.imwork.net:8080/iot/business/setCreateNewDataTable.jsp"//请求的url
+		url : "http://localhost:8000/iot/business/setCreateNewDataTable.jsp"//请求的url
 			,async : false
 			,dataType : "jsonp"			
 			,jsonp : "callback"//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
@@ -893,18 +896,20 @@
 		// console.info(cars.length);
 		console.info(res.result);
 		console.info(res.info);		
-
+		document.getElementById('createDatatableWaitImag').style.display = "none";
 		bootbox.dialog({
 			message : "<h4>"+res.info+"</h4>",
 			buttons: {
 				success: {
 					label: "确定",
 					className: "btn-success",
-					callback: function() {}
+					callback: function() 
+					{
+					}
 				}
 			}
 		});		
-		document.getElementById("createDatatableWaitImag").style.display = "none";
+
 	}
 	function sendDatatableFieldReq(table)
 	{
@@ -913,7 +918,7 @@
 		//每次提交前, 先放弃上一次ajax的提交, 这样就不会同时有多个ajax正在请求, 卡死浏览器
 		ajax = $.ajax(
 		{
-			url : "http://shuohe-tech.imwork.net:8080/iot/business/getDatatableFiledsByTableName.jsp"//请求的url
+			url : "http://localhost:8000/iot/business/getDatatableFiledsByTableName.jsp"//请求的url
 			,async : false
 			,dataType : "jsonp"			
 			,jsonp : "callback"//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)

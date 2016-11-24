@@ -12,7 +12,7 @@
 	<meta name="author" content="">
 
 	<link rel="stylesheet" type="text/css" href="../css/cloud-admin.css" >
-	<link rel="stylesheet" type="text/css"  href="../css/themes/default.css" id="skin-switcher" >
+	<link rel="stylesheet" type="text/css"  href="../css/themes/night.css" id="skin-switcher" >
 	<link rel="stylesheet" type="text/css"  href="../css/responsive.css" >
 	
 	<link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet">

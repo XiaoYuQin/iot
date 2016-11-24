@@ -12,7 +12,7 @@
 	<!-- <meta name="viewport" content="initial-scale=1.0, user-scalable=no" /> -->
 	<!-- STYLESHEETS --><!--[if lt IE 9]><script src="js/flot/excanvas.min.js"></script><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script><![endif]-->
 	<link rel="stylesheet" type="text/css" href="../css/cloud-admin.css" >
-	<link rel="stylesheet" type="text/css"  href="../css/themes/default.css" id="skin-switcher" >
+	<link rel="stylesheet" type="text/css"  href="../css/themes/night.css" id="skin-switcher" >
 	<link rel="stylesheet" type="text/css"  href="../css/responsive.css" >
 	
 	<link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -290,7 +290,7 @@
 								<ul class="sub">
 									<li><a class="" href="../business/systemManage/userManage/userManager.jsp"><span class="sub-menu-text">用户管理</span></a></li>
 									<li><a class="" href="../business/positionManage/positionManager.jsp"><span class="sub-menu-text">职位管理</span></a></li>
-									<li><a class="" href="../business/systemManage/permissionsManage/dataTableManager.jsp"><span class="sub-menu-text">数据表管理</span></a></li>
+									<li><a class="" href="../business/systemManage/dataTableManage/dataTableManager.jsp"><span class="sub-menu-text">数据表管理</span></a></li>
 								</ul>
 							</li>						
 						</ul>
@@ -305,9 +305,9 @@
 						<div class="divide-20"></div>
 						<div id="location"></div>
 
-						<div class="box border blue">
+						<div class="box border green">
 							<div class="box-title">
-								<h4><i class="fa fa-signal"></i>位置</h4>
+								<h4><i class="fa fa-signal"></i>设备地图</h4>
 								<div class="tools">
 									<a href="javascript:;" class="reload">
 										<i class="fa fa-refresh"></i>
@@ -318,45 +318,41 @@
 								<!-- extra -->
 								<div class="row">
 									<div class="col-md-2" >
-										<div class="box border orange" style="height:540px">	
-											<div class="box-title">
-												<h4><i class="fa fa-bars"></i>选择车辆</h4>													
-											</div>
-											<div class="box-body">
-												<!-- <a class="fa-info-circle"></a> -->
-												<i class="fa fa-info-circle"></i> <font size="3">通过车牌号选择车辆</font>
-										<!-- 		<br>
-												<br>
-												<div class="form-group">
-													<font size="3">设备</font>
-													<select class="form-control" style="width: 60%;">
-														<option>模拟设备</option>
-														<option>数字设备</option>
-													</select>
+										<div class="panel panel-default">														
+											<div class="panel-body orders">
+												<div class="scroller" data-height="650px" data-always-visible="1" data-rail-visible="1">
 													<div class="divide-20"></div>
-												</div> -->
-												<!-- <div id="tree1" class="tree"></div> -->
-												<div class="divide-20"></div>
-												<div id="carsTree" class="tree"></div>
-												
-											</div>							
+													<div id="search-bar">
+														<input class="search" type="text" placeholder="Search"><i class="fa fa-search search-icon"></i>
+													</div>
+													<div class="divide-20"></div>
+													<div class="list-group">
+														<a href="javascript:itemClicked(50007445);" class="list-group-item">豫EGJ983</a>
+														<a href="javascript:itemClicked(50007556);" class="list-group-item">豫EGJ971</a>
+														<a href="javascript:itemClicked(50007555);" class="list-group-item">豫EGJ976</a>
+														<a href="javascript:itemClicked(50007550);" class="list-group-item">豫EGJ978</a>
+														<a href="javascript:itemClicked(50007450);" class="list-group-item">豫EGJ957</a>
+														<a href="javascript:itemClicked(50007444);" class="list-group-item">豫EGJ993</a>
+														<a href="javascript:itemClicked(50007449);" class="list-group-item">豫EGJ980</a>
+														<a href="javascript:itemClicked(50007447);" class="list-group-item">豫EGJ997</a>
+														<a href="javascript:itemClicked(50007446);" class="list-group-item">豫EGJ990</a>
+														<a href="javascript:itemClicked(50007443);" class="list-group-item">豫EGJ992</a>
+														<a href="javascript:itemClicked(50007438);" class="list-group-item">豫EGJ917</a>
+													</div>	
+												</div>
+											</div>
 										</div>
+				<!-- 						<i class="fa fa-info-circle"></i> <font size="3">通过车牌号选择车辆</font>
+										<div class="divide-20"></div>
+										<div id="carsTree" class="tree"></div>			 -->	
+							
 									</div>
-								<!-- </div> -->
-								<!-- <div class="row"> -->
+
 									<div class="col-md-10">
-										<div class="box border orange">
-											<div class="box-title">
-												<h4><i class="fa fa-bars"></i>地图</h4>													
-											</div>
-											<div class="box-body" id="allmap" style="width: 100%;height:500px">
-											<!-- /extra -->
-												<!-- <div id="allmap" style="width: 500px;height:500px"></div> -->
-											</div>
-										</div>
+											<div class="box-body" id="allmap" style="width: 100%;height:650px">
 									</div>
 								</div>
-							</div>							
+							</div>										
 						</div>
 						<!-- 填充车辆列表 -->
 						<script type="text/javascript">
@@ -422,7 +418,7 @@
 								//每次提交前, 先放弃上一次ajax的提交, 这样就不会同时有多个ajax正在请求, 卡死浏览器
 								ajax = $.ajax(
 								{
-									url : "http://shuohe-tech.imwork.net:8080/iot/business/getShaolinBuses.jsp"//请求的url
+									url : "http://localhost:8000/iot/business/getShaolinBuses.jsp"//请求的url
 									,
 									async : false,
 									dataType : "jsonp"

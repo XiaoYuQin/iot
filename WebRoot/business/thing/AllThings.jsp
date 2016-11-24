@@ -8,7 +8,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<link rel="stylesheet" type="text/css" href="../../css/cloud-admin.css" >
-	<link rel="stylesheet" type="text/css"  href="../../css/themes/default.css" id="skin-switcher" >
+	<link rel="stylesheet" type="text/css"  href="../../css/themes/night.css" id="skin-switcher" >
 	<link rel="stylesheet" type="text/css"  href="../../css/responsive.css" >
 	<!-- STYLESHEETS --><!--[if lt IE 9]><script src="js/flot/excanvas.min.js"></script><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script><![endif]-->
 	<link href="../../font-awesome/css/font-awesome.min.css" rel="stylesheet">

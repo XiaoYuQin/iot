@@ -3,7 +3,7 @@
 <%@ page import="java.util.*" %> 
 <%@ page import="java.util.ArrayList" %> 
 <%@ page import="com.shuohe.userManage.*" %> 
-<%@ page import="com.shuohe.fileApproval.*" %>
+<%@ page import="com.shuohe.file.*" %>
 <%
     String name = request.getContextPath()+"/";
 %>
@@ -200,11 +200,17 @@
 					</li>
 					<li class="active">
 						<a class="" >
-							<i class="fa fa-briefcase fa-fw"></i> 
-							<span class="menu-text">文件审批</span>
+							<i class="fa  fa-folder fa-fw"></i> 
+							<span class="menu-text">文件箱</span>
 							<span class="selected"></span>
 						</a>
-					</li>					
+					</li>	
+					<li>
+						<a class="" href="../../business/fileApproval/fileApproval.jsp">
+							<i class="fa fa-briefcase fa-fw"></i>
+							<span class="menu-text">文件审批</span>
+						</a>
+					</li>
 					<li>
 						<a class="" href="../../business/accountSettings.jsp">
 							<i class="fa fa-user fa-fw"></i>
@@ -245,167 +251,68 @@
 						<div class="divide-20"></div>
 
 						<div class="col-md-12">
+														
+						</div>
 							<!-- BOX -->
-							<div class="box border">
+							<div class="box border green">
 								<div class="box-title">
-									<h4><i class="fa fa-columns"></i><span class="hidden-inline-mobile">文件审批</span></h4>
+									<h4><i class="fa fa-table"></i>文件列表</h4>
+									<div class="tools hidden-xs">
+										<a href="javascript:;" class="reload">
+											<i class="fa fa-refresh"></i>
+										</a>
+									</div>
 								</div>
 								<div class="box-body">
-									<div class="tabbable header-tabs">
-										<ul class="nav nav-tabs">
-											<li>
-												<a href="#box_tab5" data-toggle="tab">
-													<i class="fa fa-flask"></i> 
-													<span class="hidden-inline-mobile">我的审批</span>
-												</a>
-											</li>
-											<li class="active">
-												<a href="#box_tab4" data-toggle="tab">
-													<i class="fa fa-home"></i> 
-													<span class="hidden-inline-mobile">我的申请</span> 
-													<!-- <span class="badge badge-blue font-11">3</span> -->
-												</a>
-											</li>
-										</ul>
-									  	<div class="tab-content">
-											<div class="tab-pane fade in active" id="box_tab4">
-												<div class="row">
-													<div class="col-md-12">									
-														<table id="userdatatable1" cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered table-hover">
-															<thead>
-																<tr>
-																	<th >审批编号</th>
-																	<th >发起者</th>
-																	<th >审批人</th>
-																	<th >审批描述</th>
-																	<th >文件名称</th>
-																	<th >审批状态</th>
-																	<th >发起日期</th>
-																	<!-- <th class="hidden-xs">CSS grade</th> -->
-																</tr>
-															</thead>
-															<tbody>
-																<%  			
-																	ArrayList<User> users = new ArrayList<User>();
-																	users = UserManager.getAllUsers();
-																	String userList="";
-																	for(int i=0;i<users.size();i++)
-																	{																
-																		userList = userList+"<option>"+users.get(i).getName()+"</option>";
-																	}		
-									
-																	ArrayList<FileApproval> fileApprovals = new ArrayList<FileApproval>();
-																	fileApprovals = FileApprovalDatabase.getAllFileApprovalBySponsor(request.getSession().getAttribute("username")+"");
-																	for(int i=0;i<fileApprovals.size();i++)
-																	{							
-																		out.println("<tr  class=\"gradeX \" onclick=getFileApprovalsInfo(\""+fileApprovals.get(i).getId()+"\"); href=\"#table-modal\" style=\"cursor:pointer;\">");
-																		out.println("	<td>"+fileApprovals.get(i).getId()+"</td>");
-																		out.println("	<td>"+fileApprovals.get(i).getSponsor()+"</td>");
-																		out.println("	<td>"+fileApprovals.get(i).getleader()+"</td>");
-																		if(fileApprovals.get(i).getDescribe().length()>10)
-																			out.println("	<td>"+fileApprovals.get(i).getDescribe().substring(0, 9)+"...</td>");
-																		else
-																			out.println("	<td>"+fileApprovals.get(i).getDescribe()+"</td>");
-																		out.println("	<td>"+fileApprovals.get(i).getFile()+"</td>");
-																		out.println("	<td>");
-																		//System.out.println("getStatus = "+fileApprovals.get(i).getStatus());
-																		switch(fileApprovals.get(i).getStatus())
-																		{
-																			case 0:
-																				out.println("		<button class=\"btn btn-xs btn-info\" disabled=\"true\">申请中</button>");		
-																			break;
-																			case 1:
-																				out.println("		<button class=\"btn btn-xs btn-danger\" disabled=\"true\">已驳回</button>");		
-																			break;
-																			case 2:
-																				out.println("		<button class=\"btn btn-xs btn-success\" disabled=\"true\">已通过</button>");		
-																			break;
-																		}			
-																		out.println("	</td>");		
-																		out.println("	<td>"+fileApprovals.get(i).getDate()+"</td>");								
-																		out.println("</tr>");
-																	}		
+									<table id="datatable1" cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered table-hover">
+										<thead>
+											<tr>
+												<th>文件名</th>
+												<th>上传者</th>
+												<th>操作</th>
+											</tr>
+										</thead>
+										<tbody>
+											<%  			
+												Map<String, String> files = new Map<String, String>();
+												files = FileList.getFileListObject();
 
-																%>					
-															</tbody>				
-														</table>
-														<div class="btn-toolbar pull-righ">
-															<button class="btn btn-success btn-right userInfoBootbox">新建审批</button>
-															<button class="btn btn-success btn-right" onclick="location.reload();">刷新</button>
-															<label id="userListLable" hidden="hidden"><%=userList%></label>
-														</div>	
-														<!-- /BOX -->								
-													</div>
-												</div>
-											</div>
-											<div class="tab-pane fade" id="box_tab5">
-												<div class="row">
-													<div class="col-md-12">															
-														<table id="datatable" cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered table-hover">
-															<thead>
-																<tr>
-																	<th >审批编号</th>
-																	<th >发起者</th>
-																	<th >审批人</th>
-																	<th >审批描述</th>
-																	<th >文件名称</th>
-																	<th >审批状态</th>
-																	<th >操作</th>
-																	<th >发起日期</th>
-																	<!-- <th class="hidden-xs">CSS grade</th> -->
-																</tr>
-															</thead>
-															<tbody>
-																<%  													
-																	ArrayList<FileApproval> fileApprovalsLeader = new ArrayList<FileApproval>();
-																	fileApprovalsLeader = FileApprovalDatabase.getAllFileApprovalByLeader(request.getSession().getAttribute("username")+"");
-																	for(int i=0;i<fileApprovalsLeader.size();i++)
-																	{							
-																		out.println("<tr  class=\"gradeX \">");
-																		out.println("	<td onclick=getFileApprovalsInfo(\""+fileApprovalsLeader.get(i).getId()+"\"); href=\"#table-modal\" style=\"cursor:pointer;\">"+fileApprovalsLeader.get(i).getId()+"</td>");
-																		out.println("	<td onclick=getFileApprovalsInfo(\""+fileApprovalsLeader.get(i).getId()+"\"); href=\"#table-modal\" style=\"cursor:pointer;\">"+fileApprovalsLeader.get(i).getSponsor()+"</td>");
-																		out.println("	<td onclick=getFileApprovalsInfo(\""+fileApprovalsLeader.get(i).getId()+"\"); href=\"#table-modal\" style=\"cursor:pointer;\">"+fileApprovalsLeader.get(i).getleader()+"</td>");
-																		if(fileApprovalsLeader.get(i).getDescribe().length()>10)
-																			out.println("	<td onclick=getFileApprovalsInfo(\""+fileApprovalsLeader.get(i).getId()+"\"); href=\"#table-modal\" style=\"cursor:pointer;\">"+fileApprovalsLeader.get(i).getDescribe().substring(0, 9)+"...</td>");
-																		else
-																			out.println("	<td onclick=getFileApprovalsInfo(\""+fileApprovalsLeader.get(i).getId()+"\"); href=\"#table-modal\" style=\"cursor:pointer;\">"+fileApprovalsLeader.get(i).getDescribe()+"</td>");
-																		out.println("	<td onclick=getFileApprovalsInfo(\""+fileApprovalsLeader.get(i).getId()+"\"); href=\"#table-modal\" style=\"cursor:pointer;\">"+fileApprovalsLeader.get(i).getFile()+"</td>");
-																		out.println("	<td onclick=getFileApprovalsInfo(\""+fileApprovalsLeader.get(i).getId()+"\"); href=\"#table-modal\" style=\"cursor:pointer;\">");
-																		//System.out.println("getStatus = "+fileApprovals.get(i).getStatus());
-																		switch(fileApprovalsLeader.get(i).getStatus())
-																		{
-																			case 0:
-																				out.println("		<button class=\"btn btn-xs btn-info\" disabled=\"true\">申请中</button>");		
-																			break;
-																			case 1:
-																				out.println("		<button class=\"btn btn-xs btn-danger\" disabled=\"true\">已驳回</button>");		
-																			break;
-																			case 2:
-																				out.println("		<button class=\"btn btn-xs btn-success\" disabled=\"true\">已通过</button>");		
-																			break;
-																		}		
-																		out.println("	</td>");		
-																		out.println("	<td>");
-																			out.println("		<button class=\"btn btn-xs btn-success\" onclick=passFileApproval(\""+fileApprovalsLeader.get(i).getId()+"\")>通过</button>");
-																			out.println("		<button class=\"btn btn-xs btn-danger\" onclick=rejectFileApproval(\""+fileApprovalsLeader.get(i).getId()+"\")>驳回</button>");					
-																		out.println("	</td>");																		
-																		out.println("	<td onclick=getFileApprovalsInfo(\""+fileApprovalsLeader.get(i).getId()+"\"); href=\"#table-modal\" style=\"cursor:pointer;\">"+fileApprovalsLeader.get(i).getDate()+"</td>");								
-																		out.println("</tr>");
-																	}		
-																%>					
-															</tbody>				
-														</table>
-														<!-- /BOX -->								
-													</div>
-												</div>
-											</div>
-									  	</div>
-								   	</div>
+												for(int i=0;i<files.size();i++)
+												{							
+													out.println("<tr  class=\"gradeX \" onclick=getFileApprovalsInfo(\""+fileApprovals.get(i).getId()+"\"); href=\"#table-modal\" style=\"cursor:pointer;\">");
+													out.println("	<td>"+fileApprovals.get(i).getId()+"</td>");
+													out.println("	<td>"+fileApprovals.get(i).getSponsor()+"</td>");
+													out.println("	<td>"+fileApprovals.get(i).getleader()+"</td>");
+													if(fileApprovals.get(i).getDescribe().length()>10)
+														out.println("	<td>"+fileApprovals.get(i).getDescribe().substring(0, 9)+"...</td>");
+													else
+														out.println("	<td>"+fileApprovals.get(i).getDescribe()+"</td>");
+													out.println("	<td>"+fileApprovals.get(i).getFile()+"</td>");
+													out.println("	<td>");
+													//System.out.println("getStatus = "+fileApprovals.get(i).getStatus());
+													switch(fileApprovals.get(i).getStatus())
+													{
+														case 0:
+															out.println("		<button class=\"btn btn-xs btn-info\" disabled=\"true\">申请中</button>");		
+														break;
+														case 1:
+															out.println("		<button class=\"btn btn-xs btn-danger\" disabled=\"true\">已驳回</button>");		
+														break;
+														case 2:
+															out.println("		<button class=\"btn btn-xs btn-success\" disabled=\"true\">已通过</button>");		
+														break;
+													}			
+													out.println("	</td>");		
+													out.println("	<td>"+fileApprovals.get(i).getDate()+"</td>");								
+													out.println("</tr>");
+												}		
+
+											%>										
+										</tbody>												
+									</table>
 								</div>
 							</div>
-							<!-- /BOX -->
-						</div>
-							
+							<!-- /BOX -->	
 						<div class="footer-tools">
 							<span class="go-top">
 								<i class="fa fa-chevron-up"></i> Top
